@@ -4362,27 +4362,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navigations/Register/Register */ "./src/Navigations/Register/Register.js");
 /* harmony import */ var _Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navigations/Login/Login */ "./src/Navigations/Login/Login.js");
-/* harmony import */ var _Navigations_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navigations/NotFound/NotFound */ "./src/Navigations/NotFound/NotFound.js");
 
 
-
-
+ //註冊頁面
+ //登入頁面
 
 function APP() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "App"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
     path: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__.Register, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
     path: "/Login",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_2__.Login, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
     path: "*",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__.Register, null)
   })));
 }
 
@@ -4396,14 +4395,19 @@ function APP() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BaseURL)
+/* harmony export */   BaseURL: () => (/* binding */ BaseURL),
+/* harmony export */   PasswordLengthMin: () => (/* binding */ PasswordLengthMin)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 function BaseURL() {
-  return "https://073baa45-d2ae-4784-902b-e83f15d01241.mock.pstmn.io/API/";
+  return "https://kihackertehc.ddns.nete/API/";
 }
+function PasswordLengthMin() {
+  return 8;
+}
+
 
 /***/ }),
 
@@ -4415,12 +4419,12 @@ function BaseURL() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Login)
+/* harmony export */   Login: () => (/* binding */ Login)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var _BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo.js */ "./src/BaseInfo.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -4431,70 +4435,127 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+ //取得API網址
+var baseURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.BaseURL)(); //儲存API網址
+var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.PasswordLengthMin)(); //儲存密碼長度最低要求
 
-var baseURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
-function Login() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+function LoginContent() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)(); //跳轉用函式
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState2 = _slicedToArray(_useState, 2),
     Email = _useState2[0],
-    setEmail = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    setEmail = _useState2[1]; //記錄輸入的訊息用
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
     Password = _useState4[0],
-    setPassword = _useState4[1];
+    setPassword = _useState4[1]; //記錄輸入的訊息用
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState6 = _slicedToArray(_useState5, 2),
+    EmailError = _useState6[0],
+    setEmailError = _useState6[1]; //錯誤訊息輸出
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState8 = _slicedToArray(_useState7, 2),
+    PasswordError = _useState8[0],
+    setPasswordError = _useState8[1]; //錯誤訊息輸出
+
   function HandleSubmit() {
+    //登入Submit操作後執行
+    var deny = false;
+    if (Password.length < PasswordLengthMinimum) {
+      setPasswordError("密碼應為至少" + PasswordLengthMinimum + "位數, 由0-9, a-z, A-Z組成");
+      deny = true;
+    } else {
+      setPasswordError("");
+    }
+    if ((Email.includes("@") && Email.includes(".")) == false) {
+      setEmailError("應符合電子信箱格式");
+      deny = true;
+    } else {
+      setEmailError("");
+    }
+    if (deny) {
+      return -1;
+    }
     console.log("login submit");
     var data = {
       "Email": Email,
       "Password": Password
     };
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].post(baseURL + "Login", data).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"] //調用登入API
+    .post(baseURL + "Login", data).then(function (response) {
+      //登入成功執行跳轉到專案頁面
       console.log(response);
+      if (response.data.status == "success") {
+        navigate("/Login");
+      }
     })["catch"](function (err) {
+      //登入失敗執行印出錯誤
       console.log("Login Post Error :");
       console.log(err);
+      alert("很抱歉，伺服器出了點問題");
     });
   }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, "\u8ACB\u8F38\u5165\u4E0B\u5217\u8CC7\u8A0A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-start text-muted"
+  }, "*Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
+    className: "w-100",
     onChange: function onChange(event) {
       setEmail(event.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "\u5BC6\u78BC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, EmailError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-start text-muted"
+  }, "*\u5BC6\u78BC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
+    className: "w-100",
     onChange: function onChange(event) {
       setPassword(event.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, PasswordError)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col text-start"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn btn-outline-primary",
     type: "button",
     onClick: HandleSubmit
-  }, "\u767B\u5165"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "#",
+  }, "\u767B\u5165")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col text-end"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn btn-link",
     onClick: function onClick() {
       return navigate("/");
     }
-  }, "\u8A3B\u518A")));
+  }, "\u9084\u6C92\u6709\u5E33\u865F?\u8A3B\u518A"))));
+}
+function Login() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-4 card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
+    className: "card-title"
+  }, "InsAI"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LoginContent, null)))))));
 }
 
-/***/ }),
-
-/***/ "./src/Navigations/NotFound/NotFound.js":
-/*!**********************************************!*\
-  !*** ./src/Navigations/NotFound/NotFound.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ NotFound)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function NotFound() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, "NotFound");
-}
 
 /***/ }),
 
@@ -4506,13 +4567,14 @@ function NotFound() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Register)
+/* harmony export */   Register: () => (/* binding */ Register),
+/* harmony export */   RegisterContent: () => (/* binding */ RegisterContent)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo.js */ "./src/BaseInfo.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo.js */ "./src/BaseInfo.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -4523,75 +4585,194 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+ //取得API網址
+var baseURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.BaseURL)(); //儲存API網址
+var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.PasswordLengthMin)(); //儲存密碼長度最低要求
 
-var baseURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
-function Register() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+function RegisterContent() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)(); //跳轉用函式
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("f"),
     _useState2 = _slicedToArray(_useState, 2),
     FirstName = _useState2[0],
-    setFirstName = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    setFirstName = _useState2[1]; //記錄輸入的訊息用
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
     LastName = _useState4[0],
-    setLastName = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    setLastName = _useState4[1]; //記錄輸入的訊息用
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState6 = _slicedToArray(_useState5, 2),
     Email = _useState6[0],
-    setEmail = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    setEmail = _useState6[1]; //記錄輸入的訊息用
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState8 = _slicedToArray(_useState7, 2),
     Password = _useState8[0],
-    setPassword = _useState8[1];
+    setPassword = _useState8[1]; //記錄輸入的訊息用
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState10 = _slicedToArray(_useState9, 2),
+    ConfirmPassword = _useState10[0],
+    setConfirmPassword = _useState10[1]; //記錄輸入的訊息用
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState12 = _slicedToArray(_useState11, 2),
+    EmailError = _useState12[0],
+    setEmailError = _useState12[1]; //錯誤訊息輸出
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    PasswordError = _useState14[0],
+    setPasswordError = _useState14[1]; //錯誤訊息輸出
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    cPasswordError = _useState16[0],
+    setcPasswordError = _useState16[1]; //錯誤訊息輸出
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState18 = _slicedToArray(_useState17, 2),
+    MainError = _useState18[0],
+    setcMainError = _useState18[1]; //錯誤訊息輸出
+
   function HandleSubmit() {
+    //註冊Submit操作後執行
+    var deny = false;
+    if (FirstName.trim().length * LastName.trim().length * Email.trim().length * Password.trim().length * ConfirmPassword.trim().length == 0) {
+      setcMainError("*為必填項目");
+      deny = true;
+    } else {
+      setcMainError("");
+    }
+    if ((Email.includes("@") && Email.includes(".")) == false) {
+      setEmailError("應符合電子信箱格式");
+      deny = true;
+    } else {
+      setEmailError("");
+    }
+    if (Password.length < PasswordLengthMinimum) {
+      setPasswordError("密碼應為至少" + PasswordLengthMinimum + "位數, 由0-9, a-z, A-Z組成");
+      deny = true;
+    } else {
+      setPasswordError("");
+    }
+    if (Password != ConfirmPassword) {
+      setcPasswordError("密碼不相同");
+      deny = true;
+    } else {
+      setcPasswordError("");
+    }
+    if (deny) {
+      return -1;
+    }
     console.log("register submit");
     var data = {
+      //打包輸入的訊息待傳
       "FirstName": FirstName,
       "LastName": LastName,
       "Email": Email,
       "Password": Password
     };
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].post(baseURL + "Register", data).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"] //調用註冊API
+    .post(baseURL + "Register", data).then(function (response) {
+      //登入成功執行跳轉到登入頁面
       console.log(response);
       if (response.data.status == "success") {
         navigate("/Login");
       }
     })["catch"](function (err) {
+      //登入失敗執行印出錯誤
       console.log("Register Post Error :");
       console.log(err);
+      alert("很抱歉，伺服器出了點問題");
     });
-    return false;
   }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "InsAI"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "\u59D3\u6C0F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, "\u8ACB\u586B\u5BEB\u4EE5\u4E0B\u8CC7\u8A0A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-start text-muted"
+  }, "*\u59D3\u6C0F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
+    className: "w-100",
     onChange: function onChange(event) {
       setLastName(event.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "\u540D\u5B57"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-start text-muted"
+  }, "*\u540D\u5B57"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
+    className: "w-100",
     onChange: function onChange(event) {
       setFirstName(event.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-start text-muted"
+  }, "*Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "email",
+    className: "w-100",
     onChange: function onChange(event) {
       setEmail(event.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "\u5BC6\u78BC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, EmailError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-start text-muted"
+  }, "*\u5BC6\u78BC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "password",
+    className: "w-100",
     onChange: function onChange(event) {
       setPassword(event.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, PasswordError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-start text-muted"
+  }, "*\u78BA\u8A8D\u5BC6\u78BC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "password",
+    className: "w-100",
+    onChange: function onChange(event) {
+      setConfirmPassword(event.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, cPasswordError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, MainError), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col text-start"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn btn-outline-primary",
     type: "button",
     onClick: HandleSubmit
-  }, "\u8A3B\u518A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "#",
+  }, "\u8A3B\u518A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col text-end"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn btn-link",
     onClick: function onClick() {
       return navigate("/Login");
     }
-  }, "\u5DF2\u6709\u5E33\u865F?\u767B\u5165")));
+  }, "\u5DF2\u6709\u5E33\u865F?\u767B\u5165")))))));
 }
+function Register() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-4 card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
+    className: "card-title"
+  }, "InsAI"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(RegisterContent, null))))));
+}
+
 
 /***/ }),
 
@@ -45216,4 +45397,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.9d6d4f64344aa8412a55.js.map
+//# sourceMappingURL=index.bundle.3b6cb6096934e5fbf577.js.map

@@ -3,16 +3,40 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios"
 
-import BaseURL from "../../BaseInfo.js"   //取得API網址
+import {BaseURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
 const baseURL = BaseURL()   //儲存API網址
+const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
 
-export default function Login(){
+function LoginContent(){
     const navigate = useNavigate()   //跳轉用函式
 
-    const [Email, setEmail] = useState()           //記錄輸入的訊息用
-    const [Password, setPassword] = useState()     //記錄輸入的訊息用
+    const [Email, setEmail] = useState("")           //記錄輸入的訊息用
+    const [Password, setPassword] = useState("")     //記錄輸入的訊息用
+
+    const [EmailError, setEmailError] = useState("")   //錯誤訊息輸出
+    const [PasswordError, setPasswordError] = useState("")   //錯誤訊息輸出
 
     function HandleSubmit(){   //登入Submit操作後執行
+        let deny = false
+
+        if(Password.length < PasswordLengthMinimum){
+            setPasswordError("密碼應為至少" + PasswordLengthMinimum + "位數, 由0-9, a-z, A-Z組成")
+            deny = true
+        }else{
+            setPasswordError("")
+        }
+
+        if((Email.includes("@") && Email.includes(".")) == false){
+            setEmailError("應符合電子信箱格式") 
+            deny = true
+        }else{
+            setEmailError("")
+        }
+
+        if(deny){
+            return -1
+        }
+
         console.log("login submit")
         
         let data = {
@@ -31,19 +55,54 @@ export default function Login(){
             .catch((err) => {   //登入失敗執行印出錯誤
                 console.log("Login Post Error :")
                 console.log(err)
+                alert("很抱歉，伺服器出了點問題");
             })
 
     }
 
+    return (
+
+    <form >
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="row justify-content-center">請輸入下列資訊</div>
+                <div className="row justify-content-center">
+                    <div className="text-start text-muted">*Email</div>
+                    <div><input type="text" className="w-100" onChange={(event) => {setEmail(event.target.value)}}/></div>
+                    <div>{EmailError}</div>
+                </div>
+                <div className="row justify-content-center">
+                    <div className="text-start text-muted">*密碼</div>
+                    <div><input type="text" className="w-100" onChange={(event) => {setPassword(event.target.value)}}/></div>
+                    <div>{PasswordError}</div>
+                </div>
+            </div>
+        </div>
+        <div className="row justify-content-center">
+            <div className="col text-start"><button className="btn btn-outline-primary" type="button" onClick={HandleSubmit}>登入</button></div>
+            <div className="col text-end"><button className="btn btn-link" onClick={()=> navigate("/")}>還沒有帳號?註冊</button></div>
+        </div>
+    </form>
+    )
+}
+
+function Login(){
+
     return(
         <>
-            <form >
-                <label>Email</label><input type="text" onChange={(event) => {setEmail(event.target.value)}}/><br/>
-                <label>密碼</label><input type="text" onChange={(event) => {setPassword(event.target.value)}}/><br/>
-                <button type="button" onClick={HandleSubmit}>登入</button>
 
-                <a href="#" onClick={() => navigate("/")}>註冊</a>
-            </form>
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-4 card">
+                        <div className="card-body">
+                            <h5 className="card-title">InsAI</h5>
+                            <div className="card-text"><LoginContent /></div>
+                        </div>
+                </div>
+            </div>
+        </div>
         </>
     )
 }
+
+export {Login}

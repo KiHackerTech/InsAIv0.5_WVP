@@ -1,5 +1,11 @@
 import React from "react"
 
-export default function BaseURL(){
+function BaseURL(){
     return "https://kihackertehc.ddns.nete/API/"
 }
+
+function PasswordLengthMin(){
+    return 8
+}
+
+export {BaseURL, PasswordLengthMin}

@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom'
 
-import Register from "./Navigations/Register/Register";   //註冊頁面
-import Login from "./Navigations/Login/Login";            //登入頁面
+import {Register} from "./Navigations/Register/Register";   //註冊頁面
+import {Login} from "./Navigations/Login/Login";            //登入頁面
 
 
 export default function APP() {
