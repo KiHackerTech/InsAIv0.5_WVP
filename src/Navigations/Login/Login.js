@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios"
 
-import {BaseURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
-const baseURL = BaseURL()   //儲存API網址
+import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
+const baseAPIURL = BaseAPIURL()   //儲存API網址
 const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
 
 function LoginContent(){
@@ -45,11 +45,13 @@ function LoginContent(){
         }
         
         axios   //調用登入API
-            .post(baseURL + "Login", data)
+            .post(baseAPIURL + "Login", data)
             .then((response) => {   //登入成功執行跳轉到專案頁面
+                console.log("Login Post Success:")
                 console.log(response)
                 if(response.data.status == "success"){
-                    navigate("/Login")
+                    alert("登入成功")
+                    // navigate("/Login")
                 }
             })
             .catch((err) => {   //登入失敗執行印出錯誤
@@ -93,7 +95,7 @@ function Login(){
 
         <div className="container">
             <div className="row justify-content-center">
-                <div className="col-4 card">
+                <div className="col-6 card">
                         <div className="card-body">
                             <h5 className="card-title">InsAI</h5>
                             <div className="card-text"><LoginContent /></div>

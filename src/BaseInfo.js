@@ -1,11 +1,11 @@
 import React from "react"
 
-function BaseURL(){
-    return "https://kihackertehc.ddns.nete/API/"
+function BaseAPIURL(){
+    return "http://localhost:3306/"
 }
 
 function PasswordLengthMin(){
     return 8
 }
 
-export {BaseURL, PasswordLengthMin}
+export {BaseAPIURL, PasswordLengthMin}

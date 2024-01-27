@@ -4395,14 +4395,14 @@ function APP() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   BaseURL: () => (/* binding */ BaseURL),
+/* harmony export */   BaseAPIURL: () => (/* binding */ BaseAPIURL),
 /* harmony export */   PasswordLengthMin: () => (/* binding */ PasswordLengthMin)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-function BaseURL() {
-  return "https://kihackertehc.ddns.nete/API/";
+function BaseAPIURL() {
+  return "http://localhost:3306/";
 }
 function PasswordLengthMin() {
   return 8;
@@ -4436,7 +4436,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  //取得API網址
-var baseURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.BaseURL)(); //儲存API網址
+var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲存API網址
 var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.PasswordLengthMin)(); //儲存密碼長度最低要求
 
 function LoginContent() {
@@ -4484,11 +4484,13 @@ function LoginContent() {
       "Password": Password
     };
     axios__WEBPACK_IMPORTED_MODULE_3__["default"] //調用登入API
-    .post(baseURL + "Login", data).then(function (response) {
+    .post(baseAPIURL + "Login", data).then(function (response) {
       //登入成功執行跳轉到專案頁面
+      console.log("Login Post Success:");
       console.log(response);
       if (response.data.status == "success") {
-        navigate("/Login");
+        alert("登入成功");
+        // navigate("/Login")
       }
     })["catch"](function (err) {
       //登入失敗執行印出錯誤
@@ -4546,7 +4548,7 @@ function Login() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "col-4 card"
+    className: "col-6 card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "card-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
@@ -4586,7 +4588,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  //取得API網址
-var baseURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.BaseURL)(); //儲存API網址
+var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲存API網址
 var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.PasswordLengthMin)(); //儲存密碼長度最低要求
 
 function RegisterContent() {
@@ -4669,11 +4671,13 @@ function RegisterContent() {
       "Password": Password
     };
     axios__WEBPACK_IMPORTED_MODULE_3__["default"] //調用註冊API
-    .post(baseURL + "Register", data).then(function (response) {
+    .post(baseAPIURL + "Register", data).then(function (response) {
       //登入成功執行跳轉到登入頁面
+      console.log("Register Post Success:");
       console.log(response);
       if (response.data.status == "success") {
-        navigate("/Login");
+        alert("註冊成功");
+        // navigate("/Login")
       }
     })["catch"](function (err) {
       //登入失敗執行印出錯誤
@@ -4763,7 +4767,7 @@ function Register() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "col-4 card"
+    className: "col-6 card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "card-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
@@ -45397,4 +45401,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.3b6cb6096934e5fbf577.js.map
+//# sourceMappingURL=index.bundle.35a906782feb3aff8007.js.map
