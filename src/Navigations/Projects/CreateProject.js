@@ -33,9 +33,8 @@ function CreateProjectContent(){
         }
 
         console.log("create project posted")
-
         const data = {
-            "username" : "user",
+            "UserID" : JSON.parse(localStorage.getItem("Token")).UserID,
             "projectName" : ProjectName
         }
         axios
@@ -45,6 +44,8 @@ function CreateProjectContent(){
                     console.log("Get Projects Post Success:")
                     console.log(response)
                     navigate("/Projects")
+                }else if(response.data == "Project exist"){
+                    alert("此專案名已被使用")
                 }else{
                     console.log("Get Projects Post Faild:")
                     console.log(response)

@@ -10,7 +10,7 @@ import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網
 const baseAPIURL = BaseAPIURL()   //儲存API網址
 const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
 
-function RegisterContent(){
+function RegisterContent(){   //註冊核心組件
     const navigate = useNavigate()   //跳轉用函式
 
     const [FirstName, setFirstName] = useState("f")                //記錄輸入的訊息用
@@ -24,7 +24,7 @@ function RegisterContent(){
     const [cPasswordError, setcPasswordError] = useState("")   //錯誤訊息輸出
     const [MainError, setcMainError] = useState("")            //錯誤訊息輸出
 
-    useEffect(() => {
+    useEffect(() => {   //用Token存否判斷登入狀態跳轉專案頁
         if(localStorage.getItem("Token") != null){
             navigate("/Projects")
         }

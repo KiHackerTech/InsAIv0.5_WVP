@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom"
 
 import axios from "axios"
 import { BaseAPIURL } from "../../BaseInfo"
-const baseAPIURL = BaseAPIURL()   //儲存API網址
+const baseAPIURL = BaseAPIURL()   //儲存API網址UBLIC_KEY
 
+import { LogoutProcedure } from "../../Components/FuncComponents/LogoutProcedure"
 import NavBarHeader from "../../Components/architecture/NavbarHeader"
 import Footer from "../../Components/architecture/Footer"
 
@@ -24,13 +25,17 @@ function Projects(){
     },[])
 
     useEffect(() => {
-
+        const UserID = JSON.parse(localStorage.getItem("Token")).UserID
+        const token = JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY
         console.log("get projects info posted")
-
-        let token = "1c9d24994e6f6cd89b6b39ae4d1d2b8f2d33c4e274126a7b072dd8df4376d414"
         axios
-            .get(baseAPIURL + "api/project/getproject/?" + "username=" + "user" + "&token=" + token)
+            .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + token)
             .then((response) => {
+                if(response.data[0] == "Error"){
+                    alert("取得專案失敗")
+                    LogoutProcedure()
+                    navigate("/Login")
+                }
                 console.log("Get Projects Post Success:")
                 console.log(response)
                 setProjectList(response.data)
@@ -78,10 +83,9 @@ function Projects(){
         }
 
         let data = {   //打包輸入的訊息待傳
-            "username" : "user",
+            "UserID" : JSON.parse(localStorage.getItem("Token")).UserID,
             "projectName" : ProjectName
         }
-
         console.log("delete project posted:")
         axios   //調用註冊API
             .post(baseAPIURL + "api/project/deleteproject", data)
@@ -106,7 +110,7 @@ function Projects(){
 
     return(
         <div className="h-100 vw-auto">
-            <NavBarHeader />
+            <NavBarHeader searchProject={setProjectList}/>
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
                     {ListProjects}

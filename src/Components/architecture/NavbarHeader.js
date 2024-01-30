@@ -2,26 +2,50 @@ import React from "react"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+import axios from "axios"
+
+import { BaseAPIURL } from "../../BaseInfo"
+const baseAPIURL = BaseAPIURL()   //儲存API網址UBLIC_KEY
+
 import {LogoutProcedure} from "../FuncComponents/LogoutProcedure"
 
-export default function NavBarHeader(){
+export default function NavBarHeader({searchProject}){
 
     const navigate = useNavigate()   //跳轉用函式
 
     const [SearchProject_keyWord, setSearchProject_keyWord] = useState("")
 
-    function HandleAddProject(){
+    function HandleAddProject(){   //前往新增專案的頁面
         navigate("/Project/CreateProject")
     }
 
-    function HandleSearchProject(){
+    function HandleSearchProject(){   //搜尋指定專案並凸顯出來
         if(SearchProject_keyWord.length <1){
             return -1
         }
-        alert ("SearchProject")
+
+        const UserID = JSON.parse(localStorage.getItem("Token")).UserID
+        const token = JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY
+
+        console.log("search projects posted")
+        axios
+            .get(baseAPIURL + "api/project/searchproject/?" + "UserID=" + UserID + "&projectName=" + SearchProject_keyWord + "&token=" + token)
+            .then((response) => {
+                if(response.data == "Failed"){
+                    alert("查無此專案")
+                    return -1
+                }
+                searchProject(response.data)
+            })
+            .catch((err) => {
+                console.log("Search Projects Post Error:")
+                console.log(err)
+                alert("很抱歉，伺服器出了點問題");
+                // navigate("/Login")
+            })
     }
     
-    function HandleLogout(){
+    function HandleLogout(){   //處理登出流程
         LogoutProcedure()
         navigate("/Login")
     }

@@ -4443,7 +4443,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function LogoutProcedure() {
-  localStorage.removeItem("Token");
+  localStorage.removeItem("Token"); //刪除作為登入依據的Token
 }
 
 /***/ }),
@@ -4498,8 +4498,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../FuncComponents/LogoutProcedure */ "./src/Components/FuncComponents/LogoutProcedure.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _BaseInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo */ "./src/BaseInfo.js");
+/* harmony import */ var _FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FuncComponents/LogoutProcedure */ "./src/Components/FuncComponents/LogoutProcedure.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -4510,24 +4512,46 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function NavBarHeader() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)(); //跳轉用函式
+
+var baseAPIURL = (0,_BaseInfo__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲存API網址UBLIC_KEY
+
+
+function NavBarHeader(_ref) {
+  var searchProject = _ref.searchProject;
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)(); //跳轉用函式
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState2 = _slicedToArray(_useState, 2),
     SearchProject_keyWord = _useState2[0],
     setSearchProject_keyWord = _useState2[1];
   function HandleAddProject() {
+    //前往新增專案的頁面
     navigate("/Project/CreateProject");
   }
   function HandleSearchProject() {
+    //搜尋指定專案並凸顯出來
     if (SearchProject_keyWord.length < 1) {
       return -1;
     }
-    alert("SearchProject");
+    var UserID = JSON.parse(localStorage.getItem("Token")).UserID;
+    var token = JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY;
+    console.log("search projects posted");
+    axios__WEBPACK_IMPORTED_MODULE_4__["default"].get(baseAPIURL + "api/project/searchproject/?" + "UserID=" + UserID + "&projectName=" + SearchProject_keyWord + "&token=" + token).then(function (response) {
+      if (response.data == "Failed") {
+        alert("查無此專案");
+        return -1;
+      }
+      searchProject(response.data);
+    })["catch"](function (err) {
+      console.log("Search Projects Post Error:");
+      console.log(err);
+      alert("很抱歉，伺服器出了點問題");
+      // navigate("/Login")
+    });
   }
   function HandleLogout() {
-    (0,_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_1__.LogoutProcedure)();
+    //處理登出流程
+    (0,_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
     navigate("/Login");
   }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
@@ -4631,16 +4655,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
+ //引入呼叫API的工具
+ //印入sha256雜湊工具
 
  //取得API網址
 var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.BaseAPIURL)(); //儲存API網址
 var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.PasswordLengthMin)(); //儲存密碼長度最低要求
 
 function LoginContent() {
+  //登入核心組件
+
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)(); //跳轉用函式
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //用Token存否判斷登入狀態跳轉專案頁
     if (localStorage.getItem("Token") != null) {
       navigate("/Projects");
     }
@@ -4665,36 +4693,40 @@ function LoginContent() {
 
   function HandleSubmit() {
     //登入Submit操作後執行
-    var deny = false;
+    var deny = false; //Submit取消旗標
+
     if (Password.length < PasswordLengthMinimum) {
+      //密碼位數check
       setPasswordError("密碼應為至少" + PasswordLengthMinimum + "位數, 由0-9, a-z, A-Z組成");
       deny = true;
     } else {
       setPasswordError("");
     }
     if ((Email.includes("@") && Email.includes(".")) == false) {
+      //Email格式check
       setEmailError("應符合電子信箱格式");
       deny = true;
     } else {
       setEmailError("");
     }
     if (deny) {
+      //Submit取消if true
       return -1;
     }
     console.log("login submitted");
     var data = {
+      //包裝post資訊
       "Email": Email,
       "Password": crypto_js_sha256__WEBPACK_IMPORTED_MODULE_1___default()(Password).toString()
     };
     axios__WEBPACK_IMPORTED_MODULE_4__["default"] //調用登入API
     .post(baseAPIURL + "api/account/login", data).then(function (response) {
-      //登入成功執行跳轉到專案頁面
+      //登入成功執行
       console.log("Login Post Success:");
       console.log(response);
       if (response.data.Status == "Success") {
-        console.log(JSON.stringify(response.data.Token));
-        localStorage.setItem("Token", JSON.stringify(response.data.Token));
-        navigate("/Projects");
+        localStorage.setItem("Token", JSON.stringify(response.data.Token)); //存get到的Token
+        navigate("/Projects"); //跳轉到專案頁面
       } else {
         alert("登入失敗");
       }
@@ -4747,6 +4779,8 @@ function LoginContent() {
   }, "\u9084\u6C92\u6709\u5E33\u865F?\u8A3B\u518A")))));
 }
 function Login() {
+  //登入頁面配置
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "min-vh-100 vw-auto"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4826,7 +4860,7 @@ function CreateProjectContent() {
     }
     console.log("create project posted");
     var data = {
-      "username": "user",
+      "UserID": JSON.parse(localStorage.getItem("Token")).UserID,
       "projectName": ProjectName
     };
     axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(baseAPIURL + "api/project/addproject", data).then(function (response) {
@@ -4834,6 +4868,8 @@ function CreateProjectContent() {
         console.log("Get Projects Post Success:");
         console.log(response);
         navigate("/Projects");
+      } else if (response.data == "Project exist") {
+        alert("此專案名已被使用");
       } else {
         console.log("Get Projects Post Faild:");
         console.log(response);
@@ -4906,11 +4942,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var _BaseInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo */ "./src/BaseInfo.js");
-/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
-/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
+/* harmony import */ var _Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/FuncComponents/LogoutProcedure */ "./src/Components/FuncComponents/LogoutProcedure.js");
+/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
+/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -4926,12 +4963,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var baseAPIURL = (0,_BaseInfo__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲存API網址
+var baseAPIURL = (0,_BaseInfo__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲存API網址UBLIC_KEY
+
 
 
 
 function Projects() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); //跳轉用函式
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)(); //跳轉用函式
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -4947,9 +4985,15 @@ function Projects() {
     }
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var UserID = JSON.parse(localStorage.getItem("Token")).UserID;
+    var token = JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY;
     console.log("get projects info posted");
-    var token = "1c9d24994e6f6cd89b6b39ae4d1d2b8f2d33c4e274126a7b072dd8df4376d414";
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get(baseAPIURL + "api/project/getproject/?" + "username=" + "user" + "&token=" + token).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + token).then(function (response) {
+      if (response.data[0] == "Error") {
+        alert("取得專案失敗");
+        (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
+        navigate("/Login");
+      }
       console.log("Get Projects Post Success:");
       console.log(response);
       setProjectList(response.data);
@@ -5022,11 +5066,11 @@ function Projects() {
     }
     var data = {
       //打包輸入的訊息待傳
-      "username": "user",
+      "UserID": JSON.parse(localStorage.getItem("Token")).UserID,
       "projectName": ProjectName
     };
     console.log("delete project posted:");
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"] //調用註冊API
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"] //調用註冊API
     .post(baseAPIURL + "api/project/deleteproject", data).then(function (response) {
       //登入成功執行跳轉到登入頁面
       console.log("Delete Project Success:");
@@ -5047,11 +5091,13 @@ function Projects() {
   }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "h-100 vw-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    searchProject: setProjectList
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "min-vh-100 bg-light"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row h-auto w-100"
-  }, ListProjects)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }, ListProjects)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 }
 
 
@@ -5123,6 +5169,7 @@ var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.BaseAPIURL)(); //�
 var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.PasswordLengthMin)(); //儲存密碼長度最低要求
 
 function RegisterContent() {
+  //註冊核心組件
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)(); //跳轉用函式
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("f"),
@@ -5164,6 +5211,7 @@ function RegisterContent() {
     setcMainError = _useState18[1]; //錯誤訊息輸出
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //用Token存否判斷登入狀態跳轉專案頁
     if (localStorage.getItem("Token") != null) {
       navigate("/Projects");
     }
@@ -47022,4 +47070,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.d732d7802309845e589f.js.map
+//# sourceMappingURL=index.bundle.f34a29d725d87394cf83.js.map
