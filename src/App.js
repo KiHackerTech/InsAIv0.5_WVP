@@ -11,8 +11,8 @@ export default function APP() {
     return (
         <div className='vh-auto vw-auto'>
             <Routes>
-                {/* <Route path="/"      element={<Register />} /> */}
-                <Route path="/"      element={<Projects />} />
+                <Route path="/"      element={<Register />} />
+                {/* <Route path="/"      element={<Projects />} /> */}
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Projects" element={<Projects />} />
                     <Route path="/Project/CreateProject" element={<CreateProject />} />

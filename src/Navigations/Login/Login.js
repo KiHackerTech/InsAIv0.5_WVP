@@ -51,8 +51,11 @@ function LoginContent(){
                 console.log("Login Post Success:")
                 console.log(response)
                 if(response.data.status == "success"){
-                    alert("登入成功")
-                    // navigate("/Login")
+                    // alert("登入成功")
+                    navigate("/Projects")
+                }else{
+                    alert("登入失敗")
+
                 }
             })
             .catch((err) => {   //登入失敗執行印出錯誤

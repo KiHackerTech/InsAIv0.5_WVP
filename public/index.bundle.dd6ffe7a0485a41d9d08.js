@@ -4684,8 +4684,10 @@ function LoginContent() {
       console.log("Login Post Success:");
       console.log(response);
       if (response.data.status == "success") {
-        alert("登入成功");
-        // navigate("/Login")
+        // alert("登入成功")
+        navigate("/Projects");
+      } else {
+        alert("登入失敗");
       }
     })["catch"](function (err) {
       //登入失敗執行印出錯誤
@@ -46973,4 +46975,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.54cce7a795a3871b233b.js.map
+//# sourceMappingURL=index.bundle.dd6ffe7a0485a41d9d08.js.map
