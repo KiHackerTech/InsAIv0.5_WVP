@@ -1,7 +1,7 @@
 import React from "react"
 
 function BaseAPIURL(){
-    return "http://localhost:3306/"
+    return "http://localhost:8081/"
 }
 
 function PasswordLengthMin(){

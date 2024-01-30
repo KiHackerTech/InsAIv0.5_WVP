@@ -14,8 +14,14 @@ function Projects(){
 
     const navigate = useNavigate()   //跳轉用函式
     
-    const [ProjectList, setProjectList] = useState([1,2,3,4,5,6,7,8,9,10])
+    const [ProjectList, setProjectList] = useState([])
     const [ListProjects, setListProjects] = useState("")
+
+    useEffect(() => {
+        if(localStorage.getItem("Token") == null){
+            navigate("/Login")
+        }
+    },[])
 
     useEffect(() => {
 
@@ -23,11 +29,11 @@ function Projects(){
 
         let token = "1c9d24994e6f6cd89b6b39ae4d1d2b8f2d33c4e274126a7b072dd8df4376d414"
         axios
-            .get(baseAPIURL + "api/project/getproject/?" + "token=" + token)
+            .get(baseAPIURL + "api/project/getproject/?" + "username=" + "user" + "&token=" + token)
             .then((response) => {
                 console.log("Get Projects Post Success:")
                 console.log(response)
-                // setProjectList(response.data)
+                setProjectList(response.data)
             })
             .catch((err) => {
                 console.log("Get Projects Post Error:")
@@ -43,7 +49,7 @@ function Projects(){
                 <div className="card ms-3">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Noun_Project_projects_icon_1327109_cc.svg/1024px-Noun_Project_projects_icon_1327109_cc.svg.png" className=" col card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">專案 {Project}</h5>
+                        <h5 className="card-title">{Project.projectName}</h5>
                         <p className="card-text"><strong>這裡是專案概述</strong></p></div>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item"><a href="#" className="nav-link" onClick={() => {navigate("/Project/Step")}}>前往步驟</a></li>
@@ -53,24 +59,27 @@ function Projects(){
                     <div className="card-footer">
                         <div className="row align-items-center justify-content-end">
                             <div className="col-auto">
-                                <a href="#" className="btn btn-outline-danger" onClick={() => {HandleDeleteProject(index)}}>刪除專案</a>
+                                <a href="#" className="btn btn-outline-danger" onClick={() => {HandleDeleteProject(Project.projectName, index)}}>刪除專案</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         )
+        if(ProjectList.length < 1){
+            ProjectItems = <div>還沒有專案，點擊右上方加號新增專案</div>
+        }
         setListProjects(ProjectItems)
     }, [ProjectList])
 
-    function HandleDeleteProject(ProjectID){
+    function HandleDeleteProject(ProjectName, index){
         if (confirm('你確定要刪除嗎') != true) {
             return 0
         }
 
         let data = {   //打包輸入的訊息待傳
-            "username" : "asdf",
-            "projectName" : "sjdklf"
+            "username" : "user",
+            "projectName" : ProjectName
         }
 
         console.log("delete project posted:")
@@ -79,9 +88,9 @@ function Projects(){
             .then((response) => {   //登入成功執行跳轉到登入頁面
                 console.log("Delete Project Success:")
                 console.log(response)
-                if(response.data.status == "success"){
+                if(response.data == "Success"){
                     let list_deleted = ProjectList
-                    list_deleted.splice(ProjectID, 1)
+                    list_deleted.splice(index, 1)
                     setProjectList(()=>{return(
                         [...list_deleted]
                     )})
@@ -90,15 +99,15 @@ function Projects(){
             .catch((err) => {   //登入失敗執行印出錯誤
                 console.log("Delete Project Error :")
                 console.log(err)
-                alert("很抱歉，伺服器出了點問題導致刪除失敗")
+                alert("很抱歉，似乎出了點問題導致刪除失敗")
             })
 
     }
 
     return(
-        <div className="min-vh-100 vw-auto">
+        <div className="h-100 vw-auto">
             <NavBarHeader />
-            <div className="h-100 bg-light">
+            <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
                     {ListProjects}
                 </div>

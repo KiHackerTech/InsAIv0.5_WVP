@@ -4418,7 +4418,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 function BaseAPIURL() {
-  return "http://localhost:3306/";
+  return "http://localhost:8081/";
 }
 function PasswordLengthMin() {
   return 8;
@@ -4442,7 +4442,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function LogoutProcedure() {}
+function LogoutProcedure() {
+  localStorage.removeItem("Token");
+}
 
 /***/ }),
 
@@ -4630,6 +4632,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
  //取得API網址
 var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.BaseAPIURL)(); //儲存API網址
 var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.PasswordLengthMin)(); //儲存密碼長度最低要求
@@ -4637,6 +4640,11 @@ var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.Passwor
 function LoginContent() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)(); //跳轉用函式
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (localStorage.getItem("Token") != null) {
+      navigate("/Projects");
+    }
+  }, []);
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState2 = _slicedToArray(_useState, 2),
     Email = _useState2[0],
@@ -4683,8 +4691,9 @@ function LoginContent() {
       //登入成功執行跳轉到專案頁面
       console.log("Login Post Success:");
       console.log(response);
-      if (response.data.status == "success") {
-        // alert("登入成功")
+      if (response.data.Status == "Success") {
+        console.log(JSON.stringify(response.data.Token));
+        localStorage.setItem("Token", JSON.stringify(response.data.Token));
         navigate("/Projects");
       } else {
         alert("登入失敗");
@@ -4771,7 +4780,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var _BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo.js */ "./src/BaseInfo.js");
 /* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
 /* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
@@ -4784,12 +4794,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
  //取得API網址
 var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲存API網址
 
 
 
 function CreateProjectContent() {
+  var navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); //跳轉用函式
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState2 = _slicedToArray(_useState, 2),
     ProjectName = _useState2[0],
@@ -4798,6 +4812,11 @@ function CreateProjectContent() {
     _useState4 = _slicedToArray(_useState3, 2),
     ProjectNameError = _useState4[0],
     setProjectNameError = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (localStorage.getItem("Token") == null) {
+      navigate("/Login");
+    }
+  }, []);
   function HandleSubmit() {
     if (ProjectName.length < 1) {
       setProjectNameError("請輸入專案名稱請輸入專案名稱");
@@ -4810,10 +4829,15 @@ function CreateProjectContent() {
       "username": "user",
       "projectName": ProjectName
     };
-    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post(baseAPIURL + "api/project/addproject", data).then(function (response) {
-      console.log("Get Projects Post Success:");
-      console.log(response);
-      navigate("/Projects");
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(baseAPIURL + "api/project/addproject", data).then(function (response) {
+      if (response.data == "Success") {
+        console.log("Get Projects Post Success:");
+        console.log(response);
+        navigate("/Projects");
+      } else {
+        console.log("Get Projects Post Faild:");
+        console.log(response);
+      }
     })["catch"](function (err) {
       console.log("Create Project Post Error:");
       console.log(err);
@@ -4909,7 +4933,7 @@ var baseAPIURL = (0,_BaseInfo__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲�
 function Projects() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); //跳轉用函式
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([1, 2, 3, 4, 5, 6]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     ProjectList = _useState2[0],
     setProjectList = _useState2[1];
@@ -4918,12 +4942,17 @@ function Projects() {
     ListProjects = _useState4[0],
     setListProjects = _useState4[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (localStorage.getItem("Token") == null) {
+      navigate("/Login");
+    }
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     console.log("get projects info posted");
     var token = "1c9d24994e6f6cd89b6b39ae4d1d2b8f2d33c4e274126a7b072dd8df4376d414";
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get(baseAPIURL + "api/project/getproject/?" + "token=" + token).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get(baseAPIURL + "api/project/getproject/?" + "username=" + "user" + "&token=" + token).then(function (response) {
       console.log("Get Projects Post Success:");
       console.log(response);
-      // setProjectList(response.data)
+      setProjectList(response.data);
     })["catch"](function (err) {
       console.log("Get Projects Post Error:");
       console.log(err);
@@ -4946,7 +4975,7 @@ function Projects() {
         className: "card-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
         className: "card-title"
-      }, "\u5C08\u6848 ", Project), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      }, Project.projectName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
         className: "card-text"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "\u9019\u88E1\u662F\u5C08\u6848\u6982\u8FF0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
         className: "list-group list-group-flush"
@@ -4978,20 +5007,23 @@ function Projects() {
         href: "#",
         className: "btn btn-outline-danger",
         onClick: function onClick() {
-          HandleDeleteProject(index);
+          HandleDeleteProject(Project.projectName, index);
         }
       }, "\u522A\u9664\u5C08\u6848"))))));
     });
+    if (ProjectList.length < 1) {
+      ProjectItems = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u9084\u6C92\u6709\u5C08\u6848\uFF0C\u9EDE\u64CA\u53F3\u4E0A\u65B9\u52A0\u865F\u65B0\u589E\u5C08\u6848");
+    }
     setListProjects(ProjectItems);
   }, [ProjectList]);
-  function HandleDeleteProject(ProjectID) {
+  function HandleDeleteProject(ProjectName, index) {
     if (confirm('你確定要刪除嗎') != true) {
       return 0;
     }
     var data = {
       //打包輸入的訊息待傳
-      "username": "asdf",
-      "projectName": "sjdklf"
+      "username": "user",
+      "projectName": ProjectName
     };
     console.log("delete project posted:");
     axios__WEBPACK_IMPORTED_MODULE_5__["default"] //調用註冊API
@@ -4999,9 +5031,9 @@ function Projects() {
       //登入成功執行跳轉到登入頁面
       console.log("Delete Project Success:");
       console.log(response);
-      if (response.data.status == "success") {
+      if (response.data == "Success") {
         var list_deleted = ProjectList;
-        list_deleted.splice(ProjectID, 1);
+        list_deleted.splice(index, 1);
         setProjectList(function () {
           return _toConsumableArray(list_deleted);
         });
@@ -5014,9 +5046,9 @@ function Projects() {
     });
   }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "min-vh-100 vw-auto"
+    className: "h-100 vw-auto"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "h-100 bg-light"
+    className: "min-vh-100 bg-light"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row h-auto w-100"
   }, ListProjects)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
@@ -5038,8 +5070,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+
+
 
 function Step() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (localStorage.getItem("Token") == null) {
+      navigate("/Login");
+    }
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, "Step Page");
 }
 
@@ -5070,6 +5111,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -5121,6 +5163,11 @@ function RegisterContent() {
     MainError = _useState18[0],
     setcMainError = _useState18[1]; //錯誤訊息輸出
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (localStorage.getItem("Token") != null) {
+      navigate("/Projects");
+    }
+  }, []);
   function HandleSubmit() {
     //註冊Submit操作後執行
     var deny = false;
@@ -5164,7 +5211,7 @@ function RegisterContent() {
       //登入成功執行跳轉到登入頁面
       console.log("Register Post Success:");
       console.log(response);
-      if (response.data.status == "success") {
+      if (response.data == "Success") {
         alert("註冊成功");
         navigate("/Login");
       }
@@ -46975,4 +47022,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.c52e365636a086941bbc.js.map
+//# sourceMappingURL=index.bundle.d732d7802309845e589f.js.map

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios"
@@ -9,7 +10,15 @@ const baseAPIURL = BaseAPIURL()   //儲存API網址
 const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
 
 function LoginContent(){
+
     const navigate = useNavigate()   //跳轉用函式
+
+    useEffect(() => {
+        if(localStorage.getItem("Token") != null){
+            navigate("/Projects")
+        }
+    },[])
+
 
     const [Email, setEmail] = useState("")           //記錄輸入的訊息用
     const [Password, setPassword] = useState("")     //記錄輸入的訊息用
@@ -50,8 +59,9 @@ function LoginContent(){
             .then((response) => {   //登入成功執行跳轉到專案頁面
                 console.log("Login Post Success:")
                 console.log(response)
-                if(response.data.status == "success"){
-                    // alert("登入成功")
+                if(response.data.Status == "Success"){
+                    console.log(JSON.stringify(response.data.Token))
+                    localStorage.setItem("Token", JSON.stringify(response.data.Token))
                     navigate("/Projects")
                 }else{
                     alert("登入失敗")

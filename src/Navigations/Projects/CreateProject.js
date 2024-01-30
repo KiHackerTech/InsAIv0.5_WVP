@@ -1,5 +1,7 @@
 import React from "react"
 import { useState } from "react"
+import { useEffect } from "react"
+import { useNavigate } from "react-router"
 
 import axios from "axios"
 
@@ -11,8 +13,16 @@ import Footer from "../../Components/architecture/Footer"
 
 function CreateProjectContent(){
 
+    const navigate = useNavigate()   //跳轉用函式
+
     const [ProjectName, setProjectName] = useState("")
     const [ProjectNameError, setProjectNameError] = useState("")
+
+    useEffect(() => {
+        if(localStorage.getItem("Token") == null){
+            navigate("/Login")
+        }
+    },[])
 
     function HandleSubmit(){
         if(ProjectName.length < 1){
@@ -31,9 +41,14 @@ function CreateProjectContent(){
         axios
             .post(baseAPIURL + "api/project/addproject", data)
             .then((response) => {
-                console.log("Get Projects Post Success:")
-                console.log(response)
-                navigate("/Projects")
+                if(response.data == "Success"){
+                    console.log("Get Projects Post Success:")
+                    console.log(response)
+                    navigate("/Projects")
+                }else{
+                    console.log("Get Projects Post Faild:")
+                    console.log(response)
+                }
             })
             .catch((err) => {
                 console.log("Create Project Post Error:")

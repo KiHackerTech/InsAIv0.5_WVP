@@ -1,5 +1,6 @@
 import React from "react"
 import { useState } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import axios from "axios"   //引入呼叫API的工具
@@ -22,6 +23,12 @@ function RegisterContent(){
     const [PasswordError, setPasswordError] = useState("")     //錯誤訊息輸出
     const [cPasswordError, setcPasswordError] = useState("")   //錯誤訊息輸出
     const [MainError, setcMainError] = useState("")            //錯誤訊息輸出
+
+    useEffect(() => {
+        if(localStorage.getItem("Token") != null){
+            navigate("/Projects")
+        }
+    },[])
 
     function HandleSubmit(){   //註冊Submit操作後執行
         let deny = false
@@ -76,7 +83,7 @@ function RegisterContent(){
             .then((response) => {   //登入成功執行跳轉到登入頁面
                 console.log("Register Post Success:")
                 console.log(response)
-                if(response.data.status == "success"){
+                if(response.data == "Success"){
                     alert("註冊成功")
                     navigate("/Login")
                 }
