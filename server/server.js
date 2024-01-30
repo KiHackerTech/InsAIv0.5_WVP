@@ -112,9 +112,9 @@ app.get('/api/project/getproject', (req, res) => {   //查詢指定使用者的�
 })
 
 app.get('/api/project/searchproject' , (req, res) => {
-  const confirm = "SELECT * From project where projectName LIKE (?)";
+  const confirm = "SELECT * From project where UserID = (?) AND projectName LIKE (?)";
 
-  db.query( confirm, "%"+req.query.projectName+"%", (err, confirmData) => {
+  db.query( confirm, [req.query.UserID, "%"+req.query.projectName+"%"], (err, confirmData) => {
     if( err )
       return res.json("Failed");
     if( confirmData.length > 0)
