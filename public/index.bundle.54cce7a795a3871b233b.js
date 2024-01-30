@@ -4381,7 +4381,7 @@ function APP() {
     className: "vh-auto vw-auto"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Projects_Projects__WEBPACK_IMPORTED_MODULE_3__.Projects, null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__.Register, null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/Login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_2__.Login, null)
@@ -46973,4 +46973,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.93d6e82701cbd697b951.js.map
+//# sourceMappingURL=index.bundle.54cce7a795a3871b233b.js.map
