@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios"
+import sha256 from "crypto-js/sha256"
 
 import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
 const baseAPIURL = BaseAPIURL()   //儲存API網址
@@ -37,15 +38,15 @@ function LoginContent(){
             return -1
         }
 
-        console.log("login submit")
+        console.log("login submitted")
         
         let data = {
             "Email" : Email,
-            "Password" : Password
+            "Password" : sha256(Password).toString()
         }
         
         axios   //調用登入API
-            .post(baseAPIURL + "Login", data)
+            .post(baseAPIURL + "api/account/login", data)
             .then((response) => {   //登入成功執行跳轉到專案頁面
                 console.log("Login Post Success:")
                 console.log(response)
@@ -57,7 +58,7 @@ function LoginContent(){
             .catch((err) => {   //登入失敗執行印出錯誤
                 console.log("Login Post Error :")
                 console.log(err)
-                alert("很抱歉，伺服器出了點問題");
+                alert("很抱歉，伺服器出了點問題")
             })
 
     }
@@ -65,24 +66,22 @@ function LoginContent(){
     return (
 
     <form >
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="row justify-content-center">請輸入下列資訊</div>
-                <div className="row justify-content-center">
-                    <div className="text-start text-muted">*Email</div>
-                    <div><input type="text" className="w-100" onChange={(event) => {setEmail(event.target.value)}}/></div>
-                    <div>{EmailError}</div>
-                </div>
-                <div className="row justify-content-center">
-                    <div className="text-start text-muted">*密碼</div>
-                    <div><input type="text" className="w-100" onChange={(event) => {setPassword(event.target.value)}}/></div>
-                    <div>{PasswordError}</div>
-                </div>
-            </div>
-        </div>
         <div className="row justify-content-center">
-            <div className="col text-start"><button className="btn btn-outline-primary" type="button" onClick={HandleSubmit}>登入</button></div>
-            <div className="col text-end"><button className="btn btn-link" onClick={()=> navigate("/")}>還沒有帳號?註冊</button></div>
+            <div className="row justify-content-center">請輸入下列資訊以登入</div>
+            <div className="row justify-content-center">
+                <div className="text-start text-muted">*Email</div>
+                <div><input type="text" className="w-100" onChange={(event) => {setEmail(event.target.value)}}/></div>
+                <div>{EmailError}</div>
+            </div>
+            <div className="row justify-content-center">
+                <div className="text-start text-muted">*密碼</div>
+                <div><input type="password" className="w-100" onChange={(event) => {setPassword(event.target.value)}}/></div>
+                <div>{PasswordError}</div>
+            </div>
+            <div className="row justify-content-center">
+                <div className="col text-start"><button className="btn btn-outline-primary" type="button" onClick={HandleSubmit}>登入</button></div>
+                <div className="col text-end"><button className="btn btn-link" onClick={()=> navigate("/")}>還沒有帳號?註冊</button></div>
+            </div>
         </div>
     </form>
     )
@@ -91,20 +90,19 @@ function LoginContent(){
 function Login(){
 
     return(
-        <>
-
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-6 card">
-                        <div className="card-body">
-                            <h5 className="card-title">InsAI</h5>
-                            <div className="card-text"><LoginContent /></div>
-                        </div>
+        <div className="min-vh-100 vw-auto">
+            <div className="container vh-100">
+                <div className="row h-100 w-100 justify-content-center align-items-center">
+                    <div className="col-xl-4 card shadow-lg">
+                            <div className="card-body">
+                                <h5 className="card-title">InsAI</h5>
+                                <div className="card-text"><LoginContent /></div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
-        </>
     )
 }
 
-export {Login}
+export {Login, LoginContent}

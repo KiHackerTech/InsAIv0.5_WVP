@@ -2,14 +2,14 @@ import React from "react"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-import axios from "axios"
+import axios from "axios"   //引入呼叫API的工具
+import sha256 from "crypto-js/sha256"   //印入sha256雜湊工具
 
 import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
 const baseAPIURL = BaseAPIURL()   //儲存API網址
 const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
 
 function RegisterContent(){
-
     const navigate = useNavigate()   //跳轉用函式
 
     const [FirstName, setFirstName] = useState("f")                //記錄輸入的訊息用
@@ -62,67 +62,65 @@ function RegisterContent(){
             return -1
         }
 
-        console.log("register submit")
+        console.log("register submitted")
 
         let data = {   //打包輸入的訊息待傳
             "FirstName" : FirstName,
             "LastName"  : LastName,
             "Email"     : Email,
-            "Password"  : Password
+            "Password"  : sha256(Password).toString()
         }
 
         axios   //調用註冊API
-            .post(baseAPIURL + "Register", data)
+            .post(baseAPIURL + "api/account/signup", data)
             .then((response) => {   //登入成功執行跳轉到登入頁面
                 console.log("Register Post Success:")
                 console.log(response)
                 if(response.data.status == "success"){
                     alert("註冊成功")
-                    // navigate("/Login")
+                    navigate("/Login")
                 }
             })
             .catch((err) => {   //登入失敗執行印出錯誤
                 console.log("Register Post Error :")
                 console.log(err)
-                alert("很抱歉，伺服器出了點問題");
+                alert("很抱歉，伺服器出了點問題")
 
             })
             
     }
     return (
         <form>
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col">
-                        <div className="row justify-content-center">請填寫以下資訊</div>
-                        <div className="row justify-content-center">
-                            <div className="text-start text-muted">*姓氏</div>
-                            <div><input type="text" className="w-100" onChange={(event) =>{setLastName(event.target.value)}} /></div>
-                        </div>
-                        <div className="row justify-content-center">
-                            <div className="text-start text-muted">*名字</div>
-                            <div><input type="text" className="w-100" onChange={(event) =>{setFirstName(event.target.value)}} /></div>
-                        </div>
-                        <div className="row justify-content-center">
-                            <div className="text-start text-muted">*Email</div>
-                            <div><input type="email" className="w-100" onChange={(event) =>{setEmail(event.target.value)}} /></div>
-                            <div>{EmailError}</div>
-                        </div>
-                        <div className="row justify-content-center">
-                            <div className="text-start text-muted">*密碼</div>
-                            <div><input type="password" className="w-100" onChange={(event) =>{setPassword(event.target.value)}} /></div>
-                            <div>{PasswordError}</div>
-                        </div>
-                        <div className="row justify-content-center">
-                            <div className="text-start text-muted">*確認密碼</div>
-                            <div><input type="password" className="w-100" onChange={(event) =>{setConfirmPassword(event.target.value)}}/></div>
-                            <div>{cPasswordError}</div>   
-                        </div>
-                        <div>{MainError}</div>
-                        <div className="row justify-content-center">
-                            <div className="col text-start"><button className="btn btn-outline-primary" type="button" onClick={HandleSubmit}>註冊</button></div>
-                            <div className="col text-end"><button className="btn btn-link" onClick={()=> navigate("/Login")}>已有帳號?登入</button></div>
-                        </div>
+            <div className="row justify-content-center">
+                <div className="col">
+                    <div className="row justify-content-center">請填寫以下資訊</div>
+                    <div className="row justify-content-center">
+                        <div className="text-start text-muted">*姓氏</div>
+                        <div><input type="text" className="w-100" onChange={(event) =>{setLastName(event.target.value)}} /></div>
+                    </div>
+                    <div className="row justify-content-center">
+                        <div className="text-start text-muted">*名字</div>
+                        <div><input type="text" className="w-100" onChange={(event) =>{setFirstName(event.target.value)}} /></div>
+                    </div>
+                    <div className="row justify-content-center">
+                        <div className="text-start text-muted">*Email</div>
+                        <div><input type="email" className="w-100" onChange={(event) =>{setEmail(event.target.value)}} /></div>
+                        <div>{EmailError}</div>
+                    </div>
+                    <div className="row justify-content-center">
+                        <div className="text-start text-muted">*密碼</div>
+                        <div><input type="password" className="w-100" onChange={(event) =>{setPassword(event.target.value)}} /></div>
+                        <div>{PasswordError}</div>
+                    </div>
+                    <div className="row justify-content-center">
+                        <div className="text-start text-muted">*確認密碼</div>
+                        <div><input type="password" className="w-100" onChange={(event) =>{setConfirmPassword(event.target.value)}}/></div>
+                        <div>{cPasswordError}</div>   
+                    </div>
+                    <div>{MainError}</div>
+                    <div className="row p-3 justify-content-center">
+                        <div className="col text-start"><button className="btn btn-outline-primary" type="button" onClick={HandleSubmit}>註冊</button></div>
+                        <div className="col text-end"><button className="btn btn-link" onClick={()=> navigate("/Login")}>已有帳號?登入</button></div>
                     </div>
                 </div>
             </div>
@@ -133,13 +131,15 @@ function RegisterContent(){
 
 function Register(){
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-6 card">
-                        <div className="card-body">
-                            <h5 className="card-title">InsAI</h5>
-                            <div className="card-text"><RegisterContent /></div>
-                        </div>
+        <div className="min-vh-100 vw-auto">
+            <div className="container vh-100">
+                <div className="row h-100 w-100 align-items-center justify-content-center">
+                    <div className="col-10 col-xl-4 card shadow-lg">
+                            <div className="card-body">
+                                <h5 className="card-title">InsAI</h5>
+                                <div className="card-text"><RegisterContent /></div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
