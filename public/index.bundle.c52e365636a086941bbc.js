@@ -4909,7 +4909,7 @@ var baseAPIURL = (0,_BaseInfo__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲�
 function Projects() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); //跳轉用函式
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([1, 2, 3, 4, 5, 6]),
     _useState2 = _slicedToArray(_useState, 2),
     ProjectList = _useState2[0],
     setProjectList = _useState2[1];
@@ -5010,7 +5010,7 @@ function Projects() {
       //登入失敗執行印出錯誤
       console.log("Delete Project Error :");
       console.log(err);
-      alert("很抱歉，伺服器出了點問題導致刪除失敗");
+      alert("很抱歉，似乎出了點問題導致刪除失敗");
     });
   }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -46975,4 +46975,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.dd6ffe7a0485a41d9d08.js.map
+//# sourceMappingURL=index.bundle.c52e365636a086941bbc.js.map
