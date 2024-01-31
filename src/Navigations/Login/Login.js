@@ -58,14 +58,15 @@ function LoginContent(){   //登入核心組件
             .post(baseAPIURL + "api/account/login", data)
             .then((response) => {   //登入成功執行
                 console.log("Login Post Success:")
-                console.log(response)
                 if(response.data.Status == "Success"){
                     localStorage.setItem("Token", JSON.stringify(response.data.Message.Token))   //存get到的Token
                     navigate("/Projects")   //跳轉到專案頁面
-                }else if(response.data.Status == "Failed"){
+                }else if(response.data.Status == "Failed" || response.data.Status == "Error"){
                     alert("登入失敗")
                 }else{
-                    alert("Error")
+                    console.log("Serious Error:")
+                    console.log(response)
+                    alert("很抱歉，似乎出了點問題")
                 }
             })
             .catch((err) => {   //登入失敗執行印出錯誤

@@ -25,8 +25,15 @@ function CreateProjectContent(){
         if(localStorage.getItem("Token") == null){   //沒token則跳轉到登入
             navigate("/Login")
         }else{   //有token則抓取必要資訊
-            setUserID(JSON.parse(localStorage.getItem("Token")).UserID)
-            setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY)
+            try{
+                setUserID(JSON.parse(localStorage.getItem("Token")).UserID)
+                setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY)
+            } catch (err){
+                console.log("getPrimeInfoError:")
+                console.log(err)
+                LogoutProcedure()
+                navigate("/Login")
+            }
         }
     },[])
 
@@ -53,6 +60,8 @@ function CreateProjectContent(){
                 }else if(response.data.Status == "Failed"){
                     if(response.data.Message == "Exist"){
                         alert("此專案名已被使用")
+                    }else{
+                        alert("很抱歉，似乎出了點問題");
                     }
                 }else{
                     console.log("Get Projects Post Faild:")

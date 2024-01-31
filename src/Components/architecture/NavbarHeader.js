@@ -25,11 +25,12 @@ export default function NavBarHeader({searchProject, UserID, Token}){
             .get(baseAPIURL + "api/project/searchproject/?" + "UserID=" + UserID + "&projectName=" + SearchProject_keyWord + "&token=" + Token)
             .then((response) => {
                 console.log(response)
-                if(response.data == "Failed"){
+                if(response.data.Status == "Success"){
+                    searchProject(response.data.Message)
+                }else{
                     alert("查無此專案")
                     return -1
                 }
-                searchProject(response.data)
             })
             .catch((err) => {
                 console.log("Search Projects Post Error:")

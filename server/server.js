@@ -133,7 +133,7 @@ app.get('/api/project/searchproject' , (req, res) => {   //查詢指中使用者
     if( err )
       return res.json(API_ARCHITHCTURE());
     if( confirmData.length > 0)
-      return res.json( confirmData );
+      return res.json(API_ARCHITHCTURE("Success", confirmData));
     else
       return res.json(API_ARCHITHCTURE("Failed"));
 

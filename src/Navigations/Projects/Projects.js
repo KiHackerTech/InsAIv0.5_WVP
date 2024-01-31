@@ -25,8 +25,15 @@ function Projects(){
         if(localStorage.getItem("Token") == null){   //沒token則跳轉到登入
             navigate("/Login")
         }else{   //有token則抓取必要資訊
-            setUserID(JSON.parse(localStorage.getItem("Token")).UserID)
-            setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY)
+            try{
+                setUserID(JSON.parse(localStorage.getItem("Token")).UserID)
+                setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY)
+            } catch (err){
+                console.log("getPrimeInfoError:")
+                console.log(err)
+                LogoutProcedure()
+                navigate("/Login")
+            }
         }
     },[])
 

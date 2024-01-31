@@ -79,8 +79,7 @@ function RegisterContent(){   //註冊核心組件
         axios   //調用註冊API
             .post(baseAPIURL + "api/account/signup", data)
             .then((response) => {   //登入成功執行跳轉到登入頁面
-                console.log("Register Post Success:")
-                console.log(response)
+                console.log("Register Post Success")
                 if(response.data.Status == "Success"){
                     alert("註冊成功")
                     navigate("/Login")
@@ -88,6 +87,9 @@ function RegisterContent(){   //註冊核心組件
                     if(response.data.Message == "Exist"){
                         alert("此Email已被註冊")
                     }
+                }else{
+                    console.log(response)
+                    alert("很抱歉，似乎出了點問題")
                 }
             })
             .catch((err) => {   //登入失敗執行印出錯誤
