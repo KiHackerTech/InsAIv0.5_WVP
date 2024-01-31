@@ -24,6 +24,17 @@ db.connect((err) => {
     console.log("Connected to MySQL database!");
 });
 
+function API_ARCHITHCTURE(Status="Error", Message=null, Else=null){
+    let structure = {
+        "Status" : Status,
+        "Message" : Message,
+        "Error" : Else
+    }
+    // return JSON.stringify(structure)
+    return structure
+
+}
+
 app.post('/api/account/signup', (req, res) => {   //註冊帳號
     const confirm = "SELECT * From user WHERE email = (?)";
     const sql = "INSERT INTO user ( `firstname`, `lastname`, `email`, `password` ) VALUES (?)";
@@ -35,15 +46,15 @@ app.post('/api/account/signup', (req, res) => {   //註冊帳號
     ]
     db.query(confirm, req.body.Email, (err, confirmData) => {   //確認欲註冊的帳戶是否存在
         if (err)
-            return res.json("Error")
+            return res.json(API_ARCHITHCTURE())
         if (confirmData.length > 0)
-            return res.json("User exist");
+            return res.json(API_ARCHITHCTURE("Failed", "Exist"));
         else
             db.query(sql, [values], (err, data) => {
                 if (err) {
-                    return res.json("Error");
+                    return res.json(API_ARCHITHCTURE());
                 }
-                return res.json("Success");
+                return res.json(API_ARCHITHCTURE("Success"));
             })
     })
 })
@@ -56,25 +67,29 @@ app.post('/api/account/login', (req, res) => {   //登入資訊驗證
     ]
     db.query(sql, [values[0], values[1]], (err, data) => {   //查詢登入資訊是否正確
         if (err) {
-            return res.json("Error");
+            return res.json(API_ARCHITHCTURE());
         }
         if (data.length > 0) {
             const dateTime = Date.now();   //得到登入時間
             const UnixTimestamp = Math.floor(dateTime / 1000);   //將登入時間轉為UNIX格式
             const token = jwt.sign({ UserID: data[0].id, LoginTime: UnixTimestamp }, JWT_SIGN_PRIVATE_KEY, { expiresIn: "3 day" });   //產出Token
 
-            return res.json({   //將夾帶前端需要的資訊回傳
-                "Status": "Success",
-                "Token": {
-                    "UserID": data[0].id,
-                    "LoginTime": dateTime,
-                    "LoginTimeUNIX": UnixTimestamp,
-                    "JWT_SIGN_PUBLIC_KEY": token
-                }
-            });
+            return res.json(   //將夾帶前端需要的資訊回傳
+                API_ARCHITHCTURE(
+                    "Success", 
+                    {
+                        "Token": {
+                            "UserID": data[0].id,
+                            "LoginTime": dateTime,
+                            "LoginTimeUNIX": UnixTimestamp,
+                            "JWT_SIGN_PUBLIC_KEY": token
+                        }
+                    }
+                )
+            );
         }
         else
-            return res.json("Failed");
+            return res.json(API_ARCHITHCTURE("Failed"));
     })
 })
 
@@ -87,15 +102,15 @@ app.post('/api/project/addproject', (req, res) => {   //新增專案
     ]
     db.query(confirm, [req.body.UserID, req.body.projectName], (err, confirmData) => {   //確認專案是否存在
         if (err)
-            return res.json(err);
+            return res.json(API_ARCHITHCTURE());
         if (confirmData.length > 0)
-            return res.json("Project exist");
+            return res.json(API_ARCHITHCTURE("Failed", "Exist"));
         else
             db.query(sql, [values], (err, data) => {   //專案不存在時新增專案
                 if (err) {
-                    return res.json("Error");
+                    return res.json(API_ARCHITHCTURE());
                 }
-                return res.json("Success");
+                return res.json(API_ARCHITHCTURE("Success"));
             })
 
     })
@@ -105,9 +120,9 @@ app.get('/api/project/getproject', (req, res) => {   //查詢指定使用者的�
     const sql = "SELECT * From project WHERE UserID = (?)";
     db.query(sql, req.query.UserID, (err, data) => {
         if (err) {
-            return res.json(["Error"]);
+            return res.json(API_ARCHITHCTURE());
         }
-        res.json(data);   //回傳指定使用者的所有專案
+        res.json(API_ARCHITHCTURE("Success", data));   //回傳指定使用者的所有專案
     })
 })
 
@@ -116,11 +131,11 @@ app.get('/api/project/searchproject' , (req, res) => {   //查詢指中使用者
 
   db.query( confirm, [req.query.UserID , "%"+req.query.projectName+"%"], (err, confirmData) => {
     if( err )
-      return res.json("Failed");
+      return res.json(API_ARCHITHCTURE());
     if( confirmData.length > 0)
       return res.json( confirmData );
     else
-      return res.json("Failed");
+      return res.json(API_ARCHITHCTURE("Failed"));
 
   })
 })
@@ -129,9 +144,9 @@ app.post('/api/project/deleteproject', (req, res) => {   //刪除指定使用者
     const sql = "DELETE FROM project WHERE UserID = (?) AND projectName = (?)";
     db.query(sql, [req.body.UserID, req.body.projectName], (err) => {
         if (err) {
-            return res.json(["Error", err])
+            return res.json(API_ARCHITHCTURE())
         }
-        return res.json(["Success"])
+        return res.json(API_ARCHITHCTURE("Success"))
     })
 })
 
@@ -143,12 +158,12 @@ app.get('/api/project/getstep', (req, res) => {   //不明
     ]
     db.query(sql, [values], (err, data) => {   //不明
         if (err) {
-            return res.json(["Error", err])
+            return res.json(API_ARCHITHCTURE())
         }
         if (data.length > 0) {
-            return res.json(["Success"])
+            return res.json(API_ARCHITHCTURE("Success"))
         }
-        return res.json(["Failed"])
+        return res.json(API_ARCHITHCTURE("Failed"))
     })
 })
 

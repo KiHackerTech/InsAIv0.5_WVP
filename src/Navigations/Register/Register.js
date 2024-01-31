@@ -70,28 +70,30 @@ function RegisterContent(){   //註冊核心組件
         }
 
         console.log("register submitted")
-
         let data = {   //打包輸入的訊息待傳
             "FirstName" : FirstName,
             "LastName"  : LastName,
             "Email"     : Email,
             "Password"  : sha256(Password).toString()
         }
-
         axios   //調用註冊API
             .post(baseAPIURL + "api/account/signup", data)
             .then((response) => {   //登入成功執行跳轉到登入頁面
                 console.log("Register Post Success:")
                 console.log(response)
-                if(response.data == "Success"){
+                if(response.data.Status == "Success"){
                     alert("註冊成功")
                     navigate("/Login")
+                }else if(response.data.Status == "Failed"){
+                    if(response.data.Message == "Exist"){
+                        alert("此Email已被註冊")
+                    }
                 }
             })
             .catch((err) => {   //登入失敗執行印出錯誤
                 console.log("Register Post Error :")
                 console.log(err)
-                alert("很抱歉，伺服器出了點問題")
+                alert("很抱歉，似乎出了點問題")
 
             })
             

@@ -46,15 +46,18 @@ function CreateProjectContent(){
         axios   //調用新增專案API
             .post(baseAPIURL + "api/project/addproject", data)
             .then((response) => {   //新增專案成功則跳轉到專案顯示頁面
-                if(response.data == "Success"){
+                if(response.data.Status == "Success"){
                     console.log("Get Projects Post Success:")
                     console.log(response)
                     navigate("/Projects")
-                }else if(response.data == "Project exist"){
-                    alert("此專案名已被使用")
+                }else if(response.data.Status == "Failed"){
+                    if(response.data.Message == "Exist"){
+                        alert("此專案名已被使用")
+                    }
                 }else{
                     console.log("Get Projects Post Faild:")
                     console.log(response)
+                    alert("很抱歉，似乎出了點問題");
                 }
             })
             .catch((err) => {   //新增專案失敗則跳錯

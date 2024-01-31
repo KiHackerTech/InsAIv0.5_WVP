@@ -60,17 +60,18 @@ function LoginContent(){   //登入核心組件
                 console.log("Login Post Success:")
                 console.log(response)
                 if(response.data.Status == "Success"){
-                    localStorage.setItem("Token", JSON.stringify(response.data.Token))   //存get到的Token
+                    localStorage.setItem("Token", JSON.stringify(response.data.Message.Token))   //存get到的Token
                     navigate("/Projects")   //跳轉到專案頁面
-                }else{
+                }else if(response.data.Status == "Failed"){
                     alert("登入失敗")
-
+                }else{
+                    alert("Error")
                 }
             })
             .catch((err) => {   //登入失敗執行印出錯誤
                 console.log("Login Post Error :")
                 console.log(err)
-                alert("很抱歉，伺服器出了點問題")
+                alert("很抱歉，似乎出了點問題")
             })
 
     }

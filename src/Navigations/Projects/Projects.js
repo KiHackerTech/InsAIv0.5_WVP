@@ -35,20 +35,23 @@ function Projects(){
         axios
             .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + Token)
             .then((response) => {
-                if(response.data[0] == "Error"){
+                if(response.data.Status == "Success"){
+                    console.log("Get Projects Post Success:")
+                    console.log(response)
+                    setProjectList(response.data.Message)
+                }else{
                     alert("取得專案失敗")
                     LogoutProcedure()
                     navigate("/Login")
+
                 }
-                console.log("Get Projects Post Success:")
-                console.log(response)
-                setProjectList(response.data)
             })
             .catch((err) => {
                 console.log("Get Projects Post Error:")
                 console.log(err)
-                // alert("很抱歉，伺服器出了點問題");
-                // navigate("/Login")
+                alert("很抱歉，似乎出了點問題");
+                LogoutProcedure()
+                navigate("/Login")
             })
     }, [UserID, Token])
 
@@ -94,20 +97,25 @@ function Projects(){
         axios   //調用刪除API
             .post(baseAPIURL + "api/project/deleteproject", data)
             .then((response) => {   //登入成功執行跳轉到登入頁面
-                console.log("Delete Project Success:")
+                console.log("Delete Project post Success:")
                 console.log(response)
-                if(response.data == "Success"){
+                if(response.data.Status == "Success"){
                     let list_deleted = ProjectList
                     list_deleted.splice(index, 1)
                     setProjectList(()=>{return(
                         [...list_deleted]
                     )})
+                    
+                }else{
+                    alert("很抱歉，似乎出了點問題")
+                    LogoutProcedure()
+                    navigate("/Login")
                 }
             })
             .catch((err) => {   //登入失敗執行印出錯誤
                 console.log("Delete Project Error :")
                 console.log(err)
-                alert("很抱歉，似乎出了點問題導致刪除失敗")
+                alert("很抱歉，似乎出了點問題")
             })
 
     }
