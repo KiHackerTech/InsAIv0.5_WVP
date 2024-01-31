@@ -15,21 +15,25 @@ function Projects(){
 
     const navigate = useNavigate()   //跳轉用函式
     
-    const [ProjectList, setProjectList] = useState([])
-    const [ListProjects, setListProjects] = useState("")
+    const [UserID, setUserID] = useState("")   //存使用者ID，call API用
+    const [Token, setToken] = useState("")   //存token，call API用
+    
+    const [ProjectList, setProjectList] = useState([])   //存所有專案列表
+    const [ListProjects, setListProjects] = useState("")   //存實際列出內容的jsx
 
-    useEffect(() => {
-        if(localStorage.getItem("Token") == null){
+    useEffect(() => {   //用token存否進行登入check
+        if(localStorage.getItem("Token") == null){   //沒token則跳轉到登入
             navigate("/Login")
+        }else{   //有token則抓取必要資訊
+            setUserID(JSON.parse(localStorage.getItem("Token")).UserID)
+            setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY)
         }
     },[])
 
-    useEffect(() => {
-        const UserID = JSON.parse(localStorage.getItem("Token")).UserID
-        const token = JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY
+    useEffect(() => {   //call API: 查詢指定使用者的所有專案，存入ProjectList
         console.log("get projects info posted")
         axios
-            .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + token)
+            .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + Token)
             .then((response) => {
                 if(response.data[0] == "Error"){
                     alert("取得專案失敗")
@@ -46,9 +50,9 @@ function Projects(){
                 // alert("很抱歉，伺服器出了點問題");
                 // navigate("/Login")
             })
-    }, [])
+    }, [UserID, Token])
 
-    useEffect(() => {
+    useEffect(() => {   //將ProjectList中的所有專案列出顯示
         let ProjectItems = ProjectList.map((Project, index) => 
             <div className="col col-md-3 p-3 mb-3" key={index}>
                 <div className="card ms-3">
@@ -77,7 +81,7 @@ function Projects(){
         setListProjects(ProjectItems)
     }, [ProjectList])
 
-    function HandleDeleteProject(ProjectName, index){
+    function HandleDeleteProject(ProjectName, index){   //call API: 刪除指定使用者的指定專案
         if (confirm('你確定要刪除嗎') != true) {
             return 0
         }
@@ -87,7 +91,7 @@ function Projects(){
             "projectName" : ProjectName
         }
         console.log("delete project posted:")
-        axios   //調用註冊API
+        axios   //調用刪除API
             .post(baseAPIURL + "api/project/deleteproject", data)
             .then((response) => {   //登入成功執行跳轉到登入頁面
                 console.log("Delete Project Success:")
@@ -108,9 +112,9 @@ function Projects(){
 
     }
 
-    return(
+    return(   //頁面配置及Header,Footer引入
         <div className="h-100 vw-auto">
-            <NavBarHeader searchProject={setProjectList}/>
+            <NavBarHeader searchProject={setProjectList} UserID={UserID} Token={Token}/>
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
                     {ListProjects}

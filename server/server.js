@@ -25,7 +25,7 @@ db.connect((err) => {
 });
 
 app.post('/api/account/signup', (req, res) => {   //註冊帳號
-    const confirm = "SELECT * From user where email = (?)";
+    const confirm = "SELECT * From user WHERE email = (?)";
     const sql = "INSERT INTO user ( `firstname`, `lastname`, `email`, `password` ) VALUES (?)";
     const values = [
         req.body.FirstName,
@@ -79,15 +79,15 @@ app.post('/api/account/login', (req, res) => {   //登入資訊驗證
 })
 
 app.post('/api/project/addproject', (req, res) => {   //新增專案
-    const confirm = "SELECT * From project where projectName = (?)";   //確認專案是否存在的命令
+    const confirm = "SELECT * From project WHERE UserID = (?) AND projectName = (?)";   //確認專案是否存在的命令
     const sql = "INSERT INTO project ( `UserID`, `projectName` ) VALUES (?)";   //新增專案的命令
     const values = [
         req.body.UserID,
         req.body.projectName
     ]
-    db.query(confirm, req.body.projectName, (err, confirmData) => {   //確認專案是否存在
+    db.query(confirm, [req.body.UserID, req.body.projectName], (err, confirmData) => {   //確認專案是否存在
         if (err)
-            return res.json("Error");
+            return res.json(err);
         if (confirmData.length > 0)
             return res.json("Project exist");
         else
@@ -111,10 +111,10 @@ app.get('/api/project/getproject', (req, res) => {   //查詢指定使用者的�
     })
 })
 
-app.get('/api/project/searchproject' , (req, res) => {
-  const confirm = "SELECT * From project where UserID = (?) AND projectName LIKE (?)";
+app.get('/api/project/searchproject' , (req, res) => {   //查詢指中使用者的指定專案
+    const confirm = "SELECT * From project WHERE UserID = (?) AND projectName LIKE (?)";
 
-  db.query( confirm, [req.query.UserID, "%"+req.query.projectName+"%"], (err, confirmData) => {
+  db.query( confirm, [req.query.UserID , "%"+req.query.projectName+"%"], (err, confirmData) => {
     if( err )
       return res.json("Failed");
     if( confirmData.length > 0)

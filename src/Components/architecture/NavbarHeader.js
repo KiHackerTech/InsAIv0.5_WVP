@@ -9,28 +9,22 @@ const baseAPIURL = BaseAPIURL()   //儲存API網址UBLIC_KEY
 
 import {LogoutProcedure} from "../FuncComponents/LogoutProcedure"
 
-export default function NavBarHeader({searchProject}){
+export default function NavBarHeader({searchProject, UserID, Token}){
 
     const navigate = useNavigate()   //跳轉用函式
 
     const [SearchProject_keyWord, setSearchProject_keyWord] = useState("")
 
-    function HandleAddProject(){   //前往新增專案的頁面
-        navigate("/Project/CreateProject")
-    }
-
-    function HandleSearchProject(){   //搜尋指定專案並凸顯出來
-        if(SearchProject_keyWord.length <1){
+    function HandleSearchProject(){   //call API: 搜尋指定專案並凸顯出來
+        if(SearchProject_keyWord.length <1){   //確認輸入是否正確
             return -1
         }
 
-        const UserID = JSON.parse(localStorage.getItem("Token")).UserID
-        const token = JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY
-
         console.log("search projects posted")
-        axios
-            .get(baseAPIURL + "api/project/searchproject/?" + "UserID=" + UserID + "&projectName=" + SearchProject_keyWord + "&token=" + token)
+        axios   //調用查詢API
+            .get(baseAPIURL + "api/project/searchproject/?" + "UserID=" + UserID + "&projectName=" + SearchProject_keyWord + "&token=" + Token)
             .then((response) => {
+                console.log(response)
                 if(response.data == "Failed"){
                     alert("查無此專案")
                     return -1
@@ -50,7 +44,7 @@ export default function NavBarHeader({searchProject}){
         navigate("/Login")
     }
 
-    return(
+    return(   //navbar畫面
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div className="container-fluid">
                 <a href="" className="navbar-brand">InsAI</a>
@@ -70,10 +64,10 @@ export default function NavBarHeader({searchProject}){
                         </li>
                     </ul>
                     <div className="row h-100 align-items-center">
-                        <a href="#" className="col-auto nav-link ps-4" onClick={HandleAddProject} aria-current="page"><h2>+</h2></a>
+                        <a href="#" className="col-auto nav-link ps-4" onClick={()=>{navigate("/Project/CreateProject")}} aria-current="page"><h2>+</h2></a>
                         <form className="col w-10 d-flex">
                             <input className="form-control me-2" type="search" onChange={(event)=>{setSearchProject_keyWord(event.target.value)}} placeholder="查詢專案" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="button" onClick={HandleSearchProject}>Search</button>
+                            <button className="btn btn-outline-success" type="button" onClick={()=>{HandleSearchProject()}}>Search</button>
                         </form>
                         <a href="#" className="col-auto nav-link" onClick={HandleLogout}>登出</a>
                     </div>

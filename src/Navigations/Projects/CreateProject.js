@@ -14,18 +14,24 @@ import Footer from "../../Components/architecture/Footer"
 function CreateProjectContent(){
 
     const navigate = useNavigate()   //跳轉用函式
+    
+    const [UserID, setUserID] = useState("")   //存使用者ID，call API用
+    const [Token, setToken] = useState("")   //存token，call API用
 
-    const [ProjectName, setProjectName] = useState("")
-    const [ProjectNameError, setProjectNameError] = useState("")
+    const [ProjectName, setProjectName] = useState("")   //存輸入的指定專案名稱用
+    const [ProjectNameError, setProjectNameError] = useState("")   //存輸入錯誤時的報錯訊息
 
-    useEffect(() => {
-        if(localStorage.getItem("Token") == null){
+    useEffect(() => {   //用token存否進行登入check
+        if(localStorage.getItem("Token") == null){   //沒token則跳轉到登入
             navigate("/Login")
+        }else{   //有token則抓取必要資訊
+            setUserID(JSON.parse(localStorage.getItem("Token")).UserID)
+            setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY)
         }
     },[])
 
-    function HandleSubmit(){
-        if(ProjectName.length < 1){
+    function HandleSubmit(){   //call API: 送出指定使用者要新增的指定專案名稱
+        if(ProjectName.length < 1){   //確認輸入是否正確
             setProjectNameError("請輸入專案名稱請輸入專案名稱")
             return -1
         }else{
@@ -33,13 +39,13 @@ function CreateProjectContent(){
         }
 
         console.log("create project posted")
-        const data = {
+        const data = {   //打包必要的訊息待傳
             "UserID" : JSON.parse(localStorage.getItem("Token")).UserID,
             "projectName" : ProjectName
         }
-        axios
+        axios   //調用新增專案API
             .post(baseAPIURL + "api/project/addproject", data)
-            .then((response) => {
+            .then((response) => {   //新增專案成功則跳轉到專案顯示頁面
                 if(response.data == "Success"){
                     console.log("Get Projects Post Success:")
                     console.log(response)
@@ -51,16 +57,16 @@ function CreateProjectContent(){
                     console.log(response)
                 }
             })
-            .catch((err) => {
+            .catch((err) => {   //新增專案失敗則跳錯
                 console.log("Create Project Post Error:")
                 console.log(err)
-                alert("很抱歉，伺服器出了點問題導致創建失敗");
+                alert("很抱歉，出了點問題導致創建失敗");
                 // navigate("/Projects")
             })
 
     }
     
-    return(
+    return(   //表單頁面配置
         <form >
             <div className="container">
                 <div className="row justify-content-center">
@@ -81,7 +87,7 @@ function CreateProjectContent(){
 
 export default function CreateProject(){
 
-    return(
+    return(   //頁面配置及Header,Footer引入
         <div className="vh-100 min-vh-100">
             <NavBarHeader />
             <div className="container h-100 vw-auto">
