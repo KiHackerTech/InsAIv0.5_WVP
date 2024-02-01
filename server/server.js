@@ -121,8 +121,9 @@ app.get('/api/project/getproject', (req, res) => {   //查詢指定使用者的�
     db.query(sql, req.query.UserID, (err, data) => {
         if (err) {
             return res.json(API_ARCHITHCTURE());
+        }else{
+            res.json(API_ARCHITHCTURE("Success", data));   //回傳指定使用者的所有專案
         }
-        res.json(API_ARCHITHCTURE("Success", data));   //回傳指定使用者的所有專案
     })
 })
 
@@ -140,9 +141,9 @@ app.get('/api/project/searchproject' , (req, res) => {   //查詢指中使用者
   })
 })
 
-app.post('/api/project/deleteproject', (req, res) => {   //刪除指定使用者的指定專案
+app.delete('/api/project/deleteproject', (req, res) => {   //刪除指定使用者的指定專案
     const sql = "DELETE FROM project WHERE UserID = (?) AND projectName = (?)";
-    db.query(sql, [req.body.UserID, req.body.projectName], (err) => {
+    db.query(sql, [req.query.UserID, req.query.projectName], (err) => {
         if (err) {
             return res.json(API_ARCHITHCTURE())
         }

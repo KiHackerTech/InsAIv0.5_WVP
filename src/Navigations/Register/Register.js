@@ -7,6 +7,7 @@ import axios from "axios"   //引入呼叫API的工具
 import sha256 from "crypto-js/sha256"   //印入sha256雜湊工具
 
 import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
+import { APIuserSignup } from "../../Components/FuncComponents/API_Manager.js"
 const baseAPIURL = BaseAPIURL()   //儲存API網址
 const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
 
@@ -76,8 +77,8 @@ function RegisterContent(){   //註冊核心組件
             "Email"     : Email,
             "Password"  : sha256(Password).toString()
         }
-        axios   //調用註冊API
-            .post(baseAPIURL + "api/account/signup", data)
+
+        APIuserSignup(data)   //調用註冊API
             .then((response) => {   //登入成功執行跳轉到登入頁面
                 console.log("Register Post Success")
                 if(response.data.Status == "Success"){

@@ -3,12 +3,12 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import axios from "axios"
-import { BaseAPIURL } from "../../BaseInfo"
-const baseAPIURL = BaseAPIURL()   //儲存API網址UBLIC_KEY
 
 import { LogoutProcedure } from "../../Components/FuncComponents/LogoutProcedure"
 import NavBarHeader from "../../Components/architecture/NavbarHeader"
 import Footer from "../../Components/architecture/Footer"
+
+import { APIdeleteProject, APIgetProjects } from "../../Components/FuncComponents/API_Manager"
 
 
 function Projects(){
@@ -39,27 +39,51 @@ function Projects(){
 
     useEffect(() => {   //call API: 查詢指定使用者的所有專案，存入ProjectList
         console.log("get projects info posted")
-        axios
-            .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + Token)
-            .then((response) => {
-                if(response.data.Status == "Success"){
-                    console.log("Get Projects Post Success:")
-                    console.log(response)
-                    setProjectList(response.data.Message)
-                }else{
-                    alert("取得專案失敗")
-                    LogoutProcedure()
-                    navigate("/Login")
-
-                }
-            })
-            .catch((err) => {
-                console.log("Get Projects Post Error:")
-                console.log(err)
-                alert("很抱歉，似乎出了點問題");
+        const params = {
+            "UserID" : UserID
+        }
+        APIgetProjects(params)
+        .then((response) => {
+            if(response.data.Status == "Success"){
+                console.log("Get Projects Post Success:")
+                console.log(response)
+                setProjectList(response.data.Message)
+            }else{
+                alert("取得專案失敗")
                 LogoutProcedure()
                 navigate("/Login")
-            })
+
+            }
+        })
+        .catch((err) => {
+            console.log("Get Projects Post Error:")
+            console.log(err)
+            alert("很抱歉，似乎出了點問題");
+            LogoutProcedure()
+            navigate("/Login")
+        })
+
+        // axios
+        //     .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + Token)
+        //     .then((response) => {
+        //         if(response.data.Status == "Success"){
+        //             console.log("Get Projects Post Success:")
+        //             console.log(response)
+        //             setProjectList(response.data.Message)
+        //         }else{
+        //             alert("取得專案失敗")
+        //             LogoutProcedure()
+        //             navigate("/Login")
+
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log("Get Projects Post Error:")
+        //         console.log(err)
+        //         alert("很抱歉，似乎出了點問題");
+        //         LogoutProcedure()
+        //         navigate("/Login")
+        //     })
     }, [UserID, Token])
 
     useEffect(() => {   //將ProjectList中的所有專案列出顯示
@@ -96,13 +120,12 @@ function Projects(){
             return 0
         }
 
-        let data = {   //打包輸入的訊息待傳
+        let params = {   //打包輸入的訊息待傳
             "UserID" : JSON.parse(localStorage.getItem("Token")).UserID,
             "projectName" : ProjectName
         }
         console.log("delete project posted:")
-        axios   //調用刪除API
-            .post(baseAPIURL + "api/project/deleteproject", data)
+        APIdeleteProject(params)   //調用刪除API
             .then((response) => {   //登入成功執行跳轉到登入頁面
                 console.log("Delete Project post Success:")
                 console.log(response)
