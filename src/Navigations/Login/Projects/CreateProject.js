@@ -3,21 +3,13 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router"
 
-import axios from "axios"
-
-import {BaseAPIURL} from "../../BaseInfo.js"   //取得API網址
-const baseAPIURL = BaseAPIURL()   //儲存API網址
-
-import NavBarHeader from "../../Components/architecture/NavbarHeader"
-import Footer from "../../Components/architecture/Footer"
-import { APIaddProject } from "../../Components/FuncComponents/API_Manager.js"
+import NavBarHeader from "../../../Components/architecture/NavbarHeader"
+import Footer from "../../../Components/architecture/Footer"
+import { APIaddProject } from "../../../Components/FuncComponents/API_Manager.js"
 
 function CreateProjectContent(){
 
     const navigate = useNavigate()   //跳轉用函式
-    
-    const [UserID, setUserID] = useState("")   //存使用者ID，call API用
-    const [Token, setToken] = useState("")   //存token，call API用
 
     const [ProjectName, setProjectName] = useState("")   //存輸入的指定專案名稱用
     const [ProjectNameError, setProjectNameError] = useState("")   //存輸入錯誤時的報錯訊息

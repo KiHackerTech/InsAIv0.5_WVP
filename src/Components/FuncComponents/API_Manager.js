@@ -1,16 +1,15 @@
 import axios from "axios";
 import { BaseAPIURL } from "../../BaseInfo"
 
-// function paramsConverter(myParams){
-//     const params_string = new URLSearchParams(myParams).toString();
-//     return params_string
-// }
-
 const accountAPI = axios.create({
     baseURL : BaseAPIURL() + "api/account/"
 })
 
 const projectAPI = axios.create({
+    baseURL : BaseAPIURL() + "api/project/"
+})
+
+const stepAPI = axios.create({
     baseURL : BaseAPIURL() + "api/project/"
 })
 

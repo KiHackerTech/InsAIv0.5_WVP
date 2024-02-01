@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route, Outlet } from 'react-router-dom'
 
-import {Register} from "./Navigations/Register/Register";   //註冊頁面
 import {Login} from "./Navigations/Login/Login";            //登入頁面
-import { Projects } from "./Navigations/Projects/Projects";
-import CreateProject from "./Navigations/Projects/CreateProject";
-import Step from "./Navigations/Projects/Step";
+import {Register} from "./Navigations/Register/Register";   //註冊頁面
+import {Projects} from "./Navigations/Login/Projects/Projects";
+import CreateProject from "./Navigations/Login/Projects/CreateProject";
+import Step from "./Navigations/Login/Projects/Steps/Step";
 
 export default function APP() {
     return (

@@ -2,16 +2,13 @@ import React from "react"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-import axios from "axios"
-
-import { BaseAPIURL } from "../../BaseInfo"
-const baseAPIURL = BaseAPIURL()   //儲存API網址UBLIC_KEY
+import { APIsearchProject } from "../FuncComponents/API_Manager"
 
 import {LogoutProcedure} from "../FuncComponents/LogoutProcedure"
 
-export default function NavBarHeader({searchProject, UserID, Token}){
 
-    const navigate = useNavigate()   //跳轉用函式
+function SearchBox(props){
+    props = props.props
 
     const [SearchProject_keyWord, setSearchProject_keyWord] = useState("")
 
@@ -21,12 +18,15 @@ export default function NavBarHeader({searchProject, UserID, Token}){
         }
 
         console.log("search projects posted")
-        axios   //調用查詢API
-            .get(baseAPIURL + "api/project/searchproject/?" + "UserID=" + UserID + "&projectName=" + SearchProject_keyWord + "&token=" + Token)
+        const params = {
+            UserID : props.UserID,
+            projectName : SearchProject_keyWord
+        }
+        APIsearchProject(params)   //調用查詢API
             .then((response) => {
                 console.log(response)
                 if(response.data.Status == "Success"){
-                    searchProject(response.data.Message)
+                    props.searchProject(response.data.Message)
                 }else{
                     alert("查無此專案")
                     return -1
@@ -39,6 +39,27 @@ export default function NavBarHeader({searchProject, UserID, Token}){
                 // navigate("/Login")
             })
     }
+    
+    if(props.SearchBoxEnable == true){
+        return(
+            <form className="col w-10 d-flex">
+                <input className="form-control me-2" type="search" onChange={(event)=>{setSearchProject_keyWord(event.target.value)}} placeholder="查詢專案" aria-label="Search" />
+                <button className="btn btn-outline-success" type="button" onClick={()=>{HandleSearchProject()}}>Search</button>
+            </form>
+        )
+    }else{
+        return(
+            <form className="col w-10 d-flex">
+                <input className="form-control me-2" disabled type="search" placeholder="不可使用" aria-label="Search" />
+                <button className="btn btn-outline-success disabled" type="button">Search</button>
+            </form>
+        )
+    }
+}
+
+export default function NavBarHeader(props){
+
+    const navigate = useNavigate()   //跳轉用函式
     
     function HandleLogout(){   //處理登出流程
         LogoutProcedure()
@@ -66,10 +87,7 @@ export default function NavBarHeader({searchProject, UserID, Token}){
                     </ul>
                     <div className="row h-100 align-items-center">
                         <a href="#" className="col-auto nav-link ps-4" onClick={()=>{navigate("/Project/CreateProject")}} aria-current="page"><h2>+</h2></a>
-                        <form className="col w-10 d-flex">
-                            <input className="form-control me-2" type="search" onChange={(event)=>{setSearchProject_keyWord(event.target.value)}} placeholder="查詢專案" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="button" onClick={()=>{HandleSearchProject()}}>Search</button>
-                        </form>
+                        <SearchBox  props={props}/>
                         <a href="#" className="col-auto nav-link" onClick={HandleLogout}>登出</a>
                     </div>
 
