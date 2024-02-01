@@ -10,7 +10,7 @@ import { APIdeleteProject, APIgetProjects } from "../../../Components/FuncCompon
 
 
 
-function ListProjects({ProjectList}){   //將ProjectList中的所有專案列出顯示
+function ListProjects(props){   //將ProjectList中的所有專案列出顯示
     
     const navigate = useNavigate()   //跳轉用函式
 
@@ -29,9 +29,9 @@ function ListProjects({ProjectList}){   //將ProjectList中的所有專案列出
                 console.log("Delete Project post Success:")
                 console.log(response)
                 if(response.data.Status == "Success"){
-                    let list_deleted = ProjectList
+                    let list_deleted = props.ProjectList
                     list_deleted.splice(index, 1)
-                    setProjectList(()=>{return(
+                    props.setProjectList(()=>{return(
                         [...list_deleted]
                     )})
                     
@@ -50,10 +50,10 @@ function ListProjects({ProjectList}){   //將ProjectList中的所有專案列出
     }
 
     let ProjectItems
-    if(ProjectList.length < 1){
+    if(props.ProjectList.length < 1){
         ProjectItems = <div>還沒有專案，點擊右上方加號新增專案</div>
     }else{
-        ProjectItems = ProjectList.map((Project, index) => 
+        ProjectItems = props.ProjectList.map((Project, index) => 
         <div className="col col-md-3 p-3 mb-3" key={index}>
             <div className="card ms-3">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Noun_Project_projects_icon_1327109_cc.svg/1024px-Noun_Project_projects_icon_1327109_cc.svg.png" className=" col card-img-top" alt="..." />
@@ -160,7 +160,7 @@ function Projects(){
             <NavBarHeader  SearchBoxEnable={true} searchProject={setProjectList} UserID={UserID}/>
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
-                    <ListProjects ProjectList={ProjectList}/>
+                    <ListProjects setProjectList={setProjectList}  ProjectList={ProjectList}/>
                 </div>
             </div>
             <Footer />

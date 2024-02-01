@@ -3,9 +3,11 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router"
 
+import { APIaddProject } from "../../../Components/FuncComponents/API_Manager.js"
+import { LogoutProcedure } from "../../../Components/FuncComponents/LogoutProcedure.js"
+
 import NavBarHeader from "../../../Components/architecture/NavbarHeader"
 import Footer from "../../../Components/architecture/Footer"
-import { APIaddProject } from "../../../Components/FuncComponents/API_Manager.js"
 
 function CreateProjectContent(){
 
@@ -17,16 +19,6 @@ function CreateProjectContent(){
     useEffect(() => {   //用token存否進行登入check
         if(localStorage.getItem("Token") == null){   //沒token則跳轉到登入
             navigate("/Login")
-        }else{   //有token則抓取必要資訊
-            try{
-                setUserID(JSON.parse(localStorage.getItem("Token")).UserID)
-                setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY)
-            } catch (err){
-                console.log("getPrimeInfoError:")
-                console.log(err)
-                LogoutProcedure()
-                navigate("/Login")
-            }
         }
     },[])
 
