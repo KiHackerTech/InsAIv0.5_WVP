@@ -10,6 +10,7 @@ const baseAPIURL = BaseAPIURL()   //儲存API網址
 
 import NavBarHeader from "../../Components/architecture/NavbarHeader"
 import Footer from "../../Components/architecture/Footer"
+import { APIaddProject } from "../../Components/FuncComponents/API_Manager.js"
 
 function CreateProjectContent(){
 
@@ -50,8 +51,7 @@ function CreateProjectContent(){
             "UserID" : JSON.parse(localStorage.getItem("Token")).UserID,
             "projectName" : ProjectName
         }
-        axios   //調用新增專案API
-            .post(baseAPIURL + "api/project/addproject", data)
+        APIaddProject(data)   //調用新增專案API
             .then((response) => {   //新增專案成功則跳轉到專案顯示頁面
                 if(response.data.Status == "Success"){
                     console.log("Get Projects Post Success:")

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import axios from "axios"   //引入呼叫API的工具
 import sha256 from "crypto-js/sha256"   //印入sha256雜湊工具
 
 import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
@@ -55,20 +54,20 @@ function LoginContent(){   //登入核心組件
             "Password" : sha256(Password).toString()
         }
         
-        APIuserLogin(data)
-        .then((response) => {   //登入成功執行
-            console.log("Login Post Success:")
-            if(response.data.Status == "Success"){
-                localStorage.setItem("Token", JSON.stringify(response.data.Message.Token))   //存get到的Token
-                navigate("/Projects")   //跳轉到專案頁面
-            }else if(response.data.Status == "Failed" || response.data.Status == "Error"){
-                alert("登入失敗")
-            }else{
-                console.log("Serious Error:")
-                console.log(response)
-                alert("很抱歉，似乎出了點問題")
-            }
-        })
+        APIuserLogin(data)   //調用登入API
+            .then((response) => {   //登入成功執行
+                console.log("Login Post Success:")
+                if(response.data.Status == "Success"){
+                    localStorage.setItem("Token", JSON.stringify(response.data.Message.Token))   //存get到的Token
+                    navigate("/Projects")   //跳轉到專案頁面
+                }else if(response.data.Status == "Failed" || response.data.Status == "Error"){
+                    alert("登入失敗")
+                }else{
+                    console.log("Serious Error:")
+                    console.log(response)
+                    alert("很抱歉，似乎出了點問題")
+                }
+            })
         .catch((err) => {   //登入失敗執行印出錯誤
             console.log("Login Post Error :")
             console.log(err)

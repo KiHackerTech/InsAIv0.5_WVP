@@ -2,8 +2,6 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import axios from "axios"
-
 import { LogoutProcedure } from "../../Components/FuncComponents/LogoutProcedure"
 import NavBarHeader from "../../Components/architecture/NavbarHeader"
 import Footer from "../../Components/architecture/Footer"
@@ -19,7 +17,6 @@ function Projects(){
     const [Token, setToken] = useState("")   //存token，call API用
     
     const [ProjectList, setProjectList] = useState([])   //存所有專案列表
-    const [ListProjects, setListProjects] = useState("")   //存實際列出內容的jsx
 
     useEffect(() => {   //用token存否進行登入check
         if(localStorage.getItem("Token") == null){   //沒token則跳轉到登入
@@ -42,26 +39,26 @@ function Projects(){
         const params = {
             "UserID" : UserID
         }
-        APIgetProjects(params)
-        .then((response) => {
-            if(response.data.Status == "Success"){
-                console.log("Get Projects Post Success:")
-                console.log(response)
-                setProjectList(response.data.Message)
-            }else{
-                alert("取得專案失敗")
+        APIgetProjects(params)   //調用取得專案列表API
+            .then((response) => {
+                if(response.data.Status == "Success"){
+                    console.log("Get Projects Post Success:")
+                    console.log(response)
+                    setProjectList(response.data.Message)
+                }else{
+                    alert("取得專案失敗")
+                    LogoutProcedure()
+                    navigate("/Login")
+
+                }
+            })
+            .catch((err) => {
+                console.log("Get Projects Post Error:")
+                console.log(err)
+                alert("很抱歉，似乎出了點問題");
                 LogoutProcedure()
                 navigate("/Login")
-
-            }
-        })
-        .catch((err) => {
-            console.log("Get Projects Post Error:")
-            console.log(err)
-            alert("很抱歉，似乎出了點問題");
-            LogoutProcedure()
-            navigate("/Login")
-        })
+            })
 
         // axios
         //     .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + Token)
@@ -86,7 +83,7 @@ function Projects(){
         //     })
     }, [UserID, Token])
 
-    useEffect(() => {   //將ProjectList中的所有專案列出顯示
+    function ListProjects(){   //將ProjectList中的所有專案列出顯示
         let ProjectItems = ProjectList.map((Project, index) => 
             <div className="col col-md-3 p-3 mb-3" key={index}>
                 <div className="card ms-3">
@@ -112,8 +109,10 @@ function Projects(){
         if(ProjectList.length < 1){
             ProjectItems = <div>還沒有專案，點擊右上方加號新增專案</div>
         }
-        setListProjects(ProjectItems)
-    }, [ProjectList])
+
+        return ProjectItems
+
+    }
 
     function HandleDeleteProject(ProjectName, index){   //call API: 刪除指定使用者的指定專案
         if (confirm('你確定要刪除嗎') != true) {
@@ -155,7 +154,8 @@ function Projects(){
             <NavBarHeader searchProject={setProjectList} UserID={UserID} Token={Token}/>
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
-                    {ListProjects}
+                    {/* {ListProjects} */}
+                    <ListProjects />
                 </div>
             </div>
             <Footer />

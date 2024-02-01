@@ -1,5 +1,3 @@
-import React from "react";
-
 import axios from "axios";
 import { BaseAPIURL } from "../../BaseInfo"
 
@@ -23,3 +21,4 @@ export const APIgetProjects = params => projectAPI.get("getproject", {params})
 export const APIaddProject = data => projectAPI.post("addproject", data)
 export const APIsearchProject = params => projectAPI.get("searchproject", {params})
 export const APIdeleteProject = params => projectAPI.delete("deleteproject", {params})
+

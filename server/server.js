@@ -9,9 +9,6 @@ const app = express()
 app.use(cors())
 app.use(express.json());
 
-// import { BaseURL, PasswordLengthMin } from '../src/BaseInfo';
-
-
 const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',

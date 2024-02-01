@@ -3,7 +3,6 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import axios from "axios"   //引入呼叫API的工具
 import sha256 from "crypto-js/sha256"   //印入sha256雜湊工具
 
 import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
