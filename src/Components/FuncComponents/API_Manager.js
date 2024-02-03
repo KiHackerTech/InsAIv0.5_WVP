@@ -1,17 +1,56 @@
 import axios from "axios";
 import { BaseAPIURL } from "../../BaseInfo"
+import { LogoutProcedure } from "./LogoutProcedure";
+
+var UserID, Token;
+
+try{
+    UserID = JSON.parse(localStorage.getItem("Token")).UserID
+    Token = JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY
+}catch(err){}
 
 const accountAPI = axios.create({
     baseURL : BaseAPIURL() + "api/account/"
 })
+accountAPI.interceptors.request.use(
+    function(config){
+        config.headers["Authorization"] = "Bearer " + Token
+
+        return config
+    },
+    function(err){
+        return Promise.reject(err)
+    }
+)
 
 const projectAPI = axios.create({
     baseURL : BaseAPIURL() + "api/project/"
 })
+projectAPI.interceptors.request.use(
+    function(config){
+        config.headers["Authorization"] = "Bearer " + Token
+
+        return config
+    },
+    function(err){
+        return Promise.reject(err)
+    }
+)
 
 const stepAPI = axios.create({
-    baseURL : BaseAPIURL() + "api/project/step/"
+    baseURL : BaseAPIURL() + "api/project/step/",
 })
+stepAPI.interceptors.request.use(
+    function(config){
+        config.headers["Authorization"] = "Bearer " + Token
+
+        return config
+    },
+    function(err){
+        return Promise.reject(err)
+    }
+)
+
 
 export const APIuserSignup = data => accountAPI.post("signup", data)
 export const APIuserLogin = data => accountAPI.post("login", data)
@@ -22,7 +61,8 @@ export const APIsearchProject = params => projectAPI.get("searchproject", {param
 export const APIdeleteProject = params => projectAPI.delete("deleteproject", {params})
 
 export const APIuploadImg = data => stepAPI.post("uploadImg", data, {
-    headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+    data : data.append("UserID", UserID),
+    "Content-Type" : "multipart/form-data",
+    timeout : 8000
 })
+

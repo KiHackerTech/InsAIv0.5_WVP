@@ -23,6 +23,7 @@ export default function UploadImg(){
     function HandleSubmit(event){
         event.preventDefault()
         let formData = new FormData();
+        formData.append("projectName", searchParams.get('projectName'));
         formData.append("image", Imgs[0]);
         
         APIuploadImg(formData)

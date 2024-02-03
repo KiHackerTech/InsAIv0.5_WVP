@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom"
 
 import sha256 from "crypto-js/sha256"   //印入sha256雜湊工具
 
-import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
+import {PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
 import { APIuserSignup } from "../../Components/FuncComponents/API_Manager.js"
-const baseAPIURL = BaseAPIURL()   //儲存API網址
 const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
 
 function RegisterContent(){   //註冊核心組件

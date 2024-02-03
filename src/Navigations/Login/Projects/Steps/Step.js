@@ -26,7 +26,7 @@ export default function Step(){
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
                   
-                  <div>請進行下列步驟{searchParams.get('projectName')}</div>
+                  <div>請進行下列---{searchParams.get('projectName')}---專案的步驟</div>
                   <button className="btn btn-outline-primary w-25" onClick={()=>{navigate("/Project/Step/uploadImg" + "?projectName=" + searchParams.get('projectName'))}}>前往上傳圖片</button>
                 </div>
             </div>
