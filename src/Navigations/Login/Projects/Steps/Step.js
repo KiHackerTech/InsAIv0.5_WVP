@@ -1,8 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import NavBarHeader from "../../../../Components/architecture/NavbarHeader";
 import Footer from "../../../../Components/architecture/Footer";
@@ -19,6 +18,13 @@ export default function Step(){
         }
     },[])
 
+    function HandleGotoUpload(){
+        navigate({
+            pathname: '/Project/Step/uploadImg',
+            search: "?" + searchParams.toString()
+        })
+    }
+
     return(
         <>
         <div>
@@ -26,8 +32,8 @@ export default function Step(){
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
                   
-                  <div>請進行下列---{searchParams.get('projectName')}---專案的步驟</div>
-                  <button className="btn btn-outline-primary w-25" onClick={()=>{navigate("/Project/Step/uploadImg" + "?projectName=" + searchParams.get('projectName'))}}>前往上傳圖片</button>
+                  <div>請進行下列---{searchParams.get("projectName")}---專案的步驟</div>
+                  <button className="btn btn-outline-primary w-25" onClick={HandleGotoUpload}>前往上傳圖片</button>
                 </div>
             </div>
             <Footer />

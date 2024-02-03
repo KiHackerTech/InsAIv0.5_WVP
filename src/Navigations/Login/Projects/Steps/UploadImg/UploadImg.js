@@ -22,9 +22,11 @@ export default function UploadImg(){
 
     function HandleSubmit(event){
         event.preventDefault()
+        
         let formData = new FormData();
-        formData.append("projectName", searchParams.get('projectName'));
-        formData.append("image", Imgs[0]);
+        formData.append("ProjectID", searchParams.get('ProjectID'));
+        formData.append("files", Imgs);
+        formData.append("fileAmount", Imgs.length);
         
         APIuploadImg(formData)
             .then((response) => {
@@ -40,7 +42,7 @@ export default function UploadImg(){
     return(
         <>
             <form onSubmit={HandleSubmit}>
-                <input type="file" onChange={(event) =>{setImgs(event.target.files)}} />
+                <input type="file" onChange={(event) =>{setImgs(event.target.files)}} multiple />
                 <div><button type="submit" className="btn btn-primary">上傳</button></div>
             </form>
         </>

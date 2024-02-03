@@ -1,6 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { createSearchParams, useNavigate } from "react-router-dom"
 
 import { APIdeleteProject, APIgetProjects } from "../../../Components/FuncComponents/API_Manager"
 import { LogoutProcedure } from "../../../Components/FuncComponents/LogoutProcedure"
@@ -12,14 +12,26 @@ function ListProjects(props){   //將ProjectList中的所有專案列出顯示
     
     const navigate = useNavigate()   //跳轉用函式
 
-    function HandleDeleteProject(ProjectName, index){   //call API: 刪除指定使用者的指定專案
+    function HandleGotoStep(Project){
+        const params = {
+            projectName : Project.projectName,
+            ProjectID : Project.ProjectID,
+
+        }
+        const search_Params = createSearchParams(params)
+        navigate({
+            pathname: '/Project/Step/',
+            search: "?" + search_Params
+        })
+    }
+
+    function HandleDeleteProject(ProjectID, index){   //call API: 刪除指定使用者的指定專案
         if (confirm('你確定要刪除嗎') != true) {
             return 0
         }
     
         let params = {   //打包輸入的訊息待傳
-            "UserID" : JSON.parse(localStorage.getItem("Token")).UserID,
-            "projectName" : ProjectName
+            "ProjectID" : ProjectID
         }
         console.log("delete project posted:")
         APIdeleteProject(params)   //調用刪除API
@@ -59,14 +71,14 @@ function ListProjects(props){   //將ProjectList中的所有專案列出顯示
                     <h5 className="card-title">{Project.projectName}</h5>
                     <p className="card-text"><strong>這裡是專案概述</strong></p></div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item"><a href="#" className="nav-link" onClick={() => {navigate("/Project/Step/" + "?projectName=" + Project.projectName)}}>前往步驟</a></li>
+                    <li className="list-group-item"><a href="#" className="nav-link" onClick={()=>{HandleGotoStep(Project)}}>前往步驟</a></li>
                     <li className="list-group-item"><a href="#" className="nav-link">加入追蹤清單</a></li>
                     <li className="list-group-item"><a href="#" className="nav-link">下載模型</a></li>
                 </ul>
                 <div className="card-footer">
                     <div className="row align-items-center justify-content-end">
                         <div className="col-auto">
-                            <a href="#" className="btn btn-outline-danger" onClick={() => {HandleDeleteProject(Project.projectName, index)}}>刪除專案</a>
+                            <a href="#" className="btn btn-outline-danger" onClick={() => {HandleDeleteProject(Project.ProjectID, index)}}>刪除專案</a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +116,7 @@ function Projects(){
         }
     },[])
 
-    useEffect(() => {   //call API: 查詢指定使用者的所有專案，存入ProjectList
+    function RefreshAllProjects(){
         console.log("get projects info posted")
         const params = {
             "UserID" : UserID
@@ -129,33 +141,16 @@ function Projects(){
                 LogoutProcedure()
                 navigate("/Login")
             })
+    }
 
-        // axios
-        //     .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + Token)
-        //     .then((response) => {
-        //         if(response.data.Status == "Success"){
-        //             console.log("Get Projects Post Success:")
-        //             console.log(response)
-        //             setProjectList(response.data.Message)
-        //         }else{
-        //             alert("取得專案失敗")
-        //             LogoutProcedure()
-        //             navigate("/Login")
+    useEffect(() => {   //call API: 查詢指定使用者的所有專案，存入ProjectList
+        RefreshAllProjects()
 
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         console.log("Get Projects Post Error:")
-        //         console.log(err)
-        //         alert("很抱歉，似乎出了點問題");
-        //         LogoutProcedure()
-        //         navigate("/Login")
-        //     })
     }, [UserID, Token])
 
     return(   //頁面配置及Header,Footer引入
         <div>
-            <NavBarHeader  SearchBoxEnable={true} searchProject={setProjectList} UserID={UserID}/>
+            <NavBarHeader  SearchBoxEnable={true} setProjectList={setProjectList} UserID={UserID} RefreshAllProjects={RefreshAllProjects} />
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
                     <ListProjects setProjectList={setProjectList}  ProjectList={ProjectList}/>

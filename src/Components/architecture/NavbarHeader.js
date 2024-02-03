@@ -12,9 +12,11 @@ function SearchBox(props){
 
     const [SearchProject_keyWord, setSearchProject_keyWord] = useState("")
 
-    function HandleSearchProject(){   //call API: 搜尋指定專案並凸顯出來
+    function HandleSubmit(event){   //call API: 搜尋指定專案並凸顯出來
+        event.preventDefault()
+
         if(SearchProject_keyWord.length <1){   //確認輸入是否正確
-            return -1
+            props.HandleRefreshAllProjects()
         }
 
         console.log("search projects posted")
@@ -26,7 +28,7 @@ function SearchBox(props){
             .then((response) => {
                 console.log(response)
                 if(response.data.Status == "Success"){
-                    props.searchProject(response.data.Message)
+                    props.setProjectList(response.data.Message)
                 }else{
                     alert("查無此專案")
                     return -1
@@ -42,9 +44,9 @@ function SearchBox(props){
     
     if(props.SearchBoxEnable == true){
         return(
-            <form className="col w-10 d-flex">
+            <form className="col w-10 d-flex" onSubmit={HandleSubmit}>
                 <input className="form-control me-2" type="search" onChange={(event)=>{setSearchProject_keyWord(event.target.value)}} placeholder="查詢專案" aria-label="Search" />
-                <button className="btn btn-outline-success" type="button" onClick={()=>{HandleSearchProject()}}>Search</button>
+                <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
         )
     }else{
@@ -60,6 +62,15 @@ function SearchBox(props){
 export default function NavBarHeader(props){
 
     const navigate = useNavigate()   //跳轉用函式
+
+    function HandleRefreshAllProjects(){
+        try{
+            props.RefreshAllProjects()
+        }catch(err){
+            navigate("/Projects")
+        }
+
+    }
     
     function HandleLogout(){   //處理登出流程
         LogoutProcedure()
@@ -76,7 +87,7 @@ export default function NavBarHeader(props){
                 <div className="collapse navbar-collapse justify-content-between" id="ProjectsHeader">
                     <ul className="navbar-nav ">
                         <li className="nav-item">
-                            <a href="#" className="nav-link ps-4" onClick={() => {navigate("/Projects")}} aria-current="page">我的專案</a>
+                            <a href="#" className="nav-link ps-4" onClick={HandleRefreshAllProjects} aria-current="page">我的專案</a>
                         </li>
                         <li className="nav-item">
                             <a href="#" className="nav-link ps-4" aria-current="page">共用專案</a>
@@ -87,7 +98,7 @@ export default function NavBarHeader(props){
                     </ul>
                     <div className="row h-100 align-items-center">
                         <a href="#" className="col-auto nav-link ps-4" onClick={()=>{navigate("/Project/CreateProject")}} aria-current="page"><h2>+</h2></a>
-                        <SearchBox  props={props}/>
+                        <SearchBox  props={{...props, HandleRefreshAllProjects:HandleRefreshAllProjects}}/>
                         <a href="#" className="col-auto nav-link" onClick={HandleLogout}>登出</a>
                     </div>
 

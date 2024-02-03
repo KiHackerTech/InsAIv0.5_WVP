@@ -37,7 +37,12 @@ function API_ARCHITHCTURE(Status="Error", Message=null, Else=null){
 
 function FOLDER_CREATE(pathname){
     const dir = path.join( __dirname, `./projects${pathname}` );
-    if(!fs.existsSync(dir)){fs.mkdirSync(dir);}
+    if(!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+        return true
+    }else{
+        return false
+    }
 }
 
 app.post('/api/account/signup', (req, res) => {   //註冊帳號
@@ -78,13 +83,13 @@ app.post('/api/account/login', (req, res) => {   //登入資訊驗證
             const dateTime = Date.now();   //得到登入時間
             const UnixTimestamp = Math.floor(dateTime / 1000);   //將登入時間轉為UNIX格式
             const token = jwt.sign({ UserID: data[0].id, LoginTime: UnixTimestamp }, JWT_SIGN_PRIVATE_KEY, { expiresIn: "3 day" });   //產出Token
-            FOLDER_CREATE( `/${data[0].id}` );
+            FOLDER_CREATE( `/${data[0].UserID}` );
             return res.json(   //將夾帶前端需要的資訊回傳
                 API_ARCHITHCTURE(
                     "Success", 
                     {
                         "Token": {
-                            "UserID": data[0].id,
+                            "UserID": data[0].UserID,
                             "LoginTime": dateTime,
                             "LoginTimeUNIX": UnixTimestamp,
                             "JWT_SIGN_PUBLIC_KEY": token
@@ -147,8 +152,8 @@ app.get('/api/project/searchproject' , (req, res) => {   //查詢指中使用者
 })
 
 app.delete('/api/project/deleteproject', (req, res) => {   //刪除指定使用者的指定專案
-    const sql = "DELETE FROM project WHERE UserID = (?) AND projectName = (?)";
-    db.query(sql, [req.query.UserID, req.query.projectName], (err) => {
+    const sql = "DELETE FROM project WHERE ProjectID = (?)";
+    db.query(sql, req.query.ProjectID, (err) => {
         if (err) {
             return res.json(API_ARCHITHCTURE())
         }
@@ -187,7 +192,7 @@ app.post('/api/project/confirmstep', (req, res) => {   //不明
 })
 
 app.post('/api/project/step/uploadImg', (req, res) => {
-
+    
     res.json(API_ARCHITHCTURE("Failed"))
 })
 
