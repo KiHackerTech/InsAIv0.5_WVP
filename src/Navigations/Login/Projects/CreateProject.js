@@ -23,7 +23,9 @@ function CreateProjectContent(){
         }
     },[])
 
-    function HandleSubmit(){   //call API: 送出指定使用者要新增的指定專案名稱
+    function HandleSubmit(event){   //call API: 送出指定使用者要新增的指定專案名稱
+        event.preventDefault()
+        
         if(ProjectName.length < 1){   //確認輸入是否正確
             setProjectNameError("請輸入專案名稱請輸入專案名稱")
             return -1
@@ -64,7 +66,7 @@ function CreateProjectContent(){
     }
     
     return(   //表單頁面配置
-        <form >
+        <form onSubmit={HandleSubmit}>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="row justify-content-center text-muted mb-3">請輸入下列資訊新增專案</div>
@@ -74,7 +76,7 @@ function CreateProjectContent(){
                     </div>
                     <div className="text-danger">{ProjectNameError}</div>
                     <div className="row justify-content-center">
-                        <div className="col text-end"><button className="btn btn-outline-primary" type="button" onClick={HandleSubmit}>新增專案</button></div>
+                        <div className="col text-end"><button className="btn btn-outline-primary" type="submit">新增專案</button></div>
                     </div>
                 </div>
             </div>

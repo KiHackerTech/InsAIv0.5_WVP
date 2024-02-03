@@ -2,13 +2,11 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
+import { APIdeleteProject, APIgetProjects } from "../../../Components/FuncComponents/API_Manager"
 import { LogoutProcedure } from "../../../Components/FuncComponents/LogoutProcedure"
+
 import NavBarHeader from "../../../Components/architecture/NavbarHeader"
 import Footer from "../../../Components/architecture/Footer"
-
-import { APIdeleteProject, APIgetProjects } from "../../../Components/FuncComponents/API_Manager"
-
-
 
 function ListProjects(props){   //將ProjectList中的所有專案列出顯示
     

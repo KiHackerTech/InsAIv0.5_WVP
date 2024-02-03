@@ -30,7 +30,9 @@ function RegisterContent(){   //註冊核心組件
         }
     },[])
 
-    function HandleSubmit(){   //註冊Submit操作後執行
+    function HandleSubmit(event){   //註冊Submit操作後執行
+        event.preventDefault()
+        
         let deny = false
 
         if(   FirstName.trim().length
@@ -101,7 +103,7 @@ function RegisterContent(){   //註冊核心組件
             
     }
     return (
-        <form>
+        <form onSubmit={HandleSubmit}>
             <div className="row justify-content-center">
                 <div className="col">
                     <div className="row justify-content-center">請填寫以下資訊</div>
@@ -130,7 +132,7 @@ function RegisterContent(){   //註冊核心組件
                     </div>
                     <div>{MainError}</div>
                     <div className="row p-3 justify-content-center">
-                        <div className="col text-start"><button className="btn btn-outline-primary" type="button" onClick={HandleSubmit}>註冊</button></div>
+                        <div className="col text-start"><button className="btn btn-outline-primary" type="submit">註冊</button></div>
                         <div className="col text-end"><button className="btn btn-link" onClick={()=> navigate("/Login")}>已有帳號?登入</button></div>
                     </div>
                 </div>

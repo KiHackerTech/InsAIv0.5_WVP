@@ -186,6 +186,11 @@ app.post('/api/project/confirmstep', (req, res) => {   //不明
     })
 })
 
+app.post('/api/project/step/uploadImg', (req, res) => {
+
+    res.json(API_ARCHITHCTURE("Failed"))
+})
+
 app.listen(8081, () => {   //監聽8081 port
     console.log("server is listening")
 })

@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import sha256 from "crypto-js/sha256"   //印入sha256雜湊工具
 
-import {BaseAPIURL, PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
 import { APIuserLogin } from "../../Components/FuncComponents/API_Manager.js";
-const baseAPIURL = BaseAPIURL()   //儲存API網址
-const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
+
+import {PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
+
 
 function LoginContent(){   //登入核心組件
 
@@ -26,11 +26,12 @@ function LoginContent(){   //登入核心組件
     const [EmailError, setEmailError] = useState("")   //錯誤訊息輸出
     const [PasswordError, setPasswordError] = useState("")   //錯誤訊息輸出
 
-    function HandleSubmit(){   //登入Submit操作後執行
+    function HandleSubmit(event){   //登入Submit操作後執行
+        event.preventDefault()
         let deny = false   //Submit取消旗標
 
-        if(Password.length < PasswordLengthMinimum){   //密碼位數check
-            setPasswordError("密碼應為至少" + PasswordLengthMinimum + "位數, 由0-9, a-z, A-Z組成")
+        if(Password.length < PasswordLengthMin()){   //密碼位數check
+            setPasswordError("密碼應為至少" + PasswordLengthMin() + "位數, 由0-9, a-z, A-Z組成")
             deny = true
         }else{
             setPasswordError("")
@@ -77,7 +78,7 @@ function LoginContent(){   //登入核心組件
     }
 
     return (
-        <form >
+        <form onSubmit={HandleSubmit}>
             <div className="row justify-content-center">
                 <div className="row justify-content-center">請輸入下列資訊以登入</div>
                 <div className="row justify-content-center">
@@ -91,7 +92,7 @@ function LoginContent(){   //登入核心組件
                     <div>{PasswordError}</div>
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col text-start"><button className="btn btn-outline-primary" type="button" onClick={HandleSubmit}>登入</button></div>
+                    <div className="col text-start"><button className="btn btn-outline-primary" type="submit">登入</button></div>
                     <div className="col text-end"><button className="btn btn-link" onClick={()=> navigate("/")}>還沒有帳號?註冊</button></div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ const projectAPI = axios.create({
 })
 
 const stepAPI = axios.create({
-    baseURL : BaseAPIURL() + "api/project/"
+    baseURL : BaseAPIURL() + "api/project/step/"
 })
 
 export const APIuserSignup = data => accountAPI.post("signup", data)
@@ -21,3 +21,8 @@ export const APIaddProject = data => projectAPI.post("addproject", data)
 export const APIsearchProject = params => projectAPI.get("searchproject", {params})
 export const APIdeleteProject = params => projectAPI.delete("deleteproject", {params})
 
+export const APIuploadImg = data => stepAPI.post("uploadImg", data, {
+    headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+})
