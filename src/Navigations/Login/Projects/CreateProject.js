@@ -18,6 +18,7 @@ function CreateProjectContent(){
 
     useEffect(() => {   //用token存否進行登入check
         if(localStorage.getItem("Token") == null){   //沒token則跳轉到登入
+            LogoutProcedure()
             navigate("/Login")
         }
     },[])

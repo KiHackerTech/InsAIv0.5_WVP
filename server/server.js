@@ -1,6 +1,8 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+const fs = require("fs");
+const path = require("path")
 
 const jwt = require("jsonwebtoken");   //引入JWT來頒發Token
 const JWT_SIGN_PRIVATE_KEY = "JWT_SIGN_SECRET_FOR_INSAI"   //＊＊＊極密＊＊＊加密 Token 用的Private_Key
@@ -18,6 +20,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) throw err;
+    FOLDER_CREATE("");
     console.log("Connected to MySQL database!");
 });
 
@@ -30,6 +33,11 @@ function API_ARCHITHCTURE(Status="Error", Message=null, Else=null){
     // return JSON.stringify(structure)
     return structure
 
+}
+
+function FOLDER_CREATE(pathname){
+    const dir = path.join( __dirname, `./projects${pathname}` );
+    if(!fs.existsSync(dir)){fs.mkdirSync(dir);}
 }
 
 app.post('/api/account/signup', (req, res) => {   //註冊帳號
@@ -70,7 +78,7 @@ app.post('/api/account/login', (req, res) => {   //登入資訊驗證
             const dateTime = Date.now();   //得到登入時間
             const UnixTimestamp = Math.floor(dateTime / 1000);   //將登入時間轉為UNIX格式
             const token = jwt.sign({ UserID: data[0].id, LoginTime: UnixTimestamp }, JWT_SIGN_PRIVATE_KEY, { expiresIn: "3 day" });   //產出Token
-
+            FOLDER_CREATE( `/${data[0].id}` );
             return res.json(   //將夾帶前端需要的資訊回傳
                 API_ARCHITHCTURE(
                     "Success", 
