@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const cors = require('cors');
 const fs = require("fs");
 const path = require("path")
+const multer = require("multer")
 
 const jwt = require("jsonwebtoken");   //引入JWT來頒發Token
 const JWT_SIGN_PRIVATE_KEY = "JWT_SIGN_SECRET_FOR_INSAI"   //＊＊＊極密＊＊＊加密 Token 用的Private_Key
@@ -191,8 +192,47 @@ app.post('/api/project/confirmstep', (req, res) => {   //不明
     })
 })
 
-app.post('/api/project/step/uploadImg', (req, res) => {
-    
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const UserID = req.body.UserID;
+        const ProjectID = req.body.ProjectID;
+        const dir = path.join(__dirname, `./projects/${UserID}/${ProjectID}`);
+        cb(null, dir);
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}_${file.originalname}`);
+    },
+});
+
+const upload = multer({ storage: storage });
+
+app.post('/api/project/step/uploadImg', upload.array("files"), (req, res) => {
+    const UserID = req.body.UserID;
+    const ProjectID = req.body.ProjectID;
+    const ImgPath = path.join( __dirname, `./projects/${UserID}/${ProjectID}` ) 
+    FOLDER_CREATE(`/${UserID}/${ProjectID}`)
+    if(fs.existsSync(ImgPath)){
+        console.log("folder exists");
+        fs.readdirSync(ImgPath).forEach((file) => {
+            const confirm = "SELECT * FROM images WHERE ImgName = (?) AND UserID = (?) AND ProjectID = (?)";
+            const sql = "INSERT INTO images ( `ImgName`, `UserID`, `ProjectID` ) VALUES (?)" 
+            db.query( confirm, [ file, UserID, ProjectID ], ( err, data ) => {
+                if(err) return res.json(API_ARCHITHCTURE("Failed"))
+                if( data.length > 0) return 0
+                else{
+                    values = [
+                        file,
+                        UserID,
+                        ProjectID
+                    ]
+                    db.query( sql, [ values], ( err, data ) => {
+                        if(err) return res.json(API_ARCHITHCTURE("Failed"))
+                    })
+                }
+            } )
+        })
+    }
+
     res.json(API_ARCHITHCTURE("Failed"))
 })
 

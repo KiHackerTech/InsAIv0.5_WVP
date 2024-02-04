@@ -61,7 +61,6 @@ export const APIsearchProject = params => projectAPI.get("searchproject", {param
 export const APIdeleteProject = params => projectAPI.delete("deleteproject", {params})
 
 export const APIuploadImg = data => stepAPI.post("uploadImg", data, {
-    data : data.append("UserID", UserID),
     "Content-Type" : "multipart/form-data",
     timeout : 8000
 })

@@ -63,27 +63,30 @@ function ListProjects(props){   //將ProjectList中的所有專案列出顯示
     if(props.ProjectList.length < 1){
         ProjectItems = <div>還沒有專案，點擊右上方加號新增專案</div>
     }else{
-        ProjectItems = props.ProjectList.map((Project, index) => 
-        <div className="col col-md-3 p-3 mb-3" key={index}>
-            <div className="card ms-3">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Noun_Project_projects_icon_1327109_cc.svg/1024px-Noun_Project_projects_icon_1327109_cc.svg.png" className=" col card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title">{Project.projectName}</h5>
-                    <p className="card-text"><strong>這裡是專案概述</strong></p></div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item"><a href="#" className="nav-link" onClick={()=>{HandleGotoStep(Project)}}>前往步驟</a></li>
-                    <li className="list-group-item"><a href="#" className="nav-link">加入追蹤清單</a></li>
-                    <li className="list-group-item"><a href="#" className="nav-link">下載模型</a></li>
-                </ul>
-                <div className="card-footer">
-                    <div className="row align-items-center justify-content-end">
-                        <div className="col-auto">
-                            <a href="#" className="btn btn-outline-danger" onClick={() => {HandleDeleteProject(Project.ProjectID, index)}}>刪除專案</a>
+        ProjectItems = props.ProjectList.map((Project, index) => {
+            return(
+                <div className="col col-md-3 p-3 mb-3" key={Project.ProjectID}>
+                    <div className="card ms-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Noun_Project_projects_icon_1327109_cc.svg/1024px-Noun_Project_projects_icon_1327109_cc.svg.png" className=" col card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title">{Project.projectName}</h5>
+                            <p className="card-text"><strong>這裡是專案概述</strong></p></div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item"><a href="#" className="nav-link" onClick={()=>{HandleGotoStep(Project)}}>前往步驟</a></li>
+                            <li className="list-group-item"><a href="#" className="nav-link">加入追蹤清單</a></li>
+                            <li className="list-group-item"><a href="#" className="nav-link">下載模型</a></li>
+                        </ul>
+                        <div className="card-footer">
+                            <div className="row align-items-center justify-content-end">
+                                <div className="col-auto">
+                                    <a href="#" className="btn btn-outline-danger" onClick={() => {HandleDeleteProject(Project.ProjectID, index)}}>刪除專案</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            )
+        }
     )
     }
 
