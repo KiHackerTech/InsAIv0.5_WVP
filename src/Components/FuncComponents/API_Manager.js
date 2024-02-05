@@ -10,7 +10,7 @@ try{
 }catch(err){}
 
 const accountAPI = axios.create({
-    baseURL : BaseAPIURL() + "api/account/"
+    baseURL : BaseAPIURL + "api/account"
 })
 accountAPI.interceptors.request.use(
     function(config){
@@ -24,7 +24,7 @@ accountAPI.interceptors.request.use(
 )
 
 const projectAPI = axios.create({
-    baseURL : BaseAPIURL() + "api/project/"
+    baseURL : BaseAPIURL + "api/project"
 })
 projectAPI.interceptors.request.use(
     function(config){
@@ -38,7 +38,7 @@ projectAPI.interceptors.request.use(
 )
 
 const stepAPI = axios.create({
-    baseURL : BaseAPIURL() + "api/project/step/",
+    baseURL : BaseAPIURL + "api/project/step",
 })
 stepAPI.interceptors.request.use(
     function(config){
@@ -52,16 +52,18 @@ stepAPI.interceptors.request.use(
 )
 
 
-export const APIuserSignup = data => accountAPI.post("signup", data)
-export const APIuserLogin = data => accountAPI.post("login", data)
+export const APIuserSignup = data => accountAPI.post("/signup", data)
+export const APIuserLogin = data => accountAPI.post("/login", data)
 
-export const APIgetProjects = params => projectAPI.get("getproject", {params})
-export const APIaddProject = data => projectAPI.post("addproject", data)
-export const APIsearchProject = params => projectAPI.get("searchproject", {params})
-export const APIdeleteProject = params => projectAPI.delete("deleteproject", {params})
+export const APIgetProjects = params => projectAPI.get("/getproject", {params})
+export const APIaddProject = data => projectAPI.post("/addproject", data)
+export const APIsearchProject = params => projectAPI.get("/searchproject", {params})
+export const APIdeleteProject = params => projectAPI.delete("/deleteproject", {params})
 
-export const APIuploadImg = data => stepAPI.post("uploadImg", data, {
+export const APIuploadImg = data => stepAPI.post("/uploadImg", data, {
     "Content-Type" : "multipart/form-data",
     timeout : 8000
 })
+export const APIgetImg = params => stepAPI.get("/getImg", {params})
+export const APIdeleteImg = params => stepAPI.delete("/deleteimg", {params})
 

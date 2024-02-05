@@ -21,6 +21,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) throw err;
+
     FOLDER_CREATE("");
     console.log("Connected to MySQL database!");
 });
@@ -37,9 +38,27 @@ function API_ARCHITHCTURE(Status="Error", Message=null, Else=null){
 }
 
 function FOLDER_CREATE(pathname){
-    const dir = path.join( __dirname, `./projects${pathname}` );
+    const dir = path.join( __dirname, `../public/projects${pathname}` );
     if(!fs.existsSync(dir)){
         fs.mkdirSync(dir);
+        return true
+    }else{
+        return false
+    }
+}
+
+function FOLDER_DELETE(floderpath){
+    if(fs.existsSync(floderpath)){
+        fs.readdirSync(floderpath).forEach((file) => {
+            const curPath = path.join(floderpath,file);
+            if(fs.lstatSync(curPath).isDirectory()){
+                FOLDER_DELETE(curPath);
+            }
+            else{
+                fs.unlinkSync(curPath)
+            }
+        });
+        fs.rmdirSync(floderpath)
         return true
     }else{
         return false
@@ -56,15 +75,14 @@ app.post('/api/account/signup', (req, res) => {   //註冊帳號
         req.body.Password
     ]
     db.query(confirm, req.body.Email, (err, confirmData) => {   //確認欲註冊的帳戶是否存在
-        if (err)
-            return res.json(API_ARCHITHCTURE())
+        if (err) return res.json(API_ARCHITHCTURE())
+
         if (confirmData.length > 0)
             return res.json(API_ARCHITHCTURE("Failed", "Exist"));
         else
             db.query(sql, [values], (err, data) => {
-                if (err) {
-                    return res.json(API_ARCHITHCTURE());
-                }
+                if (err) return res.json(API_ARCHITHCTURE());
+
                 return res.json(API_ARCHITHCTURE("Success"));
             })
     })
@@ -77,9 +95,8 @@ app.post('/api/account/login', (req, res) => {   //登入資訊驗證
         req.body.Password
     ]
     db.query(sql, [values[0], values[1]], (err, data) => {   //查詢登入資訊是否正確
-        if (err) {
-            return res.json(API_ARCHITHCTURE());
-        }
+        if (err) return res.json(API_ARCHITHCTURE());
+
         if (data.length > 0) {
             const dateTime = Date.now();   //得到登入時間
             const UnixTimestamp = Math.floor(dateTime / 1000);   //將登入時間轉為UNIX格式
@@ -112,15 +129,14 @@ app.post('/api/project/addproject', (req, res) => {   //新增專案
         req.body.projectName
     ]
     db.query(confirm, [req.body.UserID, req.body.projectName], (err, confirmData) => {   //確認專案是否存在
-        if (err)
-            return res.json(API_ARCHITHCTURE());
+        if (err) return res.json(API_ARCHITHCTURE());
+
         if (confirmData.length > 0)
             return res.json(API_ARCHITHCTURE("Failed", "Exist"));
         else
             db.query(sql, [values], (err, data) => {   //專案不存在時新增專案
-                if (err) {
-                    return res.json(API_ARCHITHCTURE());
-                }
+                if (err) return res.json(API_ARCHITHCTURE());
+
                 return res.json(API_ARCHITHCTURE("Success"));
             })
 
@@ -130,11 +146,10 @@ app.post('/api/project/addproject', (req, res) => {   //新增專案
 app.get('/api/project/getproject', (req, res) => {   //查詢指定使用者的所有專案
     const sql = "SELECT * From project WHERE UserID = (?)";
     db.query(sql, req.query.UserID, (err, data) => {
-        if (err) {
-            return res.json(API_ARCHITHCTURE());
-        }else{
-            res.json(API_ARCHITHCTURE("Success", data));   //回傳指定使用者的所有專案
-        }
+        if (err) return res.json(API_ARCHITHCTURE());
+        
+        res.json(API_ARCHITHCTURE("Success", data));   //回傳指定使用者的所有專案
+
     })
 })
 
@@ -142,8 +157,8 @@ app.get('/api/project/searchproject' , (req, res) => {   //查詢指中使用者
     const confirm = "SELECT * From project WHERE UserID = (?) AND projectName LIKE (?)";
 
   db.query( confirm, [req.query.UserID , "%"+req.query.projectName+"%"], (err, confirmData) => {
-    if( err )
-      return res.json(API_ARCHITHCTURE());
+    if( err ) return res.json(API_ARCHITHCTURE());
+    
     if( confirmData.length > 0)
       return res.json(API_ARCHITHCTURE("Success", confirmData));
     else
@@ -154,10 +169,13 @@ app.get('/api/project/searchproject' , (req, res) => {   //查詢指中使用者
 
 app.delete('/api/project/deleteproject', (req, res) => {   //刪除指定使用者的指定專案
     const sql = "DELETE FROM project WHERE ProjectID = (?)";
-    db.query(sql, req.query.ProjectID, (err) => {
-        if (err) {
-            return res.json(API_ARCHITHCTURE())
-        }
+    const UserID = req.query.UserID;
+    const ProjectID = req.query.ProjectID;
+    db.query(sql, [ ProjectID ] , (err,data) => {
+        if (err)  return res.json(API_ARCHITHCTURE())
+
+        const dir = path.join(__dirname, `/projects/${UserID}/${ProjectID}`)
+        FOLDER_DELETE(dir)
         return res.json(API_ARCHITHCTURE("Success"))
     })
 })
@@ -165,13 +183,12 @@ app.delete('/api/project/deleteproject', (req, res) => {   //刪除指定使用�
 app.get('/api/project/getstep', (req, res) => {   //不明
     const sql = "SELECT * FROM project WHERE username = (?) AND projectName = (?)";
     const values = [
-        req.body.username,
-        req.body.projectName
+        req.query.username,
+        req.query.projectName
     ]
     db.query(sql, [values], (err, data) => {   //不明
-        if (err) {
-            return res.json(API_ARCHITHCTURE())
-        }
+        if (err) return res.json(API_ARCHITHCTURE())
+
         if (data.length > 0) {
             return res.json(API_ARCHITHCTURE("Success"))
         }
@@ -187,7 +204,7 @@ app.post('/api/project/confirmstep', (req, res) => {   //不明
         req.body.projectName
     ]
     db.query(sql, [values], (err, data) => {   //不明
-
+        if (err) return res.json(API_ARCHITHCTURE())
 
     })
 })
@@ -196,7 +213,8 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const UserID = req.body.UserID;
         const ProjectID = req.body.ProjectID;
-        const dir = path.join(__dirname, `./projects/${UserID}/${ProjectID}`);
+        const dir = path.join(__dirname, `../public/projects/${UserID}/${ProjectID}`);
+        FOLDER_CREATE(`/${UserID}/${ProjectID}`)
         cb(null, dir);
     },
     filename: (req, file, cb) => {
@@ -209,16 +227,15 @@ const upload = multer({ storage: storage });
 app.post('/api/project/step/uploadImg', upload.array("files"), (req, res) => {
     const UserID = req.body.UserID;
     const ProjectID = req.body.ProjectID;
-    const ImgPath = path.join( __dirname, `./projects/${UserID}/${ProjectID}` ) 
-    FOLDER_CREATE(`/${UserID}/${ProjectID}`)
+    const ImgPath = path.join( __dirname, `../public/projects/${UserID}/${ProjectID}` ) 
     if(fs.existsSync(ImgPath)){
-        console.log("folder exists");
         fs.readdirSync(ImgPath).forEach((file) => {
             const confirm = "SELECT * FROM images WHERE ImgName = (?) AND UserID = (?) AND ProjectID = (?)";
             const sql = "INSERT INTO images ( `ImgName`, `UserID`, `ProjectID` ) VALUES (?)" 
             db.query( confirm, [ file, UserID, ProjectID ], ( err, data ) => {
-                if(err) return res.json(API_ARCHITHCTURE("Failed"))
-                if( data.length > 0) return 0
+                if(err) return res.json(API_ARCHITHCTURE())
+
+                if( data.length > 0) return res.json(API_ARCHITHCTURE())
                 else{
                     values = [
                         file,
@@ -227,13 +244,49 @@ app.post('/api/project/step/uploadImg', upload.array("files"), (req, res) => {
                     ]
                     db.query( sql, [ values], ( err, data ) => {
                         if(err) return res.json(API_ARCHITHCTURE("Failed"))
+
                     })
                 }
             } )
         })
+        return res.json(API_ARCHITHCTURE("Success"))
+    }else{
+        return res.json(API_ARCHITHCTURE())
     }
 
-    res.json(API_ARCHITHCTURE("Failed"))
+})
+
+app.get('/api/project/step/getimg', (req, res) => {   
+    const sql = "SELECT * From images WHERE ProjectID = (?)";
+    db.query(sql, req.query.ProjectID , (err, data) => {
+        if (err) return res.json(API_ARCHITHCTURE("Error", err));
+        
+        res.json(API_ARCHITHCTURE("Success", data));
+    })
+})
+
+app.delete('/api/project/step/deleteimg', (req, res) => {   //刪除指定使用者的指定專案
+    const select = "SELECT * FROM images WHERE ImgID = (?)";
+    const sql = "DELETE FROM images WHERE ImgID = (?)";
+
+    db.query(select, [ req.query.ImgID ] , ( err , select_data ) => {
+        if (err) return res.json(API_ARCHITHCTURE())
+
+        const UserID = select_data[0].UserID;
+        const ProjectID = select_data[0].ProjectID;
+        const ImgName = select_data[0].imgName;
+        db.query(sql, [ req.query.ImgID ] , ( err , data ) => {
+            if (err) return res.json(API_ARCHITHCTURE())
+
+            const dir = path.join(__dirname,`../public/projects/${UserID}/${ProjectID}/${ImgName}`)
+            fs.unlinkSync( dir, (err) => {
+                if(err) return res.json(API_ARCHITHCTURE());
+                
+                console.log(`${ImgName} delete complete`)
+            })
+            return res.json(API_ARCHITHCTURE("Success"))
+        })
+    })
 })
 
 app.listen(8081, () => {   //監聽8081 port

@@ -97,7 +97,7 @@ export default function NavBarHeader(props){
                         </li>
                     </ul>
                     <div className="row h-100 align-items-center">
-                        <a href="#" className="col-auto nav-link ps-4" onClick={()=>{navigate("/Project/CreateProject")}} aria-current="page"><h2>+</h2></a>
+                        <a href="#" className="col-auto nav-link ps-4" onClick={props.PlusSignFunction} aria-current="page"><h2>+</h2></a>
                         <SearchBox  props={{...props, HandleRefreshAllProjects:HandleRefreshAllProjects}}/>
                         <a href="#" className="col-auto nav-link" onClick={HandleLogout}>登出</a>
                     </div>

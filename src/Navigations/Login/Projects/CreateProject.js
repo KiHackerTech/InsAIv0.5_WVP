@@ -9,9 +9,9 @@ import { LogoutProcedure } from "../../../Components/FuncComponents/LogoutProced
 import NavBarHeader from "../../../Components/architecture/NavbarHeader"
 import Footer from "../../../Components/architecture/Footer"
 
-function CreateProjectContent(){
+function CreateProjectContent(props){
 
-    const navigate = useNavigate()   //跳轉用函式
+    const navigate = props.navigate   //跳轉用函式
 
     const [ProjectName, setProjectName] = useState("")   //存輸入的指定專案名稱用
     const [ProjectNameError, setProjectNameError] = useState("")   //存輸入錯誤時的報錯訊息
@@ -86,15 +86,17 @@ function CreateProjectContent(){
 
 export default function CreateProject(){
 
+    const navigate = useNavigate()
+
     return(   //頁面配置及Header,Footer引入
         <div className="vh-100 min-vh-100">
-            <NavBarHeader />
+            <NavBarHeader PlusSignDestination={()=>{navigate("/Project/CreateProject")}} />
             <div className="container h-100 vw-auto">
                 <div className="row h-100 w-100 align-items-center justify-content-center">
                     <div className="col-10 col-xl-4 card shadow-lg">
                             <div className="card-body">
                                 <h5 className="card-title">新增專案</h5>
-                                <div className="card-text"><CreateProjectContent /></div>
+                                <div className="card-text"><CreateProjectContent navigate={navigate}/></div>
                             </div>
                     </div>
                 </div>

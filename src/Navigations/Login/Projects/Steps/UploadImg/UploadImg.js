@@ -6,16 +6,12 @@ import { useSearchParams } from "react-router-dom";
 
 import { APIuploadImg } from "../../../../../Components/FuncComponents/API_Manager";
 
-
-
-
 export default function UploadImg(){
 
     const navigate = useNavigate()
     const UserID = JSON.parse(localStorage.getItem("Token")).UserID
-    let ImgformData = new FormData();
 
-    const [searchParams] = useSearchParams();
+    const [searchParams] = useSearchParams()
 
     const [ImgList, setImgList] = useState([])
     const [SelectedImgUrlList, setSelectedImgUrlList] = useState([])
@@ -29,32 +25,34 @@ export default function UploadImg(){
 
     useEffect(()=>{
         const ImgItems = SelectedImgUrlList.map((ImgUrl, index)=>
-                <button className="col-md-4 pb-3" key={index}>
+                <button className="col-md-2 pb-3" key={index}>
                     <img src={ImgUrl} className="h-100 w-100" title={"點擊圖片從上傳隊列移除圖片" + (index+1)}/>
                 </button>
         )
         setSelectedImgList(ImgItems)
-        // console.log(SelectedImgUrlList)
     }, [SelectedImgUrlList])
 
     useEffect(()=>{
         ListSelectedImg({ImgList, SelectedImgUrlList, setSelectedImgUrlList})
     }, [ImgList])
 
-    async function ListSelectedImg(props){
+    function ListSelectedImg(props){
         const ImgList = props.ImgList
     
         if(ImgList.length < 1){
             return -1
         }else{
             let UrlList = []
+            
+            setTimeout(() => {
+                props.setSelectedImgUrlList(UrlList)
+            }, 3500);
             for (const Img of ImgList){
                 const ImgRader = new FileReader()
         
                 ImgRader.onload = (e) => {
                     if (e.target) {
                         UrlList.push(e.target.result)
-                        props.setSelectedImgUrlList(UrlList)
                     }
                 }
                 ImgRader.readAsDataURL(Img)
@@ -69,6 +67,7 @@ export default function UploadImg(){
 
     function HandleSubmit(event){
         event.preventDefault()
+        let ImgformData = new FormData();
 
         ImgformData.append("ProjectID", searchParams.get('ProjectID'));
         ImgformData.append("UserID", UserID)
@@ -77,12 +76,31 @@ export default function UploadImg(){
         })
         ImgformData.append("fileAmount", ImgList.length);
         
-        APIuploadImg(ImgformData)
+        console.log("upload imgs posted")
+        APIuploadImg(ImgformData)   //調用上傳圖片API
             .then((response) => {
+                console.log("upload imgs success:")
                 console.log(response)
+                if(response.data.Status == "Success"){
+                    alert("上傳成功")
+                    navigate({
+                        pathname: '/Project/Step/',
+                        search: "?" + searchParams.toString()
+                    })
+                }else{
+                    alert("上傳失敗")
+                    console.log(response)
+                    navigate({
+                        pathname: '/Project/Step/',
+                        search: "?" + searchParams.toString()
+                    })
+
+                }
             })
             .catch((err) => {
+                console.log("Upload Img Error :")
                 console.log(err)
+                alert("很抱歉，似乎出了點問題")
             })
             
         // console.log(Imgs)
@@ -92,11 +110,11 @@ export default function UploadImg(){
         <div className="min-vh-100">
             <div className="row h-auto vw-100 bg-light">
                 <div className="container">
-                    <form className="row justify-content-center align-items-center bg-secondary" onSubmit={HandleSubmit}>
+                    <form className="row align-items-center bg-secondary justify-content-center" onSubmit={HandleSubmit}>
                         <input type="file" className="col-auto" onChange={HandleSelect} multiple />
                         <div className="col-auto">
                             <button type="submit" className="btn btn-primary">上傳</button>
-                            <label>點擊圖片從隊列中刪除</label>
+                            <label>點擊圖片以將其從隊列中刪除</label>
                         </div>
                     </form>
                     <p className="row text-center justify-content-start align-items-center">

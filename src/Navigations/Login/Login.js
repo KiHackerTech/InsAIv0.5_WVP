@@ -30,8 +30,8 @@ function LoginContent(){   //登入核心組件
         event.preventDefault()
         let deny = false   //Submit取消旗標
 
-        if(Password.length < PasswordLengthMin()){   //密碼位數check
-            setPasswordError("密碼應為至少" + PasswordLengthMin() + "位數, 由0-9, a-z, A-Z組成")
+        if(Password.length < PasswordLengthMin){   //密碼位數check
+            setPasswordError("密碼應為至少" + PasswordLengthMin + "位數, 由0-9, a-z, A-Z組成")
             deny = true
         }else{
             setPasswordError("")

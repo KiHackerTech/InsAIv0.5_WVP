@@ -1,11 +1,7 @@
-import React from "react"
+let BaseAPIURL = "http://localhost:8081/"
 
-function BaseAPIURL(){
-    return "http://localhost:8081/"
-}
+let BaseURL = "http://localhost:8080/"
 
-function PasswordLengthMin(){
-    return 8
-}
+let PasswordLengthMin = 8
 
-export {BaseAPIURL, PasswordLengthMin}
+export {BaseAPIURL, BaseURL, PasswordLengthMin}

@@ -7,6 +7,7 @@ import {Projects} from "./Navigations/Login/Projects/Projects";
 import CreateProject from "./Navigations/Login/Projects/CreateProject";
 import Step from "./Navigations/Login/Projects/Steps/Step";
 import UploadImg from "./Navigations/Login/Projects/Steps/UploadImg/UploadImg";
+import ViewAllImg from "./Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg";
 
 export default function APP() {
     return (
@@ -18,7 +19,8 @@ export default function APP() {
                 <Route path="/Projects" element={<Projects />} />
                     <Route path="/Project/CreateProject" element={<CreateProject />} />
                     <Route path="/Project/Step" element={<Step />} />
-                        <Route path="/Project/Step/uploadImg" element={<UploadImg />} />/
+                        <Route path="/Project/Step/uploadImg" element={<UploadImg />} />
+                        <Route path="/Project/Step/ViewAllImg" element={<ViewAllImg />} />
                 <Route path="*"      element={<Register />} />
             </Routes>
         </div>

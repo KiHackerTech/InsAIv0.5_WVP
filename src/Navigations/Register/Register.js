@@ -7,7 +7,6 @@ import sha256 from "crypto-js/sha256"   //印入sha256雜湊工具
 
 import {PasswordLengthMin} from "../../BaseInfo.js"   //取得API網址
 import { APIuserSignup } from "../../Components/FuncComponents/API_Manager.js"
-const PasswordLengthMinimum = PasswordLengthMin()   //儲存密碼長度最低要求
 
 function RegisterContent(){   //註冊核心組件
     const navigate = useNavigate()   //跳轉用函式
@@ -52,8 +51,8 @@ function RegisterContent(){   //註冊核心組件
             setEmailError("")
         }
         
-        if(Password.length < PasswordLengthMinimum){
-            setPasswordError("密碼應為至少" + PasswordLengthMinimum + "位數, 由0-9, a-z, A-Z組成") 
+        if(Password.length < PasswordLengthMin){
+            setPasswordError("密碼應為至少" + PasswordLengthMin + "位數, 由0-9, a-z, A-Z組成") 
             deny = true
         }else{
             setPasswordError("")

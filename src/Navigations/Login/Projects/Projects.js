@@ -16,24 +16,26 @@ function ListProjects(props){   //將ProjectList中的所有專案列出顯示
         const params = {
             projectName : Project.projectName,
             ProjectID : Project.ProjectID,
+            UserID : Project.UserID
 
         }
         const search_Params = createSearchParams(params)
         navigate({
-            pathname: '/Project/Step/',
-            search: "?" + search_Params
+            pathname : '/Project/Step/',
+            search : "?" + search_Params
         })
     }
 
-    function HandleDeleteProject(ProjectID, index){   //call API: 刪除指定使用者的指定專案
+    function HandleDeleteProject(UserID, ProjectID, index){   //call API: 刪除指定使用者的指定專案
         if (confirm('你確定要刪除嗎') != true) {
             return 0
         }
     
         let params = {   //打包輸入的訊息待傳
-            "ProjectID" : ProjectID
+            "ProjectID" : ProjectID,
+            "UserID" : UserID
         }
-        console.log("delete project posted:")
+        console.log("delete project posted")
         APIdeleteProject(params)   //調用刪除API
             .then((response) => {   //登入成功執行跳轉到登入頁面
                 console.log("Delete Project post Success:")
@@ -61,7 +63,7 @@ function ListProjects(props){   //將ProjectList中的所有專案列出顯示
 
     let ProjectItems
     if(props.ProjectList.length < 1){
-        ProjectItems = <div>還沒有專案，點擊右上方加號新增專案</div>
+        ProjectItems = <div>還沒有專案，點擊上方加號新增專案</div>
     }else{
         ProjectItems = props.ProjectList.map((Project, index) => {
             return(
@@ -79,7 +81,7 @@ function ListProjects(props){   //將ProjectList中的所有專案列出顯示
                         <div className="card-footer">
                             <div className="row align-items-center justify-content-end">
                                 <div className="col-auto">
-                                    <a href="#" className="btn btn-outline-danger" onClick={() => {HandleDeleteProject(Project.ProjectID, index)}}>刪除專案</a>
+                                    <a href="#" className="btn btn-outline-danger" onClick={() => {HandleDeleteProject(Project.UserID, Project.ProjectID, index)}}>刪除專案</a>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +100,6 @@ function Projects(){
 
     const navigate = useNavigate()   //跳轉用函式
     
-    const [UserID, setUserID] = useState("")   //存使用者ID，call API用
     const [Token, setToken] = useState("")   //存token，call API用
     
     const [ProjectList, setProjectList] = useState([])   //存所有專案列表
@@ -108,8 +109,7 @@ function Projects(){
             navigate("/Login")
         }else{   //有token則抓取必要資訊
             try{
-                setUserID(JSON.parse(localStorage.getItem("Token")).UserID)
-                setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY)
+                setToken(JSON.parse(localStorage.getItem("Token")))
             } catch (err){
                 console.log("getPrimeInfoError:")
                 console.log(err)
@@ -122,7 +122,7 @@ function Projects(){
     function RefreshAllProjects(){
         console.log("get projects info posted")
         const params = {
-            "UserID" : UserID
+            "UserID" : Token.UserID
         }
         APIgetProjects(params)   //調用取得專案列表API
             .then((response) => {
@@ -147,16 +147,18 @@ function Projects(){
     }
 
     useEffect(() => {   //call API: 查詢指定使用者的所有專案，存入ProjectList
-        RefreshAllProjects()
+        if(Token.UserID){
+            RefreshAllProjects()
+        }
 
-    }, [UserID, Token])
+    }, [Token])
 
     return(   //頁面配置及Header,Footer引入
         <div>
-            <NavBarHeader  SearchBoxEnable={true} setProjectList={setProjectList} UserID={UserID} RefreshAllProjects={RefreshAllProjects} />
+            <NavBarHeader  SearchBoxEnable={true} setProjectList={setProjectList} RefreshAllProjects={RefreshAllProjects} PlusSignFunction={()=>{navigate("/Project/CreateProject")}}/>
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
-                    <ListProjects setProjectList={setProjectList}  ProjectList={ProjectList}/>
+                    <ListProjects UserID={Token.UserID} ProjectList={ProjectList} setProjectList={setProjectList} />
                 </div>
             </div>
             <Footer />
