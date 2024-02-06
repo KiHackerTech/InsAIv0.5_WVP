@@ -49,9 +49,7 @@ function ListImgs(props){
             // ImgUrl = "https://i.ytimg.com/vi/jS1mZ4QciKI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD5V9KQugojDoEjHBEdv3F3FQ48Cg"
             
             return(
-                <button className="col-md-2 p-0 mx-auto my-1 shadow-lg" onClick={()=>{HandleDeleteImg({ImgID, index})}} title={"點擊圖片從上傳隊列移除圖片" + (index+1)} key={index} >
-                    <img src={ImgUrl} className="h-100 w-100" />
-                </button>
+                <img src={ImgUrl} className="col-6 col-md-4 p-1 pb-3" onClick={()=>{HandleDeleteImg({ImgID, index})}} title={"點擊圖片從上傳隊列移除圖片" + (index+1)} key={index} />
             )
         })
     }
@@ -144,13 +142,13 @@ export default function ViewAllImg(){
                 <div className="container-fluid">
                     <div className="row justify-content-center">
                         <div className="row w-100 justify-content-center align-items-center">
-                            <div className="col-auto">檢視專案{searchParams.get("projectName")}已上傳的圖片</div>
-                            <div className="col-auto">點擊圖片以從專案刪除</div>
+                            <h4 className="col-auto">檢視專案{searchParams.get("projectName")}已上傳的圖片</h4>
+                            <h6 className="col-auto">點擊圖片以從專案中刪除</h6>
                         </div>
                         <div className="row w-100 pb-4 justify-content-center align-items-center">
-                            <button className="col-auto btn btn-info" onClick={HandleGotoStep}>返回</button>
+                            <button className="col-auto btn btn-dark" onClick={HandleGotoStep}>返回</button>
                         </div>
-                        <div className="row w-100 justify-content-start">
+                        <div className="row w-100 text-center justify-content-start align-items-center">
                             <ListImgs ImgList={ImgList} setImgList={setImgList} searchParams={searchParams} />
                         </div>
                     </div>

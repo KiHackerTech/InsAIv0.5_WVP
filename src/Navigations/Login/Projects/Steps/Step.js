@@ -44,8 +44,6 @@ export default function Step(){
                             ButtonLayoutList[ButtonLayoutList.indexOf(LayoutStyle)] = "outline-secondary"
                         }
                     })
-                    // ButtonLayoutList[lastStep-1] = "outline-secondary"
-                    console.log(ButtonLayoutList)
                     setButtonLayout([...ButtonLayoutList])
                 }
             })

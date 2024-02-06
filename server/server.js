@@ -241,17 +241,24 @@ app.post('/api/project/step/uploadImg', upload.array("file"), (req, res) => {
     const ImgPath = path.join( __dirname, `../public/projects/${UserID}/${ProjectID}` )
     if(fs.existsSync(ImgPath)){
         fs.readdirSync(ImgPath).forEach((file) => {
+            const confirm = "SELECT * FROM images WHERE ImgName = (?) AND UserID = (?) AND ProjectID = (?)";
             const sql = "INSERT INTO images ( `ImgName`, `UserID`, `ProjectID` ) VALUES (?)"
 
-            values = [
-                file,
-                UserID,
-                ProjectID
-            ]
-            db.query( sql, [ values], ( err, data ) => {
-                if(err) return res.json(API_ARCHITHCTURE("Failed"))
-
-            })
+            db.query( confirm, [ file, UserID, ProjectID ], ( err, data ) => {
+                if(err) return res.json(API_ARCHITHCTURE())
+                if( data.length > 0) return 0
+                else{
+                    values = [
+                        file,
+                        UserID,
+                        ProjectID
+                    ]
+                    db.query( sql, [ values], ( err, data ) => {
+                        if(err) return res.json(API_ARCHITHCTURE())
+        
+                    })
+                }
+            } )
         })
         return res.json(API_ARCHITHCTURE("Success"))
     }else{
