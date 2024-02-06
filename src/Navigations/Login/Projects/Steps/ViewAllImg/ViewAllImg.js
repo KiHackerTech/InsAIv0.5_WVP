@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
-import { APIdeleteImg, APIgetImg } from "../../../../../Components/FuncComponents/API_Manager";
+import { APIdeleteImg, APIgetImg, APInextStep } from "../../../../../Components/FuncComponents/API_Manager";
 
 import NavBarHeader from "../../../../../Components/architecture/NavbarHeader";
+import Footer from "../../../../../Components/architecture/Footer";
 import { BaseURL } from "../../../../../BaseInfo";
 
 function ListImgs(props){
@@ -48,7 +49,7 @@ function ListImgs(props){
             // ImgUrl = "https://i.ytimg.com/vi/jS1mZ4QciKI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD5V9KQugojDoEjHBEdv3F3FQ48Cg"
             
             return(
-                <button className="col-md-2 p-2" onClick={()=>{HandleDeleteImg({ImgID, index})}} title={"點擊圖片從上傳隊列移除圖片" + (index+1)} key={index} >
+                <button className="col-md-2 p-0 mx-auto my-1 shadow-lg" onClick={()=>{HandleDeleteImg({ImgID, index})}} title={"點擊圖片從上傳隊列移除圖片" + (index+1)} key={index} >
                     <img src={ImgUrl} className="h-100 w-100" />
                 </button>
             )
@@ -107,11 +108,31 @@ export default function ViewAllImg(){
     useEffect(() => {
         if(Token.UserID){
             RefreshAllImgs()
+            const data = {
+                ProjectID : searchParams.get("ProjectID"),
+                setStep : 2
+            }
+            APInextStep(data)
+                .then((response)=>{
+                    if(response.data.Status != "Success"){
+                        alert("很抱歉，似乎出了點問題")
+                    }
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
         }
     }, [Token])
 
+    function HandleGotoStep(){
+        navigate({
+            pathname : "/Project/Step/",
+            search : "?" + searchParams.toString()
+        })
+    }
+
     return(
-        <div className="row">
+        <>
             <NavBarHeader PlusSignFunction={()=>{
                 navigate({
                     pathname : "/Project/Step/UploadImg",
@@ -120,19 +141,23 @@ export default function ViewAllImg(){
             }
             } />
             <div className="min-vh-100 bg-light">
-                <div className="row h-auto w-100">
-                    <div className="container">
-                    <div className="row">
-                        <div className="col-auto pb-4">檢視專案{searchParams.get("projectName")}已上傳的圖片</div>
-                        <div className="col-auto pb-1">點擊圖片以從專案刪除</div>
-                        <div className="row align-items-center justify-content-start ">
-                            <ListImgs ImgList={ImgList} setImgList={setImgList} searchParams={searchParams} />
+                <div className="container-fluid">
+                    <div className="row justify-content-center">
+                        <div className="row w-100 justify-content-center align-items-center">
+                            <div className="col-auto">檢視專案{searchParams.get("projectName")}已上傳的圖片</div>
+                            <div className="col-auto">點擊圖片以從專案刪除</div>
                         </div>
+                        <div className="row w-100 pb-4 justify-content-center align-items-center">
+                            <button className="col-auto btn btn-info" onClick={HandleGotoStep}>返回</button>
+                        </div>
+                        <div className="row w-100 justify-content-start">
+                            <ListImgs ImgList={ImgList} setImgList={setImgList} searchParams={searchParams} />
                         </div>
                     </div>
                 </div>
             </div>
+            <Footer />
 
-        </div>
+        </>
     )
 }

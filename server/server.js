@@ -123,10 +123,11 @@ app.post('/api/account/login', (req, res) => {   //登入資訊驗證
 
 app.post('/api/project/addproject', (req, res) => {   //新增專案
     const confirm = "SELECT * From project WHERE UserID = (?) AND projectName = (?)";   //確認專案是否存在的命令
-    const sql = "INSERT INTO project ( `UserID`, `projectName` ) VALUES (?)";   //新增專案的命令
+    const sql = "INSERT INTO project ( `UserID`, `projectName` , `laststep` ) VALUES (?)";   //新增專案的命令
     const values = [
         req.body.UserID,
-        req.body.projectName
+        req.body.projectName,
+        0
     ]
     db.query(confirm, [req.body.UserID, req.body.projectName], (err, confirmData) => {   //確認專案是否存在
         if (err) return res.json(API_ARCHITHCTURE());
@@ -168,44 +169,54 @@ app.get('/api/project/searchproject' , (req, res) => {   //查詢指中使用者
 })
 
 app.delete('/api/project/deleteproject', (req, res) => {   //刪除指定使用者的指定專案
-    const sql = "DELETE FROM project WHERE ProjectID = (?)";
+    const sql_delproject = "DELETE FROM project WHERE ProjectID = (?)";
+    const sql_delimages = "DELETE FROM images WHERE ProjectID = (?)";
     const UserID = req.query.UserID;
     const ProjectID = req.query.ProjectID;
-    db.query(sql, [ ProjectID ] , (err,data) => {
+    db.query(sql_delproject, [ ProjectID ] , (err,data) => {
         if (err)  return res.json(API_ARCHITHCTURE())
 
-        const dir = path.join(__dirname, `/projects/${UserID}/${ProjectID}`)
-        FOLDER_DELETE(dir)
-        return res.json(API_ARCHITHCTURE("Success"))
+        db.query(sql_delimages, [ ProjectID ] , (err,data) => {
+            if (err)  return res.json(API_ARCHITHCTURE())
+    
+            const dir = path.join(__dirname, `../public/projects/${UserID}/${ProjectID}`)
+            FOLDER_DELETE(dir)
+            return res.json(API_ARCHITHCTURE("Success"))
+        })
     })
 })
 
-app.get('/api/project/getstep', (req, res) => {   //不明
-    const sql = "SELECT * FROM project WHERE username = (?) AND projectName = (?)";
-    const values = [
-        req.query.username,
-        req.query.projectName
-    ]
-    db.query(sql, [values], (err, data) => {   //不明
+app.get('/api/project/step/getstep', (req, res) => {   //不明
+    const sql = "SELECT laststep FROM project WHERE ProjectID = (?)";
+    
+    db.query(sql, req.query.ProjectID, (err, data) => {   //不明
         if (err) return res.json(API_ARCHITHCTURE())
 
         if (data.length > 0) {
-            return res.json(API_ARCHITHCTURE("Success"))
+            return res.json(API_ARCHITHCTURE("Success", data[0]))
         }
         return res.json(API_ARCHITHCTURE("Failed"))
     })
 })
 
 
-app.post('/api/project/confirmstep', (req, res) => {   //不明
-    const sql = "SELECT * FROM project WHERE username = (?) AND projectName = (?)";
-    const values = [
-        req.body.username,
-        req.body.projectName
-    ]
-    db.query(sql, [values], (err, data) => {   //不明
-        if (err) return res.json(API_ARCHITHCTURE())
+app.post('/api/project/step/setstep', (req, res) => {   //不明
+    const sql_select = "SELECT laststep FROM project WHERE ProjectID = (?)";
+    // const sql_insert = "INSERT INTO project ( `laststep` ) VALUES (?)";
+    const sql_insert = "UPDATE project SET laststep = (?) WHERE ProjectID = (?)";
 
+    db.query(sql_select, req.body.ProjectID, (err, previous_data) => {   //不明
+        if (err) return res.json(API_ARCHITHCTURE())
+        
+        if(previous_data[0].laststep < req.body.setStep){
+            db.query(sql_insert, [req.body.setStep, req.body.ProjectID], (err, data) => {   //不明
+                if (err) return res.json(API_ARCHITHCTURE())
+
+                return res.json(API_ARCHITHCTURE("Success"))
+            })
+        }else{
+            return res.json(API_ARCHITHCTURE("Success"))
+        }
     })
 })
 
@@ -224,30 +235,23 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-app.post('/api/project/step/uploadImg', upload.array("files"), (req, res) => {
+app.post('/api/project/step/uploadImg', upload.array("file"), (req, res) => {
     const UserID = req.body.UserID;
     const ProjectID = req.body.ProjectID;
-    const ImgPath = path.join( __dirname, `../public/projects/${UserID}/${ProjectID}` ) 
+    const ImgPath = path.join( __dirname, `../public/projects/${UserID}/${ProjectID}` )
     if(fs.existsSync(ImgPath)){
         fs.readdirSync(ImgPath).forEach((file) => {
-            const confirm = "SELECT * FROM images WHERE ImgName = (?) AND UserID = (?) AND ProjectID = (?)";
-            const sql = "INSERT INTO images ( `ImgName`, `UserID`, `ProjectID` ) VALUES (?)" 
-            db.query( confirm, [ file, UserID, ProjectID ], ( err, data ) => {
-                if(err) return res.json(API_ARCHITHCTURE())
+            const sql = "INSERT INTO images ( `ImgName`, `UserID`, `ProjectID` ) VALUES (?)"
 
-                if( data.length > 0) return res.json(API_ARCHITHCTURE())
-                else{
-                    values = [
-                        file,
-                        UserID,
-                        ProjectID
-                    ]
-                    db.query( sql, [ values], ( err, data ) => {
-                        if(err) return res.json(API_ARCHITHCTURE("Failed"))
+            values = [
+                file,
+                UserID,
+                ProjectID
+            ]
+            db.query( sql, [ values], ( err, data ) => {
+                if(err) return res.json(API_ARCHITHCTURE("Failed"))
 
-                    })
-                }
-            } )
+            })
         })
         return res.json(API_ARCHITHCTURE("Success"))
     }else{
@@ -275,15 +279,20 @@ app.delete('/api/project/step/deleteimg', (req, res) => {   //刪除指定使用
         const UserID = select_data[0].UserID;
         const ProjectID = select_data[0].ProjectID;
         const ImgName = select_data[0].imgName;
+        const dir = path.join(__dirname,`../public/projects/${UserID}/${ProjectID}/${ImgName}`)
+        
         db.query(sql, [ req.query.ImgID ] , ( err , data ) => {
             if (err) return res.json(API_ARCHITHCTURE())
 
-            const dir = path.join(__dirname,`../public/projects/${UserID}/${ProjectID}/${ImgName}`)
-            fs.unlinkSync( dir, (err) => {
-                if(err) return res.json(API_ARCHITHCTURE());
+            try{
+                fs.unlinkSync( dir, (err) => {
+                    if(err) return res.json(API_ARCHITHCTURE());
+        
+                    console.log(`${ImgName} delete complete`)
+                })
+            }catch(err){
                 
-                console.log(`${ImgName} delete complete`)
-            })
+            }
             return res.json(API_ARCHITHCTURE("Success"))
         })
     })

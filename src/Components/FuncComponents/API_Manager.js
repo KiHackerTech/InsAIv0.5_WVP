@@ -62,8 +62,10 @@ export const APIdeleteProject = params => projectAPI.delete("/deleteproject", {p
 
 export const APIuploadImg = data => stepAPI.post("/uploadImg", data, {
     "Content-Type" : "multipart/form-data",
-    timeout : 8000
+    timeout : 10000
 })
-export const APIgetImg = params => stepAPI.get("/getImg", {params})
+export const APIgetStep = params => stepAPI.get("/getstep", {params})
+export const APInextStep = data => stepAPI.post("/setstep", data)
+export const APIgetImg = params => stepAPI.get("/getimg", {params})
 export const APIdeleteImg = params => stepAPI.delete("/deleteimg", {params})
 
