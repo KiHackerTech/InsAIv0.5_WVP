@@ -15,7 +15,17 @@ function ListSelectedImg(props){
     const setRemovedImgList = props.setRemovedImgList
     const setIndexOfUrlList = props.setIndexOfUrlList
 
-    function HandleDelete(props){
+    function HandleDownloadSingle(props){
+        const index = props.index
+
+        var downloadElement = document.createElement("a");
+        document.body.appendChild(downloadElement);
+        downloadElement.href = SelectedImgUrlList[index];
+        downloadElement.download = "InsAI_upload_Image";
+        downloadElement.click();
+    }
+
+    function HandleRemoveSingle(props){
         const index = props.index
         
         SelectedImgUrlList.splice(index,1)
@@ -42,8 +52,8 @@ function ListSelectedImg(props){
                     <img src={ImgUrl} className="col card-img-top" title={"點擊刪除圖片從上傳隊列移除圖片" + (index+1)}/>
                     <div className="card-footer">
                         <div className="row justify-content-between align-items-center">
-                            <a href="#" className="col btn btn-info shadow" onClick={() => {}}>下載圖片</a>
-                            <a href="#" className="col btn btn-outline-danger shadow" onClick={()=>{HandleDelete({ props , index})}} >刪除圖片</a>
+                            <a href="#" className="col btn btn-info shadow" onClick={()=>{HandleDownloadSingle({ props , index})}}>下載圖片</a>
+                            <a href="#" className="col btn btn-outline-danger shadow" onClick={()=>{HandleRemoveSingle({ props , index})}} >刪除圖片</a>
                         </div>
                     </div>
                 </div>
@@ -84,6 +94,18 @@ export default function UploadImg(){
         setRemovedImgList([-999])
     }
 
+    function HandleDownloadAllImg(props){
+        let SelectedImgUrlList = props.SelectedImgUrlList
+
+        SelectedImgUrlList.forEach((ImgUrl, index)=>{
+            var downloadElement = document.createElement("a");
+            document.body.appendChild(downloadElement);
+            downloadElement.href = SelectedImgUrlList[index];
+            downloadElement.download = "InsAI_upload_Image";
+            downloadElement.click();
+        })
+    }
+
     function GetSelectedImgUrlList(){
     
         if(ImgList.length < 1){
@@ -97,7 +119,8 @@ export default function UploadImg(){
             }
             setTimeout(() => {
                 setSelectedImgUrlList(UrlList)
-            }, ImgList.length * 4);
+            }, ImgList.length * 4)
+
             for (const Img of ImgList){
                 const ImgRader = new FileReader()
         
@@ -115,6 +138,7 @@ export default function UploadImg(){
     function HandleSelect(event){
         const delayTimeValue = 4
         let delayNum
+        
         setRemovedImgList([])
         if(event.target.files.length * delayTimeValue < 1000){
             delayNum = 1
@@ -213,13 +237,12 @@ export default function UploadImg(){
             <div className="min-vh-100 bg-light">
                 <div className="container-fluid"> 
                     <form className="row p-1 mb-3 border-bottom shadow-lg justify-content-around align-items-center d-flex" onSubmit={HandleSubmit}>
-                        
                         <button type="button" className="col-auto m-2 shadow btn btn-success">
                             <input type="file" className="h-100 w-100" onChange={HandleSelect} multiple />
                         </button>   
 
                         <div className="col">
-                            <button type="button" className="me-3 shadow btn btn-info" disabled={ButtonDisabled}>下載隊列中所有圖片</button>
+                            <button type="button" className="me-3 shadow btn btn-info" onClick={()=>{HandleDownloadAllImg({SelectedImgUrlList})}} disabled={ButtonDisabled}>下載隊列中所有圖片</button>
                             <button type="button" className="me-3 shadow btn btn-outline-danger" onClick={HandleRemoveAllImg} disabled={ButtonDisabled}>刪除隊列中所有圖片</button>
                             
                             <button type="submit" className="me-3 shadow btn btn-primary" disabled={ButtonDisabled}>{SubmitButtonMsg}</button>
