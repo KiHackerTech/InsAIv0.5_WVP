@@ -305,6 +305,15 @@ app.delete('/api/project/step/deleteimg', (req, res) => {   //刪除指定使用
     })
 })
 
+app.post('/api/project/step/uploadReq', (req, res) => {  
+    if(req.body.Req){
+        console.log(req.body.Req)
+        return res.json(API_ARCHITHCTURE("Success"))
+    }else{
+        return res.json(API_ARCHITHCTURE("Failed"))
+    }
+})
+
 app.listen(8081, () => {   //監聽8081 port
     console.log("server is listening")
 })

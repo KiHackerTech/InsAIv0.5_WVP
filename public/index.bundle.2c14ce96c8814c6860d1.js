@@ -4363,40 +4363,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navigations/Register/Register */ "./src/Navigations/Register/Register.js");
-/* harmony import */ var _Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navigations/Login/Login */ "./src/Navigations/Login/Login.js");
-/* harmony import */ var _Navigations_Projects_Projects__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navigations/Projects/Projects */ "./src/Navigations/Projects/Projects.js");
-/* harmony import */ var _Navigations_Projects_CreateProject__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navigations/Projects/CreateProject */ "./src/Navigations/Projects/CreateProject.js");
-/* harmony import */ var _Navigations_Projects_Step__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Navigations/Projects/Step */ "./src/Navigations/Projects/Step.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navigations/Login/Login */ "./src/Navigations/Login/Login.js");
+/* harmony import */ var _Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navigations/Register/Register */ "./src/Navigations/Register/Register.js");
+/* harmony import */ var _Navigations_Login_Projects_Projects__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navigations/Login/Projects/Projects */ "./src/Navigations/Login/Projects/Projects.js");
+/* harmony import */ var _Navigations_Login_Projects_CreateProject__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navigations/Login/Projects/CreateProject */ "./src/Navigations/Login/Projects/CreateProject.js");
+/* harmony import */ var _Navigations_Login_Projects_Steps_Step__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/Step */ "./src/Navigations/Login/Projects/Steps/Step.js");
+/* harmony import */ var _Navigations_Login_Projects_Steps_UploadImg_UploadImg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/UploadImg/UploadImg */ "./src/Navigations/Login/Projects/Steps/UploadImg/UploadImg.js");
+/* harmony import */ var _Navigations_Login_Projects_Steps_ViewAllImg_ViewAllImg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg */ "./src/Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg.js");
+/* harmony import */ var _Navigations_Login_Projects_Steps_UploadReq_UploadReq__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/UploadReq/UploadReq */ "./src/Navigations/Login/Projects/Steps/UploadReq/UploadReq.js");
+/* harmony import */ var _Navigations_Login_Projects_Steps_ViewReq_ViewReq__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/ViewReq/ViewReq */ "./src/Navigations/Login/Projects/Steps/ViewReq/ViewReq.js");
 
 
- //註冊頁面
  //登入頁面
+ //註冊頁面
+
+
+
+
 
 
 
 function APP() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "vh-auto vw-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__.Register, null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_2__.Register, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "/Login",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_2__.Login, null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_1__.Login, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "/Projects",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Projects_Projects__WEBPACK_IMPORTED_MODULE_3__.Projects, null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Projects__WEBPACK_IMPORTED_MODULE_3__.Projects, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "/Project/CreateProject",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Projects_CreateProject__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_CreateProject__WEBPACK_IMPORTED_MODULE_4__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "/Project/Step",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Projects_Step__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_Step__WEBPACK_IMPORTED_MODULE_5__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+    path: "/Project/Step/uploadImg",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_UploadImg_UploadImg__WEBPACK_IMPORTED_MODULE_6__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+    path: "/Project/Step/ViewAllImg",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_ViewAllImg_ViewAllImg__WEBPACK_IMPORTED_MODULE_7__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+    path: "/Project/Step/uploadReq",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_UploadReq_UploadReq__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+    path: "/Project/Step/ViewReq",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_ViewReq_ViewReq__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "*",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_1__.Register, null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_2__.Register, null)
   })));
 }
 
@@ -4412,17 +4432,12 @@ function APP() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   BaseAPIURL: () => (/* binding */ BaseAPIURL),
+/* harmony export */   BaseURL: () => (/* binding */ BaseURL),
 /* harmony export */   PasswordLengthMin: () => (/* binding */ PasswordLengthMin)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function BaseAPIURL() {
-  return "http://localhost:8081/";
-}
-function PasswordLengthMin() {
-  return 8;
-}
+var BaseAPIURL = "http://localhost:8081/";
+var BaseURL = "http://localhost:8080/";
+var PasswordLengthMin = 8;
 
 
 /***/ }),
@@ -4437,54 +4452,106 @@ function PasswordLengthMin() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   APIaddProject: () => (/* binding */ APIaddProject),
+/* harmony export */   APIdeleteImg: () => (/* binding */ APIdeleteImg),
 /* harmony export */   APIdeleteProject: () => (/* binding */ APIdeleteProject),
+/* harmony export */   APIgetImg: () => (/* binding */ APIgetImg),
 /* harmony export */   APIgetProjects: () => (/* binding */ APIgetProjects),
+/* harmony export */   APIgetStep: () => (/* binding */ APIgetStep),
+/* harmony export */   APInextStep: () => (/* binding */ APInextStep),
 /* harmony export */   APIsearchProject: () => (/* binding */ APIsearchProject),
+/* harmony export */   APIuploadImg: () => (/* binding */ APIuploadImg),
+/* harmony export */   APIuploadReq: () => (/* binding */ APIuploadReq),
 /* harmony export */   APIuserLogin: () => (/* binding */ APIuserLogin),
 /* harmony export */   APIuserSignup: () => (/* binding */ APIuserSignup)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var _BaseInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo */ "./src/BaseInfo.js");
+/* harmony import */ var _BaseInfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../BaseInfo */ "./src/BaseInfo.js");
+/* harmony import */ var _LogoutProcedure__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LogoutProcedure */ "./src/Components/FuncComponents/LogoutProcedure.js");
 
 
 
-
-// function paramsConverter(myParams){
-//     const params_string = new URLSearchParams(myParams).toString();
-//     return params_string
-// }
-
+var UserID, Token;
+try {
+  UserID = JSON.parse(localStorage.getItem("Token")).UserID;
+  Token = JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY;
+} catch (err) {}
 var accountAPI = axios__WEBPACK_IMPORTED_MODULE_2__["default"].create({
-  baseURL: (0,_BaseInfo__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)() + "api/account/"
+  baseURL: _BaseInfo__WEBPACK_IMPORTED_MODULE_0__.BaseAPIURL + "api/account"
+});
+accountAPI.interceptors.request.use(function (config) {
+  config.headers["Authorization"] = "Bearer " + Token;
+  return config;
+}, function (err) {
+  return Promise.reject(err);
 });
 var projectAPI = axios__WEBPACK_IMPORTED_MODULE_2__["default"].create({
-  baseURL: (0,_BaseInfo__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)() + "api/project/"
+  baseURL: _BaseInfo__WEBPACK_IMPORTED_MODULE_0__.BaseAPIURL + "api/project"
+});
+projectAPI.interceptors.request.use(function (config) {
+  config.headers["Authorization"] = "Bearer " + Token;
+  return config;
+}, function (err) {
+  return Promise.reject(err);
+});
+var stepAPI = axios__WEBPACK_IMPORTED_MODULE_2__["default"].create({
+  baseURL: _BaseInfo__WEBPACK_IMPORTED_MODULE_0__.BaseAPIURL + "api/project/step"
+});
+stepAPI.interceptors.request.use(function (config) {
+  config.headers["Authorization"] = "Bearer " + Token;
+  return config;
+}, function (err) {
+  return Promise.reject(err);
 });
 var APIuserSignup = function APIuserSignup(data) {
-  return accountAPI.post("signup", data);
+  return accountAPI.post("/signup", data);
 };
 var APIuserLogin = function APIuserLogin(data) {
-  return accountAPI.post("login", data);
+  return accountAPI.post("/login", data);
 };
 var APIgetProjects = function APIgetProjects(params) {
-  return projectAPI.get("getproject", {
+  return projectAPI.get("/getproject", {
     params: params
   });
 };
 var APIaddProject = function APIaddProject(data) {
-  return projectAPI.post("addproject", data);
+  return projectAPI.post("/addproject", data);
 };
 var APIsearchProject = function APIsearchProject(params) {
-  return projectAPI.get("searchproject", {
+  return projectAPI.get("/searchproject", {
     params: params
   });
 };
 var APIdeleteProject = function APIdeleteProject(params) {
-  return projectAPI["delete"]("deleteproject", {
+  return projectAPI["delete"]("/deleteproject", {
     params: params
   });
+};
+var APIuploadImg = function APIuploadImg(data) {
+  return stepAPI.post("/uploadImg", data, {
+    "Content-Type": "multipart/form-data",
+    timeout: 10000
+  });
+};
+var APIgetStep = function APIgetStep(params) {
+  return stepAPI.get("/getstep", {
+    params: params
+  });
+};
+var APInextStep = function APInextStep(data) {
+  return stepAPI.post("/setstep", data);
+};
+var APIgetImg = function APIgetImg(params) {
+  return stepAPI.get("/getimg", {
+    params: params
+  });
+};
+var APIdeleteImg = function APIdeleteImg(params) {
+  return stepAPI["delete"]("/deleteimg", {
+    params: params
+  });
+};
+var APIuploadReq = function APIuploadReq(data) {
+  return stepAPI.post("/uploadReq", data);
 };
 
 /***/ }),
@@ -4561,9 +4628,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var _BaseInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo */ "./src/BaseInfo.js");
+/* harmony import */ var _FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
 /* harmony import */ var _FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FuncComponents/LogoutProcedure */ "./src/Components/FuncComponents/LogoutProcedure.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -4575,31 +4647,29 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var baseAPIURL = (0,_BaseInfo__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲存API網址UBLIC_KEY
-
-
-function NavBarHeader(_ref) {
-  var searchProject = _ref.searchProject,
-    UserID = _ref.UserID,
-    Token = _ref.Token;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)(); //跳轉用函式
-
+function SearchBox(props) {
+  props = props.props;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState2 = _slicedToArray(_useState, 2),
     SearchProject_keyWord = _useState2[0],
     setSearchProject_keyWord = _useState2[1];
-  function HandleSearchProject() {
+  function HandleSubmit(event) {
     //call API: 搜尋指定專案並凸顯出來
+    event.preventDefault();
     if (SearchProject_keyWord.length < 1) {
       //確認輸入是否正確
-      return -1;
+      props.HandleRefreshAllProjects();
     }
     console.log("search projects posted");
-    axios__WEBPACK_IMPORTED_MODULE_4__["default"] //調用查詢API
-    .get(baseAPIURL + "api/project/searchproject/?" + "UserID=" + UserID + "&projectName=" + SearchProject_keyWord + "&token=" + Token).then(function (response) {
+    var params = {
+      UserID: props.UserID,
+      projectName: SearchProject_keyWord
+    };
+    (0,_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIsearchProject)(params) //調用查詢API
+    .then(function (response) {
       console.log(response);
       if (response.data.Status == "Success") {
-        searchProject(response.data.Message);
+        props.setProjectList(response.data.Message);
       } else {
         alert("查無此專案");
         return -1;
@@ -4610,6 +4680,47 @@ function NavBarHeader(_ref) {
       alert("很抱歉，伺服器出了點問題");
       // navigate("/Login")
     });
+  }
+  if (props.SearchBoxEnable == true) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      className: "col w-10 d-flex",
+      onSubmit: HandleSubmit
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      className: "form-control me-2",
+      type: "search",
+      onChange: function onChange(event) {
+        setSearchProject_keyWord(event.target.value);
+      },
+      placeholder: "\u67E5\u8A62\u5C08\u6848",
+      "aria-label": "Search"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "btn btn-outline-success",
+      type: "submit"
+    }, "Search"));
+  } else {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      className: "col w-10 d-flex"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      className: "form-control me-2",
+      disabled: true,
+      type: "search",
+      placeholder: "\u4E0D\u53EF\u4F7F\u7528",
+      "aria-label": "Search"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "btn btn-outline-success disabled",
+      type: "button"
+    }, "Search"));
+  }
+}
+function NavBarHeader(props) {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)(); //跳轉用函式
+
+  function HandleRefreshAllProjects() {
+    try {
+      props.RefreshAllProjects();
+    } catch (err) {
+      navigate("/Projects");
+    }
   }
   function HandleLogout() {
     //處理登出流程
@@ -4646,9 +4757,7 @@ function NavBarHeader(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
       href: "#",
       className: "nav-link ps-4",
-      onClick: function onClick() {
-        navigate("/Projects");
-      },
+      onClick: HandleRefreshAllProjects,
       "aria-current": "page"
     }, "\u6211\u7684\u5C08\u6848")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
       className: "nav-item"
@@ -4667,27 +4776,13 @@ function NavBarHeader(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
       href: "#",
       className: "col-auto nav-link ps-4",
-      onClick: function onClick() {
-        navigate("/Project/CreateProject");
-      },
+      onClick: props.PlusSignFunction,
       "aria-current": "page"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "+")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-      className: "col w-10 d-flex"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-      className: "form-control me-2",
-      type: "search",
-      onChange: function onChange(event) {
-        setSearchProject_keyWord(event.target.value);
-      },
-      placeholder: "\u67E5\u8A62\u5C08\u6848",
-      "aria-label": "Search"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-      className: "btn btn-outline-success",
-      type: "button",
-      onClick: function onClick() {
-        HandleSearchProject();
-      }
-    }, "Search")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "+")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SearchBox, {
+      props: _objectSpread(_objectSpread({}, props), {}, {
+        HandleRefreshAllProjects: HandleRefreshAllProjects
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
       href: "#",
       className: "col-auto nav-link",
       onClick: HandleLogout
@@ -4714,8 +4809,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var crypto_js_sha256__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! crypto-js/sha256 */ "./node_modules/crypto-js/sha256.js");
 /* harmony import */ var crypto_js_sha256__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(crypto_js_sha256__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../BaseInfo.js */ "./src/BaseInfo.js");
-/* harmony import */ var _Components_FuncComponents_API_Manager_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/FuncComponents/API_Manager.js */ "./src/Components/FuncComponents/API_Manager.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/FuncComponents/API_Manager.js */ "./src/Components/FuncComponents/API_Manager.js");
+/* harmony import */ var _BaseInfo_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../BaseInfo.js */ "./src/BaseInfo.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -4725,13 +4820,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- //引入呼叫API的工具
  //印入sha256雜湊工具
 
- //取得API網址
 
-var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.BaseAPIURL)(); //儲存API網址
-var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.PasswordLengthMin)(); //儲存密碼長度最低要求
+ //取得API網址
 
 function LoginContent() {
   //登入核心組件
@@ -4762,13 +4854,14 @@ function LoginContent() {
     PasswordError = _useState8[0],
     setPasswordError = _useState8[1]; //錯誤訊息輸出
 
-  function HandleSubmit() {
+  function HandleSubmit(event) {
     //登入Submit操作後執行
+    event.preventDefault();
     var deny = false; //Submit取消旗標
 
-    if (Password.length < PasswordLengthMinimum) {
+    if (Password.length < _BaseInfo_js__WEBPACK_IMPORTED_MODULE_3__.PasswordLengthMin) {
       //密碼位數check
-      setPasswordError("密碼應為至少" + PasswordLengthMinimum + "位數, 由0-9, a-z, A-Z組成");
+      setPasswordError("密碼應為至少" + _BaseInfo_js__WEBPACK_IMPORTED_MODULE_3__.PasswordLengthMin + "位數, 由0-9, a-z, A-Z組成");
       deny = true;
     } else {
       setPasswordError("");
@@ -4790,7 +4883,8 @@ function LoginContent() {
       "Email": Email,
       "Password": crypto_js_sha256__WEBPACK_IMPORTED_MODULE_1___default()(Password).toString()
     };
-    (0,_Components_FuncComponents_API_Manager_js__WEBPACK_IMPORTED_MODULE_3__.APIuserLogin)(data).then(function (response) {
+    (0,_Components_FuncComponents_API_Manager_js__WEBPACK_IMPORTED_MODULE_2__.APIuserLogin)(data) //調用登入API
+    .then(function (response) {
       //登入成功執行
       console.log("Login Post Success:");
       if (response.data.Status == "Success") {
@@ -4810,7 +4904,9 @@ function LoginContent() {
       alert("很抱歉，似乎出了點問題");
     });
   }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onSubmit: HandleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row justify-content-center"
@@ -4840,8 +4936,7 @@ function LoginContent() {
     className: "col text-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btn btn-outline-primary",
-    type: "button",
-    onClick: HandleSubmit
+    type: "submit"
   }, "\u767B\u5165")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "col text-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
@@ -4874,10 +4969,10 @@ function Login() {
 
 /***/ }),
 
-/***/ "./src/Navigations/Projects/CreateProject.js":
-/*!***************************************************!*\
-  !*** ./src/Navigations/Projects/CreateProject.js ***!
-  \***************************************************/
+/***/ "./src/Navigations/Login/Projects/CreateProject.js":
+/*!*********************************************************!*\
+  !*** ./src/Navigations/Login/Projects/CreateProject.js ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4887,11 +4982,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var _BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BaseInfo.js */ "./src/BaseInfo.js");
-/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
-/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Components/FuncComponents/API_Manager.js */ "./src/Components/FuncComponents/API_Manager.js");
+/* harmony import */ var _Components_FuncComponents_LogoutProcedure_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Components/FuncComponents/LogoutProcedure.js */ "./src/Components/FuncComponents/LogoutProcedure.js");
+/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
+/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -4903,52 +4998,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- //取得API網址
-var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_1__.BaseAPIURL)(); //儲存API網址
 
 
 
-function CreateProjectContent() {
-  var navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); //跳轉用函式
+function CreateProjectContent(props) {
+  var navigate = props.navigate; //跳轉用函式
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState2 = _slicedToArray(_useState, 2),
-    UserID = _useState2[0],
-    setUserID = _useState2[1]; //存使用者ID，call API用
+    ProjectName = _useState2[0],
+    setProjectName = _useState2[1]; //存輸入的指定專案名稱用
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
-    Token = _useState4[0],
-    setToken = _useState4[1]; //存token，call API用
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState6 = _slicedToArray(_useState5, 2),
-    ProjectName = _useState6[0],
-    setProjectName = _useState6[1]; //存輸入的指定專案名稱用
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState8 = _slicedToArray(_useState7, 2),
-    ProjectNameError = _useState8[0],
-    setProjectNameError = _useState8[1]; //存輸入錯誤時的報錯訊息
+    ProjectNameError = _useState4[0],
+    setProjectNameError = _useState4[1]; //存輸入錯誤時的報錯訊息
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     //用token存否進行登入check
     if (localStorage.getItem("Token") == null) {
       //沒token則跳轉到登入
+      (0,_Components_FuncComponents_LogoutProcedure_js__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
       navigate("/Login");
-    } else {
-      //有token則抓取必要資訊
-      try {
-        setUserID(JSON.parse(localStorage.getItem("Token")).UserID);
-        setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY);
-      } catch (err) {
-        console.log("getPrimeInfoError:");
-        console.log(err);
-        LogoutProcedure();
-        navigate("/Login");
-      }
     }
   }, []);
-  function HandleSubmit() {
+  function HandleSubmit(event) {
     //call API: 送出指定使用者要新增的指定專案名稱
+    event.preventDefault();
     if (ProjectName.length < 1) {
       //確認輸入是否正確
       setProjectNameError("請輸入專案名稱請輸入專案名稱");
@@ -4962,8 +5037,8 @@ function CreateProjectContent() {
       "UserID": JSON.parse(localStorage.getItem("Token")).UserID,
       "projectName": ProjectName
     };
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"] //調用新增專案API
-    .post(baseAPIURL + "api/project/addproject", data).then(function (response) {
+    (0,_Components_FuncComponents_API_Manager_js__WEBPACK_IMPORTED_MODULE_1__.APIaddProject)(data) //調用新增專案API
+    .then(function (response) {
       //新增專案成功則跳轉到專案顯示頁面
       if (response.data.Status == "Success") {
         console.log("Get Projects Post Success:");
@@ -4991,7 +5066,9 @@ function CreateProjectContent() {
   return (
     /*#__PURE__*/
     //表單頁面配置
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      onSubmit: HandleSubmit
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "container"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "row justify-content-center"
@@ -5015,18 +5092,22 @@ function CreateProjectContent() {
       className: "col text-end"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "btn btn-outline-primary",
-      type: "button",
-      onClick: HandleSubmit
+      type: "submit"
     }, "\u65B0\u589E\u5C08\u6848"))))))
   );
 }
 function CreateProject() {
+  var navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   return (
     /*#__PURE__*/
     //頁面配置及Header,Footer引入
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "vh-100 min-vh-100"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      PlusSignDestination: function PlusSignDestination() {
+        navigate("/Project/CreateProject");
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "container h-100 vw-auto"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "row h-100 w-100 align-items-center justify-content-center"
@@ -5038,40 +5119,44 @@ function CreateProject() {
       className: "card-title"
     }, "\u65B0\u589E\u5C08\u6848"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "card-text"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(CreateProjectContent, null)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null))
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(CreateProjectContent, {
+      navigate: navigate
+    })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null))
   );
 }
 
 /***/ }),
 
-/***/ "./src/Navigations/Projects/Projects.js":
-/*!**********************************************!*\
-  !*** ./src/Navigations/Projects/Projects.js ***!
-  \**********************************************/
+/***/ "./src/Navigations/Login/Projects/Projects.js":
+/*!****************************************************!*\
+  !*** ./src/Navigations/Login/Projects/Projects.js ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListProjects: () => (/* binding */ ListProjects),
 /* harmony export */   Projects: () => (/* binding */ Projects)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/FuncComponents/LogoutProcedure */ "./src/Components/FuncComponents/LogoutProcedure.js");
-/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
-/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
-/* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
+/* harmony import */ var _Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Components/FuncComponents/LogoutProcedure */ "./src/Components/FuncComponents/LogoutProcedure.js");
+/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
+/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
 
 
@@ -5079,98 +5164,65 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+function ListProjects(props) {
+  //將ProjectList中的所有專案列出顯示
 
-function Projects() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)(); //跳轉用函式
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    UserID = _useState2[0],
-    setUserID = _useState2[1]; //存使用者ID，call API用
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState4 = _slicedToArray(_useState3, 2),
-    Token = _useState4[0],
-    setToken = _useState4[1]; //存token，call API用
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState6 = _slicedToArray(_useState5, 2),
-    ProjectList = _useState6[0],
-    setProjectList = _useState6[1]; //存所有專案列表
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState8 = _slicedToArray(_useState7, 2),
-    ListProjects = _useState8[0],
-    setListProjects = _useState8[1]; //存實際列出內容的jsx
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    //用token存否進行登入check
-    if (localStorage.getItem("Token") == null) {
-      //沒token則跳轉到登入
-      navigate("/Login");
-    } else {
-      //有token則抓取必要資訊
-      try {
-        setUserID(JSON.parse(localStorage.getItem("Token")).UserID);
-        setToken(JSON.parse(localStorage.getItem("Token")).JWT_SIGN_PUBLIC_KEY);
-      } catch (err) {
-        console.log("getPrimeInfoError:");
-        console.log(err);
-        (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_1__.LogoutProcedure)();
-        navigate("/Login");
-      }
-    }
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    //call API: 查詢指定使用者的所有專案，存入ProjectList
-    console.log("get projects info posted");
+  function HandleGotoStep(Project) {
     var params = {
+      projectName: Project.projectName,
+      ProjectID: Project.ProjectID,
+      UserID: Project.UserID
+    };
+    var search_Params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.createSearchParams)(params);
+    navigate({
+      pathname: '/Project/Step/',
+      search: "?" + search_Params
+    });
+  }
+  function HandleDeleteProject(UserID, ProjectID, index) {
+    //call API: 刪除指定使用者的指定專案
+    if (confirm('你確定要刪除嗎') != true) {
+      return 0;
+    }
+    var params = {
+      //打包輸入的訊息待傳
+      "ProjectID": ProjectID,
       "UserID": UserID
     };
-    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_4__.APIgetProjects)(params).then(function (response) {
+    console.log("delete project posted");
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIdeleteProject)(params) //調用刪除API
+    .then(function (response) {
+      //登入成功執行跳轉到登入頁面
+      console.log("Delete Project post Success:");
+      console.log(response);
       if (response.data.Status == "Success") {
-        console.log("Get Projects Post Success:");
-        console.log(response);
-        setProjectList(response.data.Message);
+        var list_deleted = props.ProjectList;
+        list_deleted.splice(index, 1);
+        props.setProjectList(function () {
+          return _toConsumableArray(list_deleted);
+        });
       } else {
-        alert("取得專案失敗");
-        (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_1__.LogoutProcedure)();
+        alert("很抱歉，似乎出了點問題");
+        (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
         navigate("/Login");
       }
     })["catch"](function (err) {
-      console.log("Get Projects Post Error:");
+      //登入失敗執行印出錯誤
+      console.log("Delete Project Error :");
       console.log(err);
       alert("很抱歉，似乎出了點問題");
-      (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_1__.LogoutProcedure)();
-      navigate("/Login");
     });
-
-    // axios
-    //     .get(baseAPIURL + "api/project/getproject/?" + "UserID=" + UserID + "&token=" + Token)
-    //     .then((response) => {
-    //         if(response.data.Status == "Success"){
-    //             console.log("Get Projects Post Success:")
-    //             console.log(response)
-    //             setProjectList(response.data.Message)
-    //         }else{
-    //             alert("取得專案失敗")
-    //             LogoutProcedure()
-    //             navigate("/Login")
-
-    //         }
-    //     })
-    //     .catch((err) => {
-    //         console.log("Get Projects Post Error:")
-    //         console.log(err)
-    //         alert("很抱歉，似乎出了點問題");
-    //         LogoutProcedure()
-    //         navigate("/Login")
-    //     })
-  }, [UserID, Token]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    //將ProjectList中的所有專案列出顯示
-    var ProjectItems = ProjectList.map(function (Project, index) {
+  }
+  var ProjectItems;
+  if (props.ProjectList.length < 1) {
+    ProjectItems = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u9084\u6C92\u6709\u5C08\u6848\uFF0C\u9EDE\u64CA\u4E0A\u65B9\u52A0\u865F\u65B0\u589E\u5C08\u6848");
+  } else {
+    ProjectItems = props.ProjectList.map(function (Project, index) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "col col-md-3 p-3 mb-3",
-        key: index
+        key: Project.ProjectID
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "card ms-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -5191,7 +5243,7 @@ function Projects() {
         href: "#",
         className: "nav-link",
         onClick: function onClick() {
-          navigate("/Project/Step");
+          HandleGotoStep(Project);
         }
       }, "\u524D\u5F80\u6B65\u9A5F")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
         className: "list-group-item"
@@ -5213,73 +5265,102 @@ function Projects() {
         href: "#",
         className: "btn btn-outline-danger",
         onClick: function onClick() {
-          HandleDeleteProject(Project.projectName, index);
+          HandleDeleteProject(Project.UserID, Project.ProjectID, index);
         }
       }, "\u522A\u9664\u5C08\u6848"))))));
     });
-    if (ProjectList.length < 1) {
-      ProjectItems = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u9084\u6C92\u6709\u5C08\u6848\uFF0C\u9EDE\u64CA\u53F3\u4E0A\u65B9\u52A0\u865F\u65B0\u589E\u5C08\u6848");
+  }
+  return ProjectItems;
+}
+function Projects() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)(); //跳轉用函式
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState2 = _slicedToArray(_useState, 2),
+    Token = _useState2[0],
+    setToken = _useState2[1]; //存token，call API用
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    ProjectList = _useState4[0],
+    setProjectList = _useState4[1]; //存所有專案列表
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //用token存否進行登入check
+    if (localStorage.getItem("Token") == null) {
+      //沒token則跳轉到登入
+      navigate("/Login");
+    } else {
+      //有token則抓取必要資訊
+      try {
+        setToken(JSON.parse(localStorage.getItem("Token")));
+      } catch (err) {
+        console.log("getPrimeInfoError:");
+        console.log(err);
+        (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
+        navigate("/Login");
+      }
     }
-    setListProjects(ProjectItems);
-  }, [ProjectList]);
-  function HandleDeleteProject(ProjectName, index) {
-    //call API: 刪除指定使用者的指定專案
-    if (confirm('你確定要刪除嗎') != true) {
-      return 0;
-    }
+  }, []);
+  function RefreshAllProjects() {
+    console.log("get projects info posted");
     var params = {
-      //打包輸入的訊息待傳
-      "UserID": JSON.parse(localStorage.getItem("Token")).UserID,
-      "projectName": ProjectName
+      "UserID": Token.UserID
     };
-    console.log("delete project posted:");
-    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_4__.APIdeleteProject)(params) //調用刪除API
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIgetProjects)(params) //調用取得專案列表API
     .then(function (response) {
-      //登入成功執行跳轉到登入頁面
-      console.log("Delete Project post Success:");
-      console.log(response);
       if (response.data.Status == "Success") {
-        var list_deleted = ProjectList;
-        list_deleted.splice(index, 1);
-        setProjectList(function () {
-          return _toConsumableArray(list_deleted);
-        });
+        console.log("Get Projects Post Success:");
+        console.log(response);
+        setProjectList(response.data.Message);
       } else {
-        alert("很抱歉，似乎出了點問題");
-        (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_1__.LogoutProcedure)();
+        alert("取得專案失敗");
+        (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
         navigate("/Login");
       }
     })["catch"](function (err) {
-      //登入失敗執行印出錯誤
-      console.log("Delete Project Error :");
+      console.log("Get Projects Post Error:");
       console.log(err);
       alert("很抱歉，似乎出了點問題");
+      (0,_Components_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
+      navigate("/Login");
     });
   }
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //call API: 查詢指定使用者的所有專案，存入ProjectList
+    if (Token.UserID) {
+      RefreshAllProjects();
+    }
+  }, [Token]);
   return (
     /*#__PURE__*/
     //頁面配置及Header,Footer引入
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "h-100 vw-auto"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      searchProject: setProjectList,
-      UserID: UserID,
-      Token: Token
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      SearchBoxEnable: true,
+      setProjectList: setProjectList,
+      RefreshAllProjects: RefreshAllProjects,
+      PlusSignFunction: function PlusSignFunction() {
+        navigate("/Project/CreateProject");
+      }
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "min-vh-100 bg-light"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "row h-auto w-100"
-    }, ListProjects)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null))
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ListProjects, {
+      UserID: Token.UserID,
+      ProjectList: ProjectList,
+      setProjectList: setProjectList
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null))
   );
 }
 
 
 /***/ }),
 
-/***/ "./src/Navigations/Projects/Step.js":
-/*!******************************************!*\
-  !*** ./src/Navigations/Projects/Step.js ***!
-  \******************************************/
+/***/ "./src/Navigations/Login/Projects/Steps/Step.js":
+/*!******************************************************!*\
+  !*** ./src/Navigations/Login/Projects/Steps/Step.js ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5289,18 +5370,834 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
+/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
+/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
 
 
 
 function Step() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useSearchParams)(),
+    _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
+    searchParams = _useSearchParams2[0];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["primary", "primary", "primary", "primary"]),
+    _useState2 = _slicedToArray(_useState, 2),
+    LastStep = _useState2[0],
+    setLastStep = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["primary", "primary", "primary", "primary"]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    ButtonLayout = _useState4[0],
+    setButtonLayout = _useState4[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //用token存否進行登入check和searchPrarms check
     if (localStorage.getItem("Token") == null) {
+      //沒token則跳轉到登入
+      LogoutProcedure();
+      navigate("/Login");
+    } else if (searchParams.toString().length < 1) {
+      //沒searchPrarms則跳轉到Projects
+      navigate("/Projects");
+    } else {
+      FollowLastStep();
+    }
+  }, []);
+  function FollowLastStep() {
+    console.log("get step posted");
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIgetStep)({
+      ProjectID: searchParams.get("ProjectID")
+    }).then(function (response) {
+      console.log("get step success:");
+      console.log(response);
+      setLastStep(response.data.Message.laststep);
+      var lastStep = response.data.Message.laststep;
+      if (response.data.Status == "Success" && lastStep > 0) {
+        var ButtonLayoutList = ButtonLayout;
+        ButtonLayoutList.forEach(function (LayoutStyle) {
+          if (ButtonLayoutList.indexOf(LayoutStyle) < lastStep) {
+            ButtonLayoutList[ButtonLayoutList.indexOf(LayoutStyle)] = "outline-secondary";
+          }
+        });
+        setButtonLayout(_toConsumableArray(ButtonLayoutList));
+      }
+    })["catch"](function (err) {});
+  }
+  function HandleGotoNext(props) {
+    navigate({
+      pathname: "/Project/Step/" + props.url,
+      search: "?" + searchParams.toString()
+    });
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    PlusSignFunction: function PlusSignFunction() {
+      navigate("/Project/CreateProject");
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "min-vh-100 bg-light"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row h-auto w-100"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u8ACB\u7E7C\u7E8C\u9032\u884C\u4E0B\u5217\u5C08\u6848\u300E", searchParams.get("projectName"), "\u300F\u7684\u6B65\u9A5F", LastStep + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "w-25 btn btn-" + ButtonLayout[0],
+    onClick: function onClick() {
+      HandleGotoNext({
+        url: "uploadImg"
+      });
+    }
+  }, "\u524D\u5F80\u4E0A\u50B3\u5716\u7247")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "w-25 btn btn-" + ButtonLayout[1],
+    onClick: function onClick() {
+      HandleGotoNext({
+        url: "ViewAllImg"
+      });
+    }
+  }, "\u6AA2\u8996\u5DF2\u4E0A\u50B3\u7684\u5716\u7247")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "w-25 btn btn-" + ButtonLayout[2],
+    onClick: function onClick() {
+      HandleGotoNext({
+        url: "uploadReq"
+      });
+    }
+  }, "\u524D\u5F80\u4E0A\u50B3\u9700\u6C42")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "w-25 btn btn-" + ButtonLayout[3],
+    onClick: function onClick() {
+      HandleGotoNext({
+        url: "ViewReq"
+      });
+    }
+  }, "\u6AA2\u8996\u5DF2\u4E0A\u50B3\u7684\u9700\u6C42")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+}
+
+/***/ }),
+
+/***/ "./src/Navigations/Login/Projects/Steps/UploadImg/UploadImg.js":
+/*!*********************************************************************!*\
+  !*** ./src/Navigations/Login/Projects/Steps/UploadImg/UploadImg.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ UploadImg)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
+
+
+
+
+
+function ListSelectedImg(props) {
+  var RemovedImgList = props.RemovedImgList;
+  var SelectedImgUrlList = props.SelectedImgUrlList;
+  var IndexOfUrlList = props.IndexOfUrlList;
+  var setSelectedImgUrlList = props.setSelectedImgUrlList;
+  var setRemovedImgList = props.setRemovedImgList;
+  var setIndexOfUrlList = props.setIndexOfUrlList;
+  function HandleDownloadSingle(props) {
+    var index = props.index;
+    var downloadElement = document.createElement("a");
+    document.body.appendChild(downloadElement);
+    downloadElement.href = SelectedImgUrlList[index];
+    downloadElement.download = "InsAI_upload_Image";
+    downloadElement.click();
+  }
+  function HandleRemoveSingle(props) {
+    var index = props.index;
+    SelectedImgUrlList.splice(index, 1);
+    if (SelectedImgUrlList.length < 1) {
+      RemovedImgList = [];
+      RemovedImgList.push(-999);
+    } else {
+      RemovedImgList.push(IndexOfUrlList[index]);
+    }
+    IndexOfUrlList.splice(index, 1);
+    setIndexOfUrlList(_toConsumableArray(IndexOfUrlList));
+    setRemovedImgList(_toConsumableArray(RemovedImgList));
+    setSelectedImgUrlList(_toConsumableArray(SelectedImgUrlList));
+  }
+  var ImgItems;
+  if (props.SelectedImgUrlList.length < 1) {
+    ImgItems = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u9084\u6C92\u6709\u5716\u7247\uFF0C\u9EDE\u64CA\u9078\u64C7\u6A94\u6848\u4F86\u65B0\u589E\u5716\u7247");
+  } else {
+    ImgItems = props.SelectedImgUrlList.map(function (ImgUrl, index) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "col col-md-4 p-0 mb-3 shadow-lg",
+        key: index
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "card ms-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+        src: ImgUrl,
+        className: "col card-img-top",
+        title: "點擊刪除圖片從上傳隊列移除圖片" + (index + 1)
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "card-footer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "row justify-content-between align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+        href: "#",
+        className: "col btn btn-info shadow",
+        onClick: function onClick() {
+          HandleDownloadSingle({
+            props: props,
+            index: index
+          });
+        }
+      }, "\u4E0B\u8F09\u5716\u7247"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+        href: "#",
+        className: "col btn btn-outline-danger shadow",
+        onClick: function onClick() {
+          HandleRemoveSingle({
+            props: props,
+            index: index
+          });
+        }
+      }, "\u522A\u9664\u5716\u7247")))));
+    });
+  }
+  return ImgItems;
+}
+function UploadImg() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  var UserID = JSON.parse(localStorage.getItem("Token")).UserID;
+  var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useSearchParams)(),
+    _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
+    searchParams = _useSearchParams2[0];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    ImgList = _useState2[0],
+    setImgList = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    SelectedImgUrlList = _useState4[0],
+    setSelectedImgUrlList = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    IndexOfUrlList = _useState6[0],
+    setIndexOfUrlList = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    RemovedImgList = _useState8[0],
+    setRemovedImgList = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("請選擇圖片"),
+    _useState10 = _slicedToArray(_useState9, 2),
+    SubmitButtonMsg = _useState10[0],
+    setSubmitButtonMsg = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState12 = _slicedToArray(_useState11, 2),
+    ButtonDisabled = _useState12[0],
+    setButtonDisabled = _useState12[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //用token存否進行登入check
+    if (localStorage.getItem("Token") == null) {
+      //沒token則跳轉到登入
       navigate("/Login");
     }
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, "Step Page");
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    GetSelectedImgUrlList();
+  }, [ImgList]);
+  function HandleRemoveAllImg() {
+    setSelectedImgUrlList([]);
+    setRemovedImgList([-999]);
+  }
+  function HandleDownloadAllImg(props) {
+    var SelectedImgUrlList = props.SelectedImgUrlList;
+    SelectedImgUrlList.forEach(function (ImgUrl, index) {
+      var downloadElement = document.createElement("a");
+      document.body.appendChild(downloadElement);
+      downloadElement.href = SelectedImgUrlList[index];
+      downloadElement.download = "InsAI_upload_Image";
+      downloadElement.click();
+    });
+  }
+  function GetSelectedImgUrlList() {
+    if (ImgList.length < 1) {
+      return -1;
+    } else {
+      var UrlList = [];
+      for (var i = 0; i < ImgList.length; i++) {
+        var IndexOfUrlList_temp = IndexOfUrlList;
+        IndexOfUrlList_temp.push(i);
+        setIndexOfUrlList(_toConsumableArray(IndexOfUrlList_temp));
+      }
+      setTimeout(function () {
+        setSelectedImgUrlList(UrlList);
+      }, ImgList.length * 4);
+      var _iterator = _createForOfIteratorHelper(ImgList),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var Img = _step.value;
+          var ImgRader = new FileReader();
+          ImgRader.onload = function (e) {
+            if (e.target) {
+              UrlList.push(e.target.result);
+            }
+          };
+          ImgRader.readAsDataURL(Img);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+  }
+  function HandleSelect(event) {
+    var delayTimeValue = 4;
+    var delayNum;
+    setRemovedImgList([]);
+    if (event.target.files.length * delayTimeValue < 1000) {
+      delayNum = 1;
+    } else {
+      delayNum = parseInt(event.target.files.length * delayTimeValue / 1000) + 1;
+    }
+    function countDown(props) {
+      var delayNum = props.delayNum - 1;
+      var setButtonDisabled = props.setButtonDisabled;
+      if (delayNum > 0) {
+        props.setButtonDisabled(true);
+        setTimeout(function () {
+          var setSubmitButtonMsg = props.setSubmitButtonMsg;
+          props.setSubmitButtonMsg(delayNum + "秒後可上傳");
+          countDown({
+            delayNum: delayNum,
+            setSubmitButtonMsg: setSubmitButtonMsg,
+            setButtonDisabled: setButtonDisabled
+          });
+        }, 1000);
+      } else {
+        props.setSubmitButtonMsg("上傳");
+        props.setButtonDisabled(false);
+      }
+    }
+    setSubmitButtonMsg(delayNum + "秒後可上傳");
+    countDown({
+      delayNum: delayNum,
+      setSubmitButtonMsg: setSubmitButtonMsg,
+      setButtonDisabled: setButtonDisabled
+    });
+    setImgList(event.target.files);
+  }
+  function HandleSubmit(event) {
+    event.preventDefault();
+    if (RemovedImgList.includes(-999)) {
+      alert("沒有選擇圖片");
+      return -999;
+    }
+    var ImgformData = new FormData();
+    ImgformData.append("ProjectID", searchParams.get('ProjectID'));
+    ImgformData.append("UserID", UserID);
+    Object.values(ImgList).forEach(function (Img, index) {
+      if (!RemovedImgList.includes(index) && !RemovedImgList.includes(-999)) {
+        ImgformData.append("file", Img);
+      }
+    });
+    ImgformData.append("fileAmount", ImgList.length);
+    console.log("upload imgs posted");
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIuploadImg)(ImgformData) //調用上傳圖片API
+    .then(function (response) {
+      console.log("upload imgs success:");
+      console.log(response);
+      if (response.data.Status == "Success") {
+        var data = {
+          ProjectID: searchParams.get("ProjectID"),
+          setStep: 1
+        };
+        (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APInextStep)(data).then(function (response) {
+          if (response.data.Status == "Success") {
+            alert("上傳成功");
+            navigate({
+              pathname: '/Project/Step/',
+              search: "?" + searchParams.toString()
+            });
+          }
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      } else {
+        alert("上傳失敗");
+        console.log(response);
+        navigate({
+          pathname: '/Project/Step/',
+          search: "?" + searchParams.toString()
+        });
+      }
+    })["catch"](function (err) {
+      console.log("Upload Img Error :");
+      console.log(err);
+      alert("很抱歉，似乎出了點問題");
+    });
+  }
+  function HandleGotoStep() {
+    navigate({
+      pathname: "/Project/Step/",
+      search: "?" + searchParams.toString()
+    });
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "min-vh-100 bg-light"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container-fluid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    className: "row p-1 mb-3 border-bottom shadow-lg justify-content-around align-items-center d-flex",
+    onSubmit: HandleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    className: "col-auto m-2 shadow btn btn-success"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "file",
+    className: "h-100 w-100",
+    onChange: HandleSelect,
+    multiple: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    className: "me-3 shadow btn btn-info",
+    onClick: function onClick() {
+      HandleDownloadAllImg({
+        SelectedImgUrlList: SelectedImgUrlList
+      });
+    },
+    disabled: ButtonDisabled
+  }, "\u4E0B\u8F09\u968A\u5217\u4E2D\u6240\u6709\u5716\u7247"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    className: "me-3 shadow btn btn-outline-danger",
+    onClick: HandleRemoveAllImg,
+    disabled: ButtonDisabled
+  }, "\u522A\u9664\u968A\u5217\u4E2D\u6240\u6709\u5716\u7247"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "submit",
+    className: "me-3 shadow btn btn-primary",
+    disabled: ButtonDisabled
+  }, SubmitButtonMsg), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "\u9EDE\u64CA\u5716\u7247\u4EE5\u5C07\u5176\u5F9E\u968A\u5217\u4E2D\u522A\u9664")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    className: "col-auto shadow btn btn-dark",
+    onClick: HandleGotoStep
+  }, "\u8FD4\u56DE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row p-1 justify-content-start align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ListSelectedImg, {
+    SelectedImgUrlList: SelectedImgUrlList,
+    setSelectedImgUrlList: setSelectedImgUrlList,
+    RemovedImgList: RemovedImgList,
+    setRemovedImgList: setRemovedImgList,
+    IndexOfUrlList: IndexOfUrlList,
+    setIndexOfUrlList: setIndexOfUrlList
+  })))));
+}
+
+/***/ }),
+
+/***/ "./src/Navigations/Login/Projects/Steps/UploadReq/UploadReq.js":
+/*!*********************************************************************!*\
+  !*** ./src/Navigations/Login/Projects/Steps/UploadReq/UploadReq.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ UploadReq)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function UploadReq() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useSearchParams)(),
+    _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
+    searchParams = _useSearchParams2[0];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState2 = _slicedToArray(_useState, 2),
+    StandardDeviation = _useState2[0],
+    setStandardDeviation = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    SpecificLevel = _useState4[0],
+    setSpecificLevel = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState6 = _slicedToArray(_useState5, 2),
+    Chance = _useState6[0],
+    setChance = _useState6[1];
+  function HandleSubmit(event) {
+    event.preventDefault();
+    if (StandardDeviation.length * SpecificLevel.length * Chance.length == 0) {
+      alert("請確實填寫");
+      return -1;
+    }
+    var data = {
+      Req: {
+        StandardDeviation: StandardDeviation,
+        SpecificLevel: SpecificLevel,
+        Chance: Chance
+      }
+    };
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIuploadReq)(data).then(function (response) {
+      if (response.data.Status == "Success") {
+        var next_step_data = {
+          ProjectID: searchParams.get("ProjectID"),
+          setStep: 3
+        };
+        (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APInextStep)(next_step_data).then(function (response) {
+          if (response.data.Status == "Success") {
+            alert("送出成功");
+            navigate({
+              pathname: "/Project/Step",
+              search: "?" + searchParams.toString()
+            });
+          }
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      }
+    })["catch"](function () {});
+  }
+  function HandleGotoStep() {
+    navigate({
+      pathname: "/Project/Step/",
+      search: "?" + searchParams.toString()
+    });
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex flex-column align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex w-100 justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onSubmit: HandleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("caption", null, "\u9001\u51FA\u7D50\u679C\u5C07\u76F4\u63A5\u5F71\u97FF\u751F\u6210\u6548\u679C\uFF0C\u8ACB\u78BA\u5BE6\u586B\u5BEB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
+    scope: "row"
+  }, "\u6A21\u578B\u6A19\u6E96\u5DEE\uFF1A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    onChange: function onChange(event) {
+      setStandardDeviation(event.target.value);
+    }
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
+    scope: "row"
+  }, "\u6A21\u578B\u5BB9\u932F\u7387(%):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    onChange: function onChange(event) {
+      setSpecificLevel(event.target.value);
+    },
+    className: "w-100",
+    min: 0,
+    max: 100
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
+    scope: "row"
+  }, "\u5224\u65B7\u7CBE\u6E96\u5EA6(%):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    onChange: function onChange(event) {
+      setChance(event.target.value);
+    },
+    className: "w-100",
+    min: 0,
+    max: 100
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
+    align: "right"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "submit",
+    onClick: HandleGotoStep,
+    className: "btn btn-secondary"
+  }, "\u53D6\u6D88"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "submit",
+    className: "btn btn-primary"
+  }, "\u9001\u51FA"))))))));
+}
+
+/***/ }),
+
+/***/ "./src/Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg.js":
+/*!***********************************************************************!*\
+  !*** ./src/Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ViewAllImg)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
+/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
+/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
+/* harmony import */ var _BaseInfo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../BaseInfo */ "./src/BaseInfo.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
+
+
+
+
+
+
+
+
+function ListImgs(props) {
+  var UserID = props.searchParams.get("UserID");
+  var ProjectID = props.searchParams.get("ProjectID");
+  function HandleDeleteImg(delete_props) {
+    console.log("delete img posted");
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIdeleteImg)({
+      ImgID: delete_props.ImgID
+    }).then(function (response) {
+      console.log("delete img success:");
+      console.log(response);
+      if (response.data.Status == "Success") {
+        var list_deleted = props.ImgList;
+        list_deleted.splice(delete_props.index, 1);
+        props.setImgList(function () {
+          return _toConsumableArray(list_deleted);
+        });
+      } else {
+        alert("刪除圖片錯誤");
+      }
+    })["catch"](function (err) {
+      console.log("Delete Img Error :");
+      console.log(err);
+    });
+  }
+  var ImgItems;
+  if (props.ImgList.length < 1) {
+    ImgItems = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u9084\u6C92\u6709\u5716\u7247\uFF0C\u9EDE\u64CA\u4E0A\u65B9\u52A0\u865F\u65B0\u589E\u5716\u7247");
+  } else {
+    ImgItems = props.ImgList.map(function (ImgData, index) {
+      var imgName = ImgData.imgName;
+      var ImgID = ImgData.ImgID;
+      var ImgUrl = _BaseInfo__WEBPACK_IMPORTED_MODULE_4__.BaseURL + "projects" + "/" + UserID + "/" + ProjectID + "/" + imgName;
+      // ImgUrl = "https://i.ytimg.com/vi/jS1mZ4QciKI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD5V9KQugojDoEjHBEdv3F3FQ48Cg"
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+        src: ImgUrl,
+        className: "col-6 col-md-4 p-1 pb-3",
+        onClick: function onClick() {
+          HandleDeleteImg({
+            ImgID: ImgID,
+            index: index
+          });
+        },
+        title: "點擊圖片從上傳隊列移除圖片" + (index + 1),
+        key: index
+      });
+    });
+  }
+  return ImgItems;
+}
+function ViewAllImg() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useSearchParams)(),
+    _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
+    searchParams = _useSearchParams2[0];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState2 = _slicedToArray(_useState, 2),
+    Token = _useState2[0],
+    setToken = _useState2[1]; //存token，call API用
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    ImgList = _useState4[0],
+    setImgList = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //用token存否進行登入check和searchPrarms check
+    if (localStorage.getItem("Token") == null) {
+      //沒token則跳轉到登入
+      LogoutProcedure();
+      navigate("/Login");
+    } else if (searchParams.toString().length < 1) {
+      //沒searchPrarms則跳轉到Projects
+      navigate("/Projects");
+    } else {
+      try {
+        setToken(JSON.parse(localStorage.getItem("Token")));
+      } catch (err) {
+        console.log("getPrimeInfoError:");
+        console.log(err);
+        LogoutProcedure();
+        navigate("/Login");
+      }
+    }
+  }, []);
+  function RefreshAllImgs() {
+    console.log("get imgs posted");
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIgetImg)({
+      "ProjectID": searchParams.get("ProjectID")
+    }).then(function (response) {
+      console.log("get imgs success:");
+      console.log(response);
+      if (response.data.Status == "Success") {
+        setImgList(response.data.Message);
+      }
+    })["catch"](function (err) {
+      console.log("Get Img Error :");
+      console.log(err);
+    });
+  }
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (Token.UserID) {
+      RefreshAllImgs();
+      var data = {
+        ProjectID: searchParams.get("ProjectID"),
+        setStep: 2
+      };
+      (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APInextStep)(data).then(function (response) {
+        if (response.data.Status != "Success") {
+          alert("很抱歉，似乎出了點問題");
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }, [Token]);
+  function HandleGotoStep() {
+    navigate({
+      pathname: "/Project/Step/",
+      search: "?" + searchParams.toString()
+    });
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    PlusSignFunction: function PlusSignFunction() {
+      navigate({
+        pathname: "/Project/Step/UploadImg",
+        search: "?" + searchParams.toString()
+      });
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "min-vh-100 bg-light"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container-fluid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row w-100 justify-content-center align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", {
+    className: "col-auto"
+  }, "\u6AA2\u8996\u5C08\u6848", searchParams.get("projectName"), "\u5DF2\u4E0A\u50B3\u7684\u5716\u7247"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", {
+    className: "col-auto"
+  }, "\u9EDE\u64CA\u5716\u7247\u4EE5\u5F9E\u5C08\u6848\u4E2D\u522A\u9664")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row w-100 pb-4 justify-content-center align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "col-auto btn btn-dark",
+    onClick: HandleGotoStep
+  }, "\u8FD4\u56DE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row w-100 text-center justify-content-start align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ListImgs, {
+    ImgList: ImgList,
+    setImgList: setImgList,
+    searchParams: searchParams
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+}
+
+/***/ }),
+
+/***/ "./src/Navigations/Login/Projects/Steps/ViewReq/ViewReq.js":
+/*!*****************************************************************!*\
+  !*** ./src/Navigations/Login/Projects/Steps/ViewReq/ViewReq.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ViewReq)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function ViewReq() {
+  var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useSearchParams)(),
+    _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
+    searchParams = _useSearchParams2[0];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var data = {
+      ProjectID: searchParams.get("ProjectID"),
+      setStep: 4
+    };
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APInextStep)(data).then(function (response) {
+      if (response.data.Status == "Success") {}
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex flex-row"
+  }, "view");
 }
 
 /***/ }),
@@ -5334,13 +6231,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- //引入呼叫API的工具
  //印入sha256雜湊工具
 
  //取得API網址
-
-var baseAPIURL = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.BaseAPIURL)(); //儲存API網址
-var PasswordLengthMinimum = (0,_BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.PasswordLengthMin)(); //儲存密碼長度最低要求
 
 function RegisterContent() {
   //註冊核心組件
@@ -5390,8 +6283,9 @@ function RegisterContent() {
       navigate("/Projects");
     }
   }, []);
-  function HandleSubmit() {
+  function HandleSubmit(event) {
     //註冊Submit操作後執行
+    event.preventDefault();
     var deny = false;
     if (FirstName.trim().length * LastName.trim().length * Email.trim().length * Password.trim().length * ConfirmPassword.trim().length == 0) {
       setcMainError("*為必填項目");
@@ -5405,8 +6299,8 @@ function RegisterContent() {
     } else {
       setEmailError("");
     }
-    if (Password.length < PasswordLengthMinimum) {
-      setPasswordError("密碼應為至少" + PasswordLengthMinimum + "位數, 由0-9, a-z, A-Z組成");
+    if (Password.length < _BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.PasswordLengthMin) {
+      setPasswordError("密碼應為至少" + _BaseInfo_js__WEBPACK_IMPORTED_MODULE_2__.PasswordLengthMin + "位數, 由0-9, a-z, A-Z組成");
       deny = true;
     } else {
       setPasswordError("");
@@ -5450,7 +6344,9 @@ function RegisterContent() {
       alert("很抱歉，似乎出了點問題");
     });
   }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onSubmit: HandleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "col"
@@ -5512,8 +6408,7 @@ function RegisterContent() {
     className: "col text-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btn btn-outline-primary",
-    type: "button",
-    onClick: HandleSubmit
+    type: "submit"
   }, "\u8A3B\u518A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "col text-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
@@ -47245,9 +48140,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('root'));
-root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.5ba3e601ea2c3ef249f8.js.map
+//# sourceMappingURL=index.bundle.2c14ce96c8814c6860d1.js.map

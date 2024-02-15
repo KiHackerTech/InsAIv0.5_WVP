@@ -15,8 +15,8 @@ export default function Step(){
 
     const [searchParams] = useSearchParams()
 
-    const [LastStep, setLastStep] = useState(["primary", "primary"])
-    const [ButtonLayout, setButtonLayout] = useState(["primary", "primary"])
+    const [LastStep, setLastStep] = useState(["primary", "primary", "primary", "primary"])
+    const [ButtonLayout, setButtonLayout] = useState(["primary", "primary", "primary", "primary"])
 
     useEffect(() => {   //用token存否進行登入check和searchPrarms check
         if(localStorage.getItem("Token") == null){   //沒token則跳轉到登入
@@ -52,16 +52,9 @@ export default function Step(){
             })
     }
 
-    function HandleGotoUpload(){
+    function HandleGotoNext(props){
         navigate({
-            pathname: '/Project/Step/uploadImg',
-            search: "?" + searchParams.toString()
-        })
-    }
-
-    function HandleGotoViewAllImg(){
-        navigate({
-            pathname: '/Project/Step/ViewAllImg',
+            pathname: "/Project/Step/" + props.url,
             search: "?" + searchParams.toString()
         })
     }
@@ -72,8 +65,10 @@ export default function Step(){
             <div className="min-vh-100 bg-light">
                 <div className="row h-auto w-100">
                     <div>請繼續進行下列專案『{searchParams.get("projectName")}』的步驟{LastStep+1}</div>
-                    <div className="pb-2"><button className={"w-25 btn btn-" + ButtonLayout[0]} onClick={HandleGotoUpload}>前往上傳圖片</button></div>
-                    <div className="pb-2"><button className={"w-25 btn btn-" + ButtonLayout[1]} onClick={HandleGotoViewAllImg}>檢視已上傳的圖片</button></div>
+                    <div className="pb-2"><button className={"w-25 btn btn-" + ButtonLayout[0]} onClick={()=>{HandleGotoNext({url : "uploadImg"})}}>前往上傳圖片</button></div>
+                    <div className="pb-2"><button className={"w-25 btn btn-" + ButtonLayout[1]} onClick={()=>{HandleGotoNext({url : "ViewAllImg"})}}>檢視已上傳的圖片</button></div>
+                    <div className="pb-2"><button className={"w-25 btn btn-" + ButtonLayout[2]} onClick={()=>{HandleGotoNext({url : "uploadReq"})}}>前往上傳需求</button></div>
+                    <div className="pb-2"><button className={"w-25 btn btn-" + ButtonLayout[3]} onClick={()=>{HandleGotoNext({url : "ViewReq"})}}>檢視已上傳的需求</button></div>
                 </div>
             </div>
             <Footer />

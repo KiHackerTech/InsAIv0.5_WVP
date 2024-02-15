@@ -263,7 +263,7 @@ export default function UploadImg(){
                     </div>
                 </div>
             </div>
-            </>
+        </>
     )
     
 }

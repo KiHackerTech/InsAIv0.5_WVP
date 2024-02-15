@@ -68,4 +68,5 @@ export const APIgetStep = params => stepAPI.get("/getstep", {params})
 export const APInextStep = data => stepAPI.post("/setstep", data)
 export const APIgetImg = params => stepAPI.get("/getimg", {params})
 export const APIdeleteImg = params => stepAPI.delete("/deleteimg", {params})
+export const APIuploadReq = data => stepAPI.post("/uploadReq", data)
 
