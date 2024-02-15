@@ -4456,6 +4456,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   APIdeleteProject: () => (/* binding */ APIdeleteProject),
 /* harmony export */   APIgetImg: () => (/* binding */ APIgetImg),
 /* harmony export */   APIgetProjects: () => (/* binding */ APIgetProjects),
+/* harmony export */   APIgetReq: () => (/* binding */ APIgetReq),
 /* harmony export */   APIgetStep: () => (/* binding */ APIgetStep),
 /* harmony export */   APInextStep: () => (/* binding */ APInextStep),
 /* harmony export */   APIsearchProject: () => (/* binding */ APIsearchProject),
@@ -4552,6 +4553,9 @@ var APIdeleteImg = function APIdeleteImg(params) {
 };
 var APIuploadReq = function APIuploadReq(data) {
   return stepAPI.post("/uploadReq", data);
+};
+var APIgetReq = function APIgetReq(params) {
+  return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get(_BaseInfo__WEBPACK_IMPORTED_MODULE_0__.BaseURL + "projects/" + params.UserID + "/" + params.ProjectID + "/" + "requirement.json");
 };
 
 /***/ }),
@@ -5398,11 +5402,11 @@ function Step() {
   var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useSearchParams)(),
     _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
     searchParams = _useSearchParams2[0];
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["primary", "primary", "primary", "primary"]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
     LastStep = _useState2[0],
     setLastStep = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["primary", "primary", "primary", "primary"]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["primary", "secondary disabled", "secondary disabled", "secondary disabled"]),
     _useState4 = _slicedToArray(_useState3, 2),
     ButtonLayout = _useState4[0],
     setButtonLayout = _useState4[1];
@@ -5426,13 +5430,17 @@ function Step() {
     }).then(function (response) {
       console.log("get step success:");
       console.log(response);
-      setLastStep(response.data.Message.laststep);
       var lastStep = response.data.Message.laststep;
+      setLastStep(lastStep);
       if (response.data.Status == "Success" && lastStep > 0) {
         var ButtonLayoutList = ButtonLayout;
         ButtonLayoutList.forEach(function (LayoutStyle) {
           if (ButtonLayoutList.indexOf(LayoutStyle) < lastStep) {
             ButtonLayoutList[ButtonLayoutList.indexOf(LayoutStyle)] = "outline-secondary";
+          } else if (ButtonLayoutList.indexOf(LayoutStyle) == lastStep) {
+            ButtonLayoutList[ButtonLayoutList.indexOf(LayoutStyle)] = "primary";
+          } else {
+            ButtonLayoutList[ButtonLayoutList.indexOf(LayoutStyle)] = "secondary disabled";
           }
         });
         setButtonLayout(_toConsumableArray(ButtonLayoutList));
@@ -5452,7 +5460,7 @@ function Step() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "min-vh-100 bg-light"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "row h-auto w-100"
+    className: "row text-center h-auto w-100"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u8ACB\u7E7C\u7E8C\u9032\u884C\u4E0B\u5217\u5C08\u6848\u300E", searchParams.get("projectName"), "\u300F\u7684\u6B65\u9A5F", LastStep + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pb-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
@@ -5856,7 +5864,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function UploadReq() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
   var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useSearchParams)(),
@@ -5874,6 +5881,20 @@ function UploadReq() {
     _useState6 = _slicedToArray(_useState5, 2),
     Chance = _useState6[0],
     setChance = _useState6[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var params = {
+      UserID: searchParams.get("UserID"),
+      ProjectID: searchParams.get("ProjectID")
+    };
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIgetReq)(params).then(function (response) {
+      var Req_data = response.data;
+      setStandardDeviation(Req_data.StandardDeviation);
+      setSpecificLevel(Req_data.SpecificLevel);
+      setChance(Req_data.Chance);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }, []);
   function HandleSubmit(event) {
     event.preventDefault();
     if (StandardDeviation.length * SpecificLevel.length * Chance.length == 0) {
@@ -5881,6 +5902,8 @@ function UploadReq() {
       return -1;
     }
     var data = {
+      UserID: searchParams.get("UserID"),
+      ProjectID: searchParams.get("ProjectID"),
       Req: {
         StandardDeviation: StandardDeviation,
         SpecificLevel: SpecificLevel,
@@ -5919,13 +5942,16 @@ function UploadReq() {
     className: "d-flex w-100 justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: HandleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("caption", null, "\u9001\u51FA\u7D50\u679C\u5C07\u76F4\u63A5\u5F71\u97FF\u751F\u6210\u6548\u679C\uFF0C\u8ACB\u78BA\u5BE6\u586B\u5BEB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("caption", {
+    className: "text-center"
+  }, "\u9001\u51FA\u7D50\u679C\u5C07\u76F4\u63A5\u5F71\u97FF\u751F\u6210\u6548\u679C\uFF0C\u8ACB\u78BA\u5BE6\u586B\u5BEB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
     scope: "row"
   }, "\u6A21\u578B\u6A19\u6E96\u5DEE\uFF1A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "number",
     onChange: function onChange(event) {
       setStandardDeviation(event.target.value);
-    }
+    },
+    defaultValue: StandardDeviation
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
     scope: "row"
   }, "\u6A21\u578B\u5BB9\u932F\u7387(%):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -5933,6 +5959,7 @@ function UploadReq() {
     onChange: function onChange(event) {
       setSpecificLevel(event.target.value);
     },
+    defaultValue: SpecificLevel,
     className: "w-100",
     min: 0,
     max: 100
@@ -5943,6 +5970,7 @@ function UploadReq() {
     onChange: function onChange(event) {
       setChance(event.target.value);
     },
+    defaultValue: Chance,
     className: "w-100",
     min: 0,
     max: 100
@@ -6162,11 +6190,12 @@ function ViewAllImg() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ViewReq)
+/* harmony export */   "default": () => (/* binding */ UploadReq)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6180,24 +6209,80 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function ViewReq() {
-  var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useSearchParams)(),
+function UploadReq() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useSearchParams)(),
     _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
     searchParams = _useSearchParams2[0];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState2 = _slicedToArray(_useState, 2),
+    StandardDeviation = _useState2[0],
+    setStandardDeviation = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    SpecificLevel = _useState4[0],
+    setSpecificLevel = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState6 = _slicedToArray(_useState5, 2),
+    Chance = _useState6[0],
+    setChance = _useState6[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var data = {
-      ProjectID: searchParams.get("ProjectID"),
-      setStep: 4
+    var params = {
+      UserID: searchParams.get("UserID"),
+      ProjectID: searchParams.get("ProjectID")
     };
-    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APInextStep)(data).then(function (response) {
-      if (response.data.Status == "Success") {}
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIgetReq)(params).then(function (response) {
+      var Req_data = response.data;
+      setStandardDeviation(Req_data.StandardDeviation);
+      setSpecificLevel(Req_data.SpecificLevel);
+      setChance(Req_data.Chance);
     })["catch"](function (err) {
       console.log(err);
     });
   }, []);
+  function HandleGotoStep() {
+    navigate({
+      pathname: "/Project/Step/",
+      search: "?" + searchParams.toString()
+    });
+  }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex flex-row"
-  }, "view");
+    className: "d-flex flex-column align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex w-100 justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("caption", {
+    className: "text-center"
+  }, "\u50C5\u4F9B\u6AA2\u8996"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
+    scope: "row"
+  }, "\u6A21\u578B\u6A19\u6E96\u5DEE\uFF1A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    value: StandardDeviation,
+    disabled: true
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
+    scope: "row"
+  }, "\u6A21\u578B\u5BB9\u932F\u7387(%):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    value: SpecificLevel,
+    className: "w-100",
+    min: 0,
+    max: 100,
+    disabled: true
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
+    scope: "row"
+  }, "\u5224\u65B7\u7CBE\u6E96\u5EA6(%):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    value: Chance,
+    className: "w-100",
+    min: 0,
+    max: 100,
+    disabled: true
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
+    align: "right"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "submit",
+    onClick: HandleGotoStep,
+    className: "btn btn-outline-secondary"
+  }, "\u8FD4\u56DE")))))));
 }
 
 /***/ }),
@@ -48145,4 +48230,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.2c14ce96c8814c6860d1.js.map
+//# sourceMappingURL=index.bundle.4b62446426ba4b909452.js.map

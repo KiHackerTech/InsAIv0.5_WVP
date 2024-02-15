@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BaseAPIURL } from "../../BaseInfo"
+import { BaseAPIURL, BaseURL } from "../../BaseInfo"
 import { LogoutProcedure } from "./LogoutProcedure";
 
 var UserID, Token;
@@ -66,7 +66,10 @@ export const APIuploadImg = data => stepAPI.post("/uploadImg", data, {
 })
 export const APIgetStep = params => stepAPI.get("/getstep", {params})
 export const APInextStep = data => stepAPI.post("/setstep", data)
+
 export const APIgetImg = params => stepAPI.get("/getimg", {params})
 export const APIdeleteImg = params => stepAPI.delete("/deleteimg", {params})
+
 export const APIuploadReq = data => stepAPI.post("/uploadReq", data)
+export const APIgetReq = params => axios.get(BaseURL + "projects/" + params.UserID + "/" + params.ProjectID + "/" + "requirement.json")
 

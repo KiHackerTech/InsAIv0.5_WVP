@@ -307,8 +307,32 @@ app.delete('/api/project/step/deleteimg', (req, res) => {   //刪除指定使用
 
 app.post('/api/project/step/uploadReq', (req, res) => {  
     if(req.body.Req){
-        console.log(req.body.Req)
+        const UserID = req.body.UserID;
+        const ProjectID = req.body.ProjectID;
+        FOLDER_CREATE(`/${UserID}/${ProjectID}`)
+        const dir = `../public/projects/${UserID}/${ProjectID}/requirement.json`
+        fs.writeFile( dir, JSON.stringify(req.body.Req, null, 2), (err) => {
+            console.log("123")
+            if(err){
+                console.log('An error has occured')
+                throw(err)
+            }
+        })
         return res.json(API_ARCHITHCTURE("Success"))
+    }else{
+        return res.json(API_ARCHITHCTURE("Failed"))
+    }
+})
+
+app.get('/api/project/step/getReq', (req, res) => {  
+    if(req.query.ProjectID){
+        return res.json(API_ARCHITHCTURE("Success",
+            {
+                StandardDeviation : 1,
+                SpecificLevel : 2,
+                Chance : 3
+            }
+        ))
     }else{
         return res.json(API_ARCHITHCTURE("Failed"))
     }
