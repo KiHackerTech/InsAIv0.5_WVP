@@ -10,6 +10,7 @@ import UploadImg from "./Navigations/Login/Projects/Steps/UploadImg/UploadImg";
 import ViewAllImg from "./Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg";
 import UploadReq from "./Navigations/Login/Projects/Steps/UploadReq/UploadReq";
 import ViewReq from "./Navigations/Login/Projects/Steps/ViewReq/ViewReq";
+import CheckAllImg from "./Navigations/Login/Projects/Steps/CheckAllImg/CheckAllImg";
 
 export default function APP() {
     return (
@@ -24,7 +25,8 @@ export default function APP() {
                         <Route path="/Project/Step/ViewAllImg" element={<ViewAllImg />} />
                         <Route path="/Project/Step/uploadReq" element={<UploadReq />} />
                         <Route path="/Project/Step/ViewReq" element={<ViewReq />} />
-                <Route path="*"      element={<Register />} />
+                        <Route path="/Project/Step/CheckALlImg" element={<CheckAllImg />} />
+                <Route path="*" element={<Register />} />
             </Routes>
         </div>
     )

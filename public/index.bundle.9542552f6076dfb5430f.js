@@ -4363,7 +4363,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navigations/Login/Login */ "./src/Navigations/Login/Login.js");
 /* harmony import */ var _Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navigations/Register/Register */ "./src/Navigations/Register/Register.js");
 /* harmony import */ var _Navigations_Login_Projects_Projects__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navigations/Login/Projects/Projects */ "./src/Navigations/Login/Projects/Projects.js");
@@ -4373,6 +4373,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navigations_Login_Projects_Steps_ViewAllImg_ViewAllImg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg */ "./src/Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg.js");
 /* harmony import */ var _Navigations_Login_Projects_Steps_UploadReq_UploadReq__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/UploadReq/UploadReq */ "./src/Navigations/Login/Projects/Steps/UploadReq/UploadReq.js");
 /* harmony import */ var _Navigations_Login_Projects_Steps_ViewReq_ViewReq__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/ViewReq/ViewReq */ "./src/Navigations/Login/Projects/Steps/ViewReq/ViewReq.js");
+/* harmony import */ var _Navigations_Login_Projects_Steps_CheckAllImg_CheckAllImg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Navigations/Login/Projects/Steps/CheckAllImg/CheckAllImg */ "./src/Navigations/Login/Projects/Steps/CheckAllImg/CheckAllImg.js");
 
 
  //登入頁面
@@ -4384,37 +4385,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function APP() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "vh-auto vw-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_2__.Register, null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/Login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Login__WEBPACK_IMPORTED_MODULE_1__.Login, null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/Projects",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Projects__WEBPACK_IMPORTED_MODULE_3__.Projects, null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/Project/CreateProject",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_CreateProject__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/Project/Step",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_Step__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/Project/Step/uploadImg",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_UploadImg_UploadImg__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/Project/Step/ViewAllImg",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_ViewAllImg_ViewAllImg__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/Project/Step/uploadReq",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_UploadReq_UploadReq__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/Project/Step/ViewReq",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_ViewReq_ViewReq__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+    path: "/Project/Step/CheckALlImg",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Login_Projects_Steps_CheckAllImg_CheckAllImg__WEBPACK_IMPORTED_MODULE_10__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "*",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Navigations_Register_Register__WEBPACK_IMPORTED_MODULE_2__.Register, null)
   })));
@@ -4728,8 +4733,11 @@ function NavBarHeader(props) {
   }
   function HandleLogout() {
     //處理登出流程
-    (0,_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
-    navigate("/Login");
+    var logoutConfirm = confirm('確定要登出嗎？');
+    if (logoutConfirm) {
+      (0,_FuncComponents_LogoutProcedure__WEBPACK_IMPORTED_MODULE_2__.LogoutProcedure)();
+      navigate("/Login");
+    }
   }
   return (
     /*#__PURE__*/
@@ -5361,6 +5369,205 @@ function Projects() {
 
 /***/ }),
 
+/***/ "./src/Navigations/Login/Projects/Steps/CheckAllImg/CheckAllImg.js":
+/*!*************************************************************************!*\
+  !*** ./src/Navigations/Login/Projects/Steps/CheckAllImg/CheckAllImg.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CheckAllImg)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../Components/FuncComponents/API_Manager */ "./src/Components/FuncComponents/API_Manager.js");
+/* harmony import */ var _Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../Components/architecture/NavbarHeader */ "./src/Components/architecture/NavbarHeader.js");
+/* harmony import */ var _Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../Components/architecture/Footer */ "./src/Components/architecture/Footer.js");
+/* harmony import */ var _BaseInfo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../BaseInfo */ "./src/BaseInfo.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
+
+
+
+
+
+
+
+
+function ListImgs(props) {
+  var UserID = props.searchParams.get("UserID");
+  var ProjectID = props.searchParams.get("ProjectID");
+  function HandleDeleteImg(delete_props) {
+    console.log("delete img posted");
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIdeleteImg)({
+      ImgID: delete_props.ImgID
+    }).then(function (response) {
+      console.log("delete img success:");
+      console.log(response);
+      if (response.data.Status == "Success") {
+        var list_deleted = props.ImgList;
+        list_deleted.splice(delete_props.index, 1);
+        props.setImgList(function () {
+          return _toConsumableArray(list_deleted);
+        });
+      } else {
+        alert("刪除圖片錯誤");
+      }
+    })["catch"](function (err) {
+      console.log("Delete Img Error :");
+      console.log(err);
+    });
+  }
+  var ImgItems;
+  if (props.ImgList.length < 1) {
+    ImgItems = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u9084\u6C92\u6709\u5716\u7247\uFF0C\u9EDE\u64CA\u4E0A\u65B9\u52A0\u865F\u65B0\u589E\u5716\u7247");
+  } else {
+    ImgItems = props.ImgList.map(function (ImgData, index) {
+      var imgName = ImgData.imgName;
+      var ImgID = ImgData.ImgID;
+      var ImgUrl = _BaseInfo__WEBPACK_IMPORTED_MODULE_4__.BaseURL + "projects" + "/" + UserID + "/" + ProjectID + "/" + imgName;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+        src: ImgUrl,
+        className: "col-6 col-md-4 p-1 pb-3",
+        onClick: function onClick() {
+          HandleDeleteImg({
+            ImgID: ImgID,
+            index: index
+          });
+        },
+        title: "點擊圖片從上傳隊列移除圖片" + (index + 1),
+        key: index
+      });
+    });
+  }
+  return ImgItems;
+}
+function CheckAllImg() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  var _useSearchParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useSearchParams)(),
+    _useSearchParams2 = _slicedToArray(_useSearchParams, 1),
+    searchParams = _useSearchParams2[0];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState2 = _slicedToArray(_useState, 2),
+    Token = _useState2[0],
+    setToken = _useState2[1]; //存token，call API用
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    ImgList = _useState4[0],
+    setImgList = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //用token存否進行登入check和searchPrarms check
+    if (localStorage.getItem("Token") == null) {
+      //沒token則跳轉到登入
+      LogoutProcedure();
+      navigate("/Login");
+    } else if (searchParams.toString().length < 1) {
+      //沒searchPrarms則跳轉到Projects
+      navigate("/Projects");
+    } else {
+      try {
+        setToken(JSON.parse(localStorage.getItem("Token")));
+      } catch (err) {
+        console.log("getPrimeInfoError:");
+        console.log(err);
+        LogoutProcedure();
+        navigate("/Login");
+      }
+    }
+  }, []);
+  function RefreshAllImgs() {
+    console.log("get imgs posted");
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIgetImg)({
+      "ProjectID": searchParams.get("ProjectID")
+    }).then(function (response) {
+      console.log("get imgs success:");
+      console.log(response);
+      if (response.data.Status == "Success") {
+        setImgList(response.data.Message);
+      }
+    })["catch"](function (err) {
+      console.log("Get Img Error :");
+      console.log(err);
+    });
+  }
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (Token.UserID) {
+      RefreshAllImgs();
+      var data = {
+        ProjectID: searchParams.get("ProjectID"),
+        setStep: 2
+      };
+      (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APInextStep)(data).then(function (response) {
+        if (response.data.Status != "Success") {
+          alert("很抱歉，似乎出了點問題");
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }, [Token]);
+  function HandleComfirm() {
+    var CheckImgConfirm = confirm('確認後無法再上傳圖片，要確認嗎？？');
+    if (CheckImgConfirm) {
+      var data = {
+        ProjectID: searchParams.get("ProjectID"),
+        setStep: 5
+      };
+      (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APInextStep)(data);
+      navigate({
+        pathname: "/Project/Step/",
+        search: "?" + searchParams.toString()
+      });
+    }
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_NavbarHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    PlusSignFunction: function PlusSignFunction() {
+      navigate({
+        pathname: "/Project/Step/UploadImg",
+        search: "?" + searchParams.toString()
+      });
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "min-vh-100 bg-light"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container-fluid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row w-100 justify-content-center align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", {
+    className: "col-auto"
+  }, "\u6AA2\u8996\u5C08\u6848", searchParams.get("projectName"), "\u5DF2\u4E0A\u50B3\u7684\u5716\u7247"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", {
+    className: "col-auto"
+  }, "\u9EDE\u64CA\u5716\u7247\u4EE5\u5F9E\u5C08\u6848\u4E2D\u522A\u9664")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row w-100 pb-4 justify-content-center align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "col-auto btn btn-dark",
+    onClick: HandleComfirm
+  }, "\u78BA\u8A8D")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row w-100 text-center justify-content-start align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ListImgs, {
+    ImgList: ImgList,
+    setImgList: setImgList,
+    searchParams: searchParams
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+}
+
+/***/ }),
+
 /***/ "./src/Navigations/Login/Projects/Steps/Step.js":
 /*!******************************************************!*\
   !*** ./src/Navigations/Login/Projects/Steps/Step.js ***!
@@ -5406,7 +5613,7 @@ function Step() {
     _useState2 = _slicedToArray(_useState, 2),
     LastStep = _useState2[0],
     setLastStep = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["primary", "secondary disabled", "secondary disabled", "secondary disabled"]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["secondary disabled", "secondary disabled", "secondary disabled", "secondary disabled", "secondary disabled"]),
     _useState4 = _slicedToArray(_useState3, 2),
     ButtonLayout = _useState4[0],
     setButtonLayout = _useState4[1];
@@ -5432,7 +5639,7 @@ function Step() {
       console.log(response);
       var lastStep = response.data.Message.laststep;
       setLastStep(lastStep);
-      if (response.data.Status == "Success" && lastStep > 0) {
+      if (response.data.Status == "Success" && lastStep >= 0) {
         var ButtonLayoutList = ButtonLayout;
         ButtonLayoutList.forEach(function (LayoutStyle) {
           if (ButtonLayoutList.indexOf(LayoutStyle) < lastStep) {
@@ -5443,9 +5650,15 @@ function Step() {
             ButtonLayoutList[ButtonLayoutList.indexOf(LayoutStyle)] = "secondary disabled";
           }
         });
+        if (lastStep > 4) {
+          ButtonLayoutList[0] = "secondary disabled";
+          ButtonLayoutList[4] = "secondary disabled";
+        }
         setButtonLayout(_toConsumableArray(ButtonLayoutList));
       }
-    })["catch"](function (err) {});
+    })["catch"](function (err) {
+      console.log(err);
+    });
   }
   function HandleGotoNext(props) {
     navigate({
@@ -5497,7 +5710,16 @@ function Step() {
         url: "ViewReq"
       });
     }
-  }, "\u6AA2\u8996\u5DF2\u4E0A\u50B3\u7684\u9700\u6C42")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }, "\u6AA2\u8996\u5DF2\u4E0A\u50B3\u7684\u9700\u6C42")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "w-25 btn btn-" + ButtonLayout[4],
+    onClick: function onClick() {
+      HandleGotoNext({
+        url: "CheckAllImg"
+      });
+    }
+  }, "\u78BA\u8A8D\u5DF2\u4E0A\u50B3\u7684\u5716\u7247")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_architecture_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 }
 
 /***/ }),
@@ -6009,14 +6231,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BaseInfo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../BaseInfo */ "./src/BaseInfo.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
 
 
@@ -6029,27 +6247,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function ListImgs(props) {
   var UserID = props.searchParams.get("UserID");
   var ProjectID = props.searchParams.get("ProjectID");
-  function HandleDeleteImg(delete_props) {
-    console.log("delete img posted");
-    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APIdeleteImg)({
-      ImgID: delete_props.ImgID
-    }).then(function (response) {
-      console.log("delete img success:");
-      console.log(response);
-      if (response.data.Status == "Success") {
-        var list_deleted = props.ImgList;
-        list_deleted.splice(delete_props.index, 1);
-        props.setImgList(function () {
-          return _toConsumableArray(list_deleted);
-        });
-      } else {
-        alert("刪除圖片錯誤");
-      }
-    })["catch"](function (err) {
-      console.log("Delete Img Error :");
-      console.log(err);
-    });
-  }
   var ImgItems;
   if (props.ImgList.length < 1) {
     ImgItems = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "\u9084\u6C92\u6709\u5716\u7247\uFF0C\u9EDE\u64CA\u4E0A\u65B9\u52A0\u865F\u65B0\u589E\u5716\u7247");
@@ -6058,18 +6255,9 @@ function ListImgs(props) {
       var imgName = ImgData.imgName;
       var ImgID = ImgData.ImgID;
       var ImgUrl = _BaseInfo__WEBPACK_IMPORTED_MODULE_4__.BaseURL + "projects" + "/" + UserID + "/" + ProjectID + "/" + imgName;
-      // ImgUrl = "https://i.ytimg.com/vi/jS1mZ4QciKI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD5V9KQugojDoEjHBEdv3F3FQ48Cg"
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
         src: ImgUrl,
         className: "col-6 col-md-4 p-1 pb-3",
-        onClick: function onClick() {
-          HandleDeleteImg({
-            ImgID: ImgID,
-            index: index
-          });
-        },
-        title: "點擊圖片從上傳隊列移除圖片" + (index + 1),
         key: index
       });
     });
@@ -6163,9 +6351,7 @@ function ViewAllImg() {
     className: "row w-100 justify-content-center align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", {
     className: "col-auto"
-  }, "\u6AA2\u8996\u5C08\u6848", searchParams.get("projectName"), "\u5DF2\u4E0A\u50B3\u7684\u5716\u7247"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", {
-    className: "col-auto"
-  }, "\u9EDE\u64CA\u5716\u7247\u4EE5\u5F9E\u5C08\u6848\u4E2D\u522A\u9664")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "\u6AA2\u8996\u5C08\u6848", searchParams.get("projectName"), "\u5DF2\u4E0A\u50B3\u7684\u5716\u7247")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row w-100 pb-4 justify-content-center align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "col-auto btn btn-dark",
@@ -6237,6 +6423,13 @@ function UploadReq() {
       setSpecificLevel(Req_data.SpecificLevel);
       setChance(Req_data.Chance);
     })["catch"](function (err) {
+      console.log(err);
+    });
+    var data = {
+      ProjectID: searchParams.get("ProjectID"),
+      setStep: 4
+    };
+    (0,_Components_FuncComponents_API_Manager__WEBPACK_IMPORTED_MODULE_1__.APInextStep)(data)["catch"](function (err) {
       console.log(err);
     });
   }, []);
@@ -48230,4 +48423,4 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createEle
 
 /******/ })()
 ;
-//# sourceMappingURL=index.bundle.4b62446426ba4b909452.js.map
+//# sourceMappingURL=index.bundle.9542552f6076dfb5430f.js.map

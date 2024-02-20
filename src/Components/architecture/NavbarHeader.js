@@ -73,8 +73,12 @@ export default function NavBarHeader(props){
     }
     
     function HandleLogout(){   //處理登出流程
-        LogoutProcedure()
-        navigate("/Login")
+        var logoutConfirm = confirm('確定要登出嗎？');
+
+        if (logoutConfirm) {
+            LogoutProcedure()
+            navigate("/Login")
+        }
     }
 
     return(   //navbar畫面

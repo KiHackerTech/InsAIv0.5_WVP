@@ -14,6 +14,29 @@ function ListImgs(props){
     const UserID = props.searchParams.get("UserID")
     const ProjectID = props.searchParams.get("ProjectID")
 
+    function HandleDeleteImg(delete_props) {
+        console.log("delete img posted")
+        APIdeleteImg({ImgID : delete_props.ImgID})
+            .then((response)=>{
+                console.log("delete img success:")
+                console.log(response)
+                if(response.data.Status == "Success"){
+                    let list_deleted = props.ImgList
+                    list_deleted.splice(delete_props.index, 1)
+                    props.setImgList(()=>{return(
+                        [...list_deleted]
+                    )})
+
+                }else{
+                    alert("刪除圖片錯誤")
+                }
+            })
+            .catch((err)=>{
+                console.log("Delete Img Error :")
+                console.log(err)
+            })
+    }
+
     let ImgItems
     if(props.ImgList.length < 1){
         ImgItems = <div>還沒有圖片，點擊上方加號新增圖片</div>
@@ -25,7 +48,9 @@ function ListImgs(props){
             let ImgUrl = BaseURL + "projects" +"/"+ UserID +"/"+ ProjectID +"/"+ imgName
             
             return(
-                <img src={ImgUrl} className="col-6 col-md-4 p-1 pb-3" key={index} />
+                <img src={ImgUrl} className="col-6 col-md-4 p-1 pb-3" onClick={()=>{
+                    HandleDeleteImg({ImgID, index})}} title={"點擊圖片從上傳隊列移除圖片" + (index+1)
+                } key={index} />
             )
         })
     }
@@ -35,7 +60,7 @@ function ListImgs(props){
     return ImgItems
 }
 
-export default function ViewAllImg(){
+export default function CheckAllImg(){
 
     const navigate = useNavigate()
 
@@ -98,11 +123,21 @@ export default function ViewAllImg(){
         }
     }, [Token])
 
-    function HandleGotoStep(){
-        navigate({
-            pathname : "/Project/Step/",
-            search : "?" + searchParams.toString()
-        })
+    function HandleComfirm(){
+        var CheckImgConfirm = confirm('確認後無法再上傳圖片，要確認嗎？？');
+
+        if (CheckImgConfirm) {
+            const data = {
+                ProjectID : searchParams.get("ProjectID"),
+                setStep : 5
+            }
+            APInextStep(data)
+            navigate({
+                pathname : "/Project/Step/",
+                search : "?" + searchParams.toString()
+            })
+        }
+        
     }
 
     return(
@@ -119,9 +154,10 @@ export default function ViewAllImg(){
                     <div className="row justify-content-center">
                         <div className="row w-100 justify-content-center align-items-center">
                             <h4 className="col-auto">檢視專案{searchParams.get("projectName")}已上傳的圖片</h4>
+                            <h6 className="col-auto">點擊圖片以從專案中刪除</h6>
                         </div>
                         <div className="row w-100 pb-4 justify-content-center align-items-center">
-                            <button className="col-auto btn btn-dark" onClick={HandleGotoStep}>返回</button>
+                            <button className="col-auto btn btn-dark" onClick={HandleComfirm}>確認</button>
                         </div>
                         <div className="row w-100 text-center justify-content-start align-items-center">
                             <ListImgs ImgList={ImgList} setImgList={setImgList} searchParams={searchParams} />

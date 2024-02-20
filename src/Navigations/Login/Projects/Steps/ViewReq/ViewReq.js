@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { APIgetReq, APInextStep, APIuploadReq } from "../../../../../Components/FuncComponents/API_Manager"
+import { APIgetReq, APInextStep } from "../../../../../Components/FuncComponents/API_Manager"
 
 
 export default function UploadReq(){
@@ -29,6 +29,14 @@ export default function UploadReq(){
                 setSpecificLevel(Req_data.SpecificLevel)
                 setChance(Req_data.Chance)
             })
+            .catch((err)=>{
+                console.log(err)
+            })
+        const data = {
+            ProjectID : searchParams.get("ProjectID"),
+            setStep : 4
+        }
+        APInextStep(data)
             .catch((err)=>{
                 console.log(err)
             })
