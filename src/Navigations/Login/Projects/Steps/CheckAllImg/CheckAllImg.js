@@ -124,7 +124,7 @@ export default function CheckAllImg(){
     }, [Token])
 
     function HandleComfirm(){
-        var CheckImgConfirm = confirm('確認後無法再上傳圖片，要確認嗎？？');
+        var CheckImgConfirm = confirm('確認後無法再上傳圖片，要確認嗎？');
 
         if (CheckImgConfirm) {
             const data = {

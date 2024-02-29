@@ -11,6 +11,9 @@ import ViewAllImg from "./Navigations/Login/Projects/Steps/ViewAllImg/ViewAllImg
 import UploadReq from "./Navigations/Login/Projects/Steps/UploadReq/UploadReq";
 import ViewReq from "./Navigations/Login/Projects/Steps/ViewReq/ViewReq";
 import CheckAllImg from "./Navigations/Login/Projects/Steps/CheckAllImg/CheckAllImg";
+import CheckReq from "./Navigations/Login/Projects/Steps/CheckReq/CheckReq";
+import TrainModel from "./Navigations/Login/Projects/Steps/TrainModel/TrainModel";
+
 
 export default function APP() {
     return (
@@ -26,6 +29,8 @@ export default function APP() {
                         <Route path="/Project/Step/uploadReq" element={<UploadReq />} />
                         <Route path="/Project/Step/ViewReq" element={<ViewReq />} />
                         <Route path="/Project/Step/CheckALlImg" element={<CheckAllImg />} />
+                        <Route path="/Project/Step/CheckReq" element={<CheckReq />} />
+                        <Route path="/Project/Step/TrainModel" element={<TrainModel />} />
                 <Route path="*" element={<Register />} />
             </Routes>
         </div>

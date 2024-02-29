@@ -91,13 +91,13 @@ export default function NavBarHeader(props){
                 <div className="collapse navbar-collapse justify-content-between" id="ProjectsHeader">
                     <ul className="navbar-nav ">
                         <li className="nav-item">
-                            <a href="#" className="nav-link ps-4" onClick={HandleRefreshAllProjects} aria-current="page">我的專案</a>
+                            <a href="#" className="nav-link ps-2" onClick={HandleRefreshAllProjects} aria-current="page">我的專案</a>
                         </li>
                         <li className="nav-item">
-                            <a href="#" className="nav-link ps-4" aria-current="page">共用專案</a>
+                            <a href="#" className="nav-link ps-2" aria-current="page">共用專案</a>
                         </li>
                         <li className="nav-item">
-                            <a href="#" className="nav-link ps-4" aria-current="page">常見問題</a>
+                            <a href="#" className="nav-link ps-2" aria-current="page">常見問題</a>
                         </li>
                     </ul>
                     <div className="row h-100 align-items-center">
